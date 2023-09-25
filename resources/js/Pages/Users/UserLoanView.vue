@@ -264,11 +264,8 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
-
-import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
-import Pagination from "@/Components/NormalPagination.vue";
-import { pickBy, throttle } from "lodash";
 import Modal from "@/Jetstream/Modal";
+import { Link } from "@inertiajs/inertia-vue3";
 export default {
     components: {
         AppLayout,
