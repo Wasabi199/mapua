@@ -269,7 +269,6 @@ export default {
     components: {
         AppLayout,
         Link,
-        Pagination,
         Modal,
     },
     props: {
