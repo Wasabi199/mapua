@@ -4,8 +4,8 @@
             <div
                 class="flex items-center px-4 py-2 mx-auto max-w-7xl sm:px-6 lg:px-8"
             >
-            <Link :href="route('userLoanDashboard')">
-                <h2 class="text-xl font-extrabold leading-tight text-gray-800">
+            <Link :href="route('userDashboard')">
+                <h2 class="text-xl font-extrabold leading-tight text-gray-800 cursor-pointer">
                     Loans
                 </h2>
             </Link>
