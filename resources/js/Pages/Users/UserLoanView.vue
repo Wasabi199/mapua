@@ -2,11 +2,10 @@
     <AppLayout>
         <div class="flex justify-between bg-white shadow">
             <div class="flex items-center px-4 py-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <Link :href="route('userDashboard')" class="hover:underline">
-                <h1 class="text-xl font-extrabold leading-tight text-gray-800 cursor-pointer">
+                <h1 @click="loan" class="text-xl font-extrabold leading-tight text-gray-800 cursor-pointer">
                     Loans
                 </h1>
-                </Link> <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
@@ -286,5 +285,10 @@ export default {
         };
     },
     setup() { },
+    methods: {
+        loan() {
+            this.$inertia.get(route("userDashboard"))
+        }
+    }
 };
 </script>
