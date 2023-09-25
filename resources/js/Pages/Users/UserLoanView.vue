@@ -2,12 +2,11 @@
     <AppLayout>
         <div class="flex justify-between bg-white shadow">
             <div class="flex items-center px-4 py-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <Link :href="route('userDashboard')">
-                <h2 class="text-xl font-extrabold leading-tight text-gray-800 cursor-pointer">
+                <Link :href="route('userDashboard')" class="hover:underline">
+                <h1 class="text-xl font-extrabold leading-tight text-gray-800 cursor-pointer">
                     Loans
-                </h2>
-                </Link>
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                </h1>
+                </Link> <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
@@ -109,8 +108,8 @@
                 </div>
                 <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
                     <img :src="loans.attachment1 == null
-                            ? ''
-                            : '../' + loans.attachment1
+                        ? ''
+                        : '../' + loans.attachment1
                         " class="w-auto h-auto" />
                 </div>
                 <div v-if="loans.loan_type == 'Housing Loan'">
@@ -129,8 +128,8 @@
                 </div>
                 <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
                     <img :src="loans.attachment2 == null
-                            ? ''
-                            : '../' + loans.attachment2
+                        ? ''
+                        : '../' + loans.attachment2
                         " class="w-auto h-auto" />
                 </div>
                 <div v-if="loans.loan_type == 'Housing Loan'">
@@ -144,8 +143,8 @@
                 </div>
                 <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
                     <img :src="loans.attachment3 == null
-                            ? ''
-                            : '../' + loans.attachment3
+                        ? ''
+                        : '../' + loans.attachment3
                         " class="w-auto h-auto" />
                 </div>
             </div>
