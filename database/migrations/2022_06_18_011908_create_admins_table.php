@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');
-            $table->string('mobile_number');
-            $table->date('birth_date');
-            $table->string('birth_place');
-            $table->string('civil_status');
+            $table->string('mobile_number')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->string('birth_place')->nullable();
+            $table->string('civil_status')->nullable();
 
 
             
@@ -33,10 +33,10 @@ return new class extends Migration
             // $table->string('barangay');
             // $table->string('current_address');
            
-            $table->string('department');
+            $table->string('department')->nullable();
             $table->string('salary')->nullable();
-            $table->date('membership');
-            $table->date('employment');
+            $table->date('membership')->nullable();
+            $table->date('employment')->nullable();
             // $table->string('total_contribution')->default(0);
             $table->string('current_loan')->nullable();
             
