@@ -4,13 +4,13 @@
       <div class="flex justify-between">
         <div class="flex items-center">
           <Link :href="route('medicalList')">
-            <h1 class="font-extrabold text-xl text-gray-800 leading-tight">
+            <h1 class="text-xl font-extrabold leading-tight text-gray-800">
               Current Medical
             </h1>
           </Link>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
+            class="w-6 h-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -22,7 +22,7 @@
               d="M9 5l7 7-7 7"
             />
           </svg>
-          <h1 class="font-extrabold text-xl text-gray-800 leading-tight">
+          <h1 class="text-xl font-extrabold leading-tight text-gray-800">
             {{ userProfile.first_name }} {{ userProfile.middle_name }}
             {{ userProfile.last_name }}'s
           </h1>
@@ -30,16 +30,9 @@
       </div>
     </template>
 
-    <div class="grid grid-cols-1 m-8 gap-8 lg:m-10 lg:grid-cols-2">
+    <div class="grid grid-cols-1 gap-8 m-8 lg:m-10 lg:grid-cols-2">
       <div
-        class="
-          bg-white
-          p-4
-          overflow-hidden
-          border-gray-300
-          shadow-xl
-          rounded-lg
-        "
+        class="p-4 overflow-hidden bg-white border-gray-300 rounded-lg shadow-xl "
       >
         <form>
           <div class="px-2 py-5 bg-white sm:p-6">
@@ -50,15 +43,7 @@
                 >
                 <input
                   type="text"
-                  class="
-                    mt-1
-                    block
-                    w-full
-                    shadow-sm
-                    sm:text-sm
-                    border-gray-300
-                    rounded-md
-                  "
+                  class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                   v-model="name"
                   disabled
                 />
@@ -70,15 +55,7 @@
                 >
                 <input
                   type="date"
-                  class="
-                    mt-1
-                    block
-                    w-full
-                    shadow-sm
-                    sm:text-sm
-                    border-gray-300
-                    rounded-md
-                  "
+                  class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                   v-model="birthday"
                   disabled
                 />
@@ -90,15 +67,7 @@
                 >
                 <input
                   type="number"
-                  class="
-                    mt-1
-                    block
-                    w-full
-                    shadow-sm
-                    sm:text-sm
-                    border-gray-300
-                    rounded-md
-                  "
+                  class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                   v-model="age"
                   disabled
                 />
@@ -110,15 +79,7 @@
                 >
                 <input
                   type="date"
-                  class="
-                    mt-1
-                    block
-                    w-full
-                    shadow-sm
-                    sm:text-sm
-                    border-gray-300
-                    rounded-md
-                  "
+                  class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                   v-model="employment"
                   disabled
                 />
@@ -130,15 +91,7 @@
                 >
                 <input
                   type="number"
-                  class="
-                    mt-1
-                    block
-                    w-full
-                    shadow-sm
-                    sm:text-sm
-                    border-gray-300
-                    rounded-md
-                  "
+                  class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                   v-model="service"
                   disabled
                 />
@@ -150,15 +103,7 @@
                 >
                 <input
                   type="text"
-                  class="
-                    mt-1
-                    block
-                    w-full
-                    shadow-sm
-                    sm:text-sm
-                    border-gray-300
-                    rounded-md
-                  "
+                  class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                   v-model="department"
                   disabled
                 />
@@ -172,16 +117,7 @@
                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
                 <input
                   type="number"
-                  class="
-                    mt-1
-                    block
-                    w-full
-                    shadow-sm
-                    sm:text-sm
-                    border-gray-300
-                    rounded-md
-                    pl-6
-                  "
+                  class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                   v-model="amount"
                   disabled
                 />
@@ -192,12 +128,12 @@
         </form>
         <div>
           <Link :href="route('ReimburstmentPrintng',userMedical.id)">
-            <div class="w-fit m-auto font-semibold py-2 px-10 text-green-500 border-2 border-green-500 rounded-lg hover:bg-green-500 hover:text-white">Print</div>
+            <div class="px-10 py-2 m-auto font-semibold text-green-500 border-2 border-green-500 rounded-lg w-fit hover:bg-green-500 hover:text-white">Print</div>
           </Link>
         </div>
       </div>
       <div class="row-span-3">
-        <div class="bg-white shadow-xl rounded-lg content-center lg:mr-50">
+        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <span>Official Reciept</span>
           <div
             v-for="attachment in userMedical.attachments"
@@ -207,12 +143,12 @@
               class="w-64 h-64"
               v-if="attachment.type == 1"
               :src="
-                attachment.image == null ? '' : '../../../' + attachment.image
+                attachment.image == null ? '' :  attachment.image
               "
             />
           </div>
         </div>
-        <div class="bg-white shadow-xl rounded-lg content-center lg:mr-50">
+        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <span>Medical Certificate/Doctor's Prescription</span>
           <div
             v-for="attachment in userMedical.attachments"
@@ -222,12 +158,12 @@
               class="w-64 h-64"
               v-if="attachment.type == 2"
               :src="
-                attachment.image == null ? '' : '../../../' + attachment.image
+                attachment.image == null ? '' :  attachment.image
               "
             />
           </div>
         </div>
-        <div class="bg-white shadow-xl rounded-lg content-center lg:mr-50">
+        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <div>
             <span v-if="userMedical.hospital == true"
               >Statement of Account</span
@@ -244,12 +180,12 @@
               class="w-64 h-64"
               v-if="attachment.type == 3"
               :src="
-                attachment.image == null ? '' : '../../../' + attachment.image
+                attachment.image == null ? '' :  attachment.image
               "
             />
           </div>
         </div>
-        <div class="bg-white shadow-xl rounded-lg content-center lg:mr-50">
+        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <div>
             <span v-if="userMedical.health ==true"
               >Lab Results</span
@@ -263,7 +199,7 @@
               class="w-64 h-64"
               v-if="attachment.type == 4"
               :src="
-                attachment.image == null ? '' : '../../../' + attachment.image
+                attachment.image == null ? '' :  attachment.image
               "
             />
           </div>
@@ -271,27 +207,11 @@
         <br />
         <div
           v-if="userMedical.status == 'Pending'"
-          class="w-full p-0 m-0 flex items-center justify-center gap-20"
+          class="flex items-center justify-center w-full gap-20 p-0 m-0"
         >
           <button
             type="button"
-            class="
-              py-2
-              px-4
-              mb-5
-              bg-red-600
-              hover:bg-red-700
-              focus:ring focus:ring-red-300
-              text-white
-              w-64
-              transition
-              ease-in
-              duration-150
-              text-lg text-center
-              font-semibold
-              shadow-md
-              rounded-lg
-            "
+            class="w-64 px-4 py-2 mb-5 text-lg font-semibold text-center text-white transition duration-150 ease-in bg-red-600 rounded-lg shadow-md hover:bg-red-700 focus:ring focus:ring-red-300"
             @click="rejectMedical(userMedical)"
           >
             Reject
@@ -299,23 +219,7 @@
 
           <button
             type="button"
-            class="
-              py-2
-              px-4
-              mb-5
-              bg-green-600
-              hover:bg-green-700
-              focus:ring focus:ring-green-300
-              text-white
-              w-64
-              transition
-              ease-in
-              duration-150
-              text-lg text-center
-              font-semibold
-              shadow-md
-              rounded-lg
-            "
+            class="w-64 px-4 py-2 mb-5 text-lg font-semibold text-center text-white transition duration-150 ease-in bg-green-600 rounded-lg shadow-md hover:bg-green-700 focus:ring focus:ring-green-300"
             @click="acceptMedical(userMedical)"
           >
             Approve
@@ -330,10 +234,10 @@
       @close="showApproveModal = !showApproveModal"
     >
       <div class="p-5">
-        <div class="flex justify-between text-xl font-bold text-gray-900 my-3">
+        <div class="flex justify-between my-3 text-xl font-bold text-gray-900">
           <span></span>
           <svg
-            class="h-6 w-6 cursor-pointer"
+            class="w-6 h-6 cursor-pointer"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -349,14 +253,7 @@
           </svg>
         </div>
         <div
-          class="
-            flex flex-col
-            items-center
-            text-xl
-            font-bold
-            text-gray-900
-            my-3
-          "
+          class="flex flex-col items-center my-3 text-xl font-bold text-gray-900 "
         >
           <span class="text-center"
             >Approve {{ userProfile.first_name }}
@@ -365,32 +262,10 @@
         </div>
         <div class="flex justify-center">
           <div
-            class="
-              flex
-              justify-between
-              text-xl
-              font-bold
-              dark:text-gray-200
-              my-3
-            "
+            class="flex justify-between my-3 text-xl font-bold dark:text-gray-200"
           >
             <div
-              class="
-                flex
-                space-x-2
-                mr-5
-                px-4
-                py-1
-                border
-                text-md text-green-600
-                dark:text-green-600 dark:border-green-600
-                border-green-600
-                uppercase
-                rounded-full
-                dark:hover:text-gray-200
-                hover:text-white hover:border-none hover:bg-green-500
-                cursor-pointer
-              "
+              class="flex px-4 py-1 mr-5 space-x-2 text-green-600 uppercase border border-green-600 rounded-full cursor-pointer text-md dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-green-500"
               @click="submitApproveMedical"
             >
               <span>Approve</span>
@@ -405,10 +280,10 @@
       @close="showRejectModal = !showRejectModal"
     >
       <div class="p-5">
-        <div class="flex justify-between text-xl font-bold text-gray-900 my-3">
+        <div class="flex justify-between my-3 text-xl font-bold text-gray-900">
           <span></span>
           <svg
-            class="h-6 w-6 cursor-pointer"
+            class="w-6 h-6 cursor-pointer"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -424,14 +299,7 @@
           </svg>
         </div>
         <div
-          class="
-            flex flex-col
-            items-center
-            text-xl
-            font-bold
-            text-gray-900
-            my-3
-          "
+          class="flex flex-col items-center my-3 text-xl font-bold text-gray-900 "
         >
           <span class="text-center"
             >Reject {{ userProfile.first_name }}
@@ -439,23 +307,9 @@
           >
         </div>
         <div class="flex justify-center">
-          <div class="flex text-xl font-bold dark:text-gray-200 my-3">
+          <div class="flex my-3 text-xl font-bold dark:text-gray-200">
             <div
-              class="
-                flex
-                space-x-2
-                px-4
-                py-1
-                border
-                text-md text-red-600
-                dark:text-red-600 dark:border-red-600
-                border-red-600
-                uppercase
-                rounded-full
-                dark:hover:text-gray-200
-                hover:text-white hover:border-none hover:bg-red-500
-                cursor-pointer
-              "
+              class="flex px-4 py-1 space-x-2 text-red-600 uppercase border border-red-600 rounded-full cursor-pointer text-md dark:text-red-600 dark:border-red-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500"
               @click="submitRejectMedical"
             >
               <span>Reject</span>

@@ -81,6 +81,7 @@ class LoansController extends Controller
 
     public function createLoans(request $request)
     {
+        // dd($request);
         $validate_data = $request->validated();
 
         $user = User::find(auth()->id());
@@ -98,26 +99,26 @@ class LoansController extends Controller
             } else {
                 if ($request->hasFile('attachment1') || $request->hasFile('attachment2') || $request->hasFile('attachment3')) {
 
-                    $file1 = $request->file('attachment1');
-                    $file2 = $request->file('attachment2');
-                    $file3 = $request->file('attachment3');
+                    // $file1 = $request->file('attachment1');
+                    // $file2 = $request->file('attachment2');
+                    // $file3 = $request->file('attachment3');
 
-                    $file_name1 = time() . '.' . $file1->getClientOriginalName();
-                    $file_name2 = time() . '.' . $file2->getClientOriginalName();
-                    $file_name3 = time() . '.' . $file3->getClientOriginalName();
+                    // $file_name1 = time() . '.' . $file1->getClientOriginalName();
+                    // $file_name2 = time() . '.' . $file2->getClientOriginalName();
+                    // $file_name3 = time() . '.' . $file3->getClientOriginalName();
 
-                    $file1->move(public_path('uploads/loans'), $file_name1);
-                    $file2->move(public_path('uploads/loans'), $file_name2);
-                    $file3->move(public_path('uploads/loans'), $file_name3);
+                    // $file1->move(public_path('uploads/loans'), $file_name1);
+                    // $file2->move(public_path('uploads/loans'), $file_name2);
+                    // $file3->move(public_path('uploads/loans'), $file_name3);
 
 
                     $user_loans = $user->loans()->create([
 
                         'loan_type' => $validate_data['loan_type'],
                         'duration' => $validate_data['terms'],
-                        'attachment1' => '../../../uploads/loans/' . $file_name1,
-                        'attachment2' => '../../../uploads/loans/' . $file_name2,
-                        "attachment3" => '../../../uploads/loans/' . $file_name3,
+                        'attachment1' =>'https://fopm-sams.s3.amazonaws.com/'.$request->attachment1->store('LoanImage',  's3'),
+                        'attachment2' =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment2->store('LoanImage',  's3'),
+                        "attachment3" =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment3->store('LoanImage',  's3'),
                         'loan_amount' => $validate_data['loan_amount'],
                         'amount' => $validate_data['amount'],
                         'interest' => $validate_data['interest'],
@@ -163,26 +164,26 @@ class LoansController extends Controller
             } else {
                 if ($request->hasFile('attachment1') || $request->hasFile('attachment2') || $request->hasFile('attachment3')) {
 
-                    $file1 = $request->file('attachment1');
-                    $file2 = $request->file('attachment2');
-                    $file3 = $request->file('attachment3');
+                    // $file1 = $request->file('attachment1');
+                    // $file2 = $request->file('attachment2');
+                    // $file3 = $request->file('attachment3');
 
-                    $file_name1 = time() . '.' . $file1->getClientOriginalName();
-                    $file_name2 = time() . '.' . $file2->getClientOriginalName();
-                    $file_name3 = time() . '.' . $file3->getClientOriginalName();
+                    // $file_name1 = time() . '.' . $file1->getClientOriginalName();
+                    // $file_name2 = time() . '.' . $file2->getClientOriginalName();
+                    // $file_name3 = time() . '.' . $file3->getClientOriginalName();
 
-                    $file1->move(public_path('uploads/loans'), $file_name1);
-                    $file2->move(public_path('uploads/loans'), $file_name2);
-                    $file3->move(public_path('uploads/loans'), $file_name3);
+                    // $file1->move(public_path('uploads/loans'), $file_name1);
+                    // $file2->move(public_path('uploads/loans'), $file_name2);
+                    // $file3->move(public_path('uploads/loans'), $file_name3);
 
 
                     $user_loans = $user->loans()->create([
 
                         'loan_type' => $validate_data['loan_type'],
                         'duration' => $validate_data['terms'],
-                        'attachment1' => '../../../uploads/loans/' . $file_name1,
-                        'attachment2' => '../../../uploads/loans/' . $file_name2,
-                        "attachment3" => '../../../uploads/loans/' . $file_name3,
+                        'attachment1' =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment1->store('LoanImage',  's3'),
+                        'attachment2' =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment2->store('LoanImage',  's3'),
+                        "attachment3" =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment3->store('LoanImage',  's3'),
                         'loan_amount' => $validate_data['loan_amount'],
                         'amount' => $validate_data['amount'],
                         'interest' => $validate_data['interest'],
@@ -222,14 +223,14 @@ class LoansController extends Controller
         } else {
             if ($request->hasFile('attachment1')) {
 
-                $file1 = $request->file('attachment1');
-                $file_name1 = time() . '.' . $file1->getClientOriginalName();
-                $file1->move(public_path('uploads/loans'), $file_name1);
+                // $file1 = $request->file('attachment1');
+                // $file_name1 = time() . '.' . $file1->getClientOriginalName();
+                // $file1->move(public_path('uploads/loans'), $file_name1);
                 $user_loans = $user->loans()->create([
 
                     'loan_type' => $validate_data['loan_type'],
                     'duration' => $validate_data['terms'],
-                    'attachment1' => '../../../uploads/loans/' . $file_name1,
+                    'attachment1' =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment1->store('LoanImage',  's3'),
                     'loan_amount' => $validate_data['loan_amount'],
                     'amount' => $validate_data['amount'],
                     'interest' => $validate_data['interest'],
@@ -271,21 +272,21 @@ class LoansController extends Controller
                 );
             } else {
                 if ($request->hasFile('attachment1') && $request->hasFile('attachment3')) {
-                    $file1 = $request->file('attachment1');
-                    $file3 = $request->file('attachment3');
+                    // $file1 = $request->file('attachment1');
+                    // $file3 = $request->file('attachment3');
 
-                    $file_name1 = time() . '.' . $file1->getClientOriginalName();
-                    $file_name3 = time() . '.' . $file3->getClientOriginalName();
+                    // $file_name1 = time() . '.' . $file1->getClientOriginalName();
+                    // $file_name3 = time() . '.' . $file3->getClientOriginalName();
 
-                    $file1->move(public_path('uploads/loans'), $file_name1);
-                    $file3->move(public_path('uploads/loans'), $file_name3);
+                    // $file1->move(public_path('uploads/loans'), $file_name1);
+                    // $file3->move(public_path('uploads/loans'), $file_name3);
 
                     $user_loans = $user->loans()->create([
                         'loan_type' => $validate_data['loan_type'],
                         'duration' => $validate_data['terms'],
-                        'attachment1' => '../../../uploads/loans/' . $file_name1,
+                        'attachment1' =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment1->store('LoanImage',  's3'),
                         //    'attachment2'=>'../../../uploads/loans/'.$file_name2,
-                        "attachment3" => '../../../uploads/loans/' . $file_name3,
+                        "attachment3" =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment3->store('LoanImage',  's3'),
                         'loan_amount' => $validate_data['loan_amount'],
                         'amount' => $validate_data['amount'],
                         'interest' => $validate_data['interest'],
@@ -380,14 +381,14 @@ class LoansController extends Controller
         if (isset($request->medical_record1)) {
             if (is_array($request->medical_record1)) {
                 foreach ($request->medical_record1 as $image) {
-                    $image_path = 'storage/' . $image->storePublicly('ReimbursementImages',  ['disk' => 'public']);
+                    $image_path = 'https://fopm-sams.s3.amazonaws.com/' . $image->store('LoanImage',  's3');
                     $userMedical->attachments()->create([
                         'image' => $image_path,
                         'type' => 1
                     ]);
                 }
             } else {
-                $image_path = 'storage/' . $request->medical_record1->storePublicly('ReimbursementImages',  ['disk' => 'public']);
+                $image_path = 'https://fopm-sams.s3.amazonaws.com/' . $request->medical_record1->store('LoanImage',  's3');
                 $userMedical->attachments()->create([
                     'image' => $image_path,
                     'type' => 1
@@ -399,14 +400,14 @@ class LoansController extends Controller
         if (isset($request->medical_record2)) {
             if (is_array($request->medical_record2)) {
                 foreach ($request->medical_record2 as $image) {
-                    $image_path = 'storage/' . $image->storePublicly('ReimbursementImages',  ['disk' => 'public']);
+                    $image_path = 'https://fopm-sams.s3.amazonaws.com/' . $image->store('LoanImage',  's3');
                     $userMedical->attachments()->create([
                         'image' => $image_path,
                         'type' => 2
                     ]);
                 }
             } else {
-                $image_path = 'storage/' . $request->medical_record2->storePublicly('ReimbursementImages',  ['disk' => 'public']);
+                $image_path = 'https://fopm-sams.s3.amazonaws.com/' . $request->medical_record2->store('LoanImage',  's3');
                 $userMedical->attachments()->create([
                     'image' => $image_path,
                     'type' => 2
@@ -418,14 +419,14 @@ class LoansController extends Controller
         if (isset($request->medical_record3)) {
             if (is_array($request->medical_record3)) {
                 foreach ($request->medical_record3 as $image) {
-                    $image_path = 'storage/' . $image->storePublicly('ReimbursementImages',  ['disk' => 'public']);
+                    $image_path = 'https://fopm-sams.s3.amazonaws.com/' . $image->store('LoanImage',  's3');
                     $userMedical->attachments()->create([
                         'image' => $image_path,
                         'type' => 3
                     ]);
                 }
             } else {
-                $image_path = 'storage/' . $request->medical_record3->storePublicly('ReimbursementImages',  ['disk' => 'public']);
+                $image_path = 'https://fopm-sams.s3.amazonaws.com/' . $request->medical_record3->store('LoanImage',  's3');
                 $userMedical->attachments()->create([
                     'image' => $image_path,
                     'type' => 3
@@ -436,14 +437,14 @@ class LoansController extends Controller
         if (isset($request->medical_record4)) {
             if (is_array($request->medical_record4)) {
                 foreach ($request->medical_record4 as $image) {
-                    $image_path = 'storage/' . $image->storePublicly('ReimbursementImages',  ['disk' => 'public']);
+                    $image_path = 'https://fopm-sams.s3.amazonaws.com/' . $image->store('LoanImage',  's3');
                     $userMedical->attachments()->create([
                         'image' => $image_path,
                         'type' => 4
                     ]);
                 }
             } else {
-                $image_path = 'storage/' . $request->medical_record4->storePublicly('ReimbursementImages',  ['disk' => 'public']);
+                $image_path = 'https://fopm-sams.s3.amazonaws.com/' . $request->medical_record4->store('LoanImage',  's3');
                 $userMedical->attachments()->create([
                     'image' => $image_path,
                     'type' => 4

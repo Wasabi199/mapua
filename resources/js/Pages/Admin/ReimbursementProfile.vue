@@ -5,12 +5,7 @@
         <div class="flex items-center">
           <Link :href="route('ReimbursementView')">
             <h1
-              class="
-                font-extrabold
-                text-xl text-gray-800
-                leading-tight
-                hover:underline
-              "
+              class="text-xl font-extrabold leading-tight text-gray-800  hover:underline"
             >
               Reimbursement
             </h1>
@@ -20,7 +15,7 @@
     </template>
     <div class="flex px-10 py-5 gap-x-5">
       <div class="w-full">
-        <div class="bg-white h-fit p-5 rounded-lg shadow-xl">
+        <div class="p-5 bg-white rounded-lg shadow-xl h-fit">
           <div class="flex gap-x-2">
             <p>Name:</p>
             <p class="font-semibold">
@@ -46,7 +41,7 @@
             <p class="font-semibold">{{ medical.medical_benifit }}</p>
           </div>
         </div>
-        <div class="w-fit m-auto mt-10">
+        <div class="m-auto mt-10 w-fit">
           <button v-if="this.medical.status == 'Approved'"
             class="bg-[#DC2626] text-white py-4 px-20 text-lg rounded-lg"
             @click="showForReleasedModal = !showForReleasedModal"
@@ -63,9 +58,9 @@
       </div>
       <div
         v-if="this.medical.status == 'Approved'"
-        class="bg-white h-fit w-full p-5 rounded-lg shadow-xl "
+        class="w-full p-5 bg-white rounded-lg shadow-xl h-fit "
       >
-        <div class="rounded-lg content-center mb-5 lg:mr-50">
+        <div class="content-center mb-5 rounded-lg lg:mr-50">
           <span>Official Reciept:</span>
           <div
             v-for="attachment in medical.attachments"
@@ -75,12 +70,12 @@
               class="w-64 h-64"
               v-if="attachment.type == 1"
               :src="
-                attachment.image == null ? '' : '../../../' + attachment.image
+                attachment.image == null ? '' : 'https://fopm-sams.s3.amazonaws.com/' + attachment.image
               "
             />
           </div>
         </div>
-        <div class="rounded-lg content-center lg:mr-50">
+        <div class="content-center rounded-lg lg:mr-50">
           <span>Medical Certificate/Doctor's Prescription:</span>
           <div
             v-for="attachment in medical.attachments"
@@ -90,7 +85,7 @@
               class="w-64 h-64"
               v-if="attachment.type == 2"
               :src="
-                attachment.image == null ? '' : '../../../' + attachment.image
+                attachment.image == null ? '' : 'https://fopm-sams.s3.amazonaws.com/' + attachment.image
               "
             />
           </div>
@@ -100,7 +95,7 @@
             this.medical.hospital == true ||
             this.medical.health == true
           "
-          class="rounded-lg content-center lg:mr-50"
+          class="content-center rounded-lg lg:mr-50"
         >
           <div>
             <span v-if="this.medical.hospital == true"
@@ -118,14 +113,14 @@
               class="w-64 h-64"
               v-if="attachment.type == 3"
               :src="
-                attachment.image == null ? '' : '../../../' + attachment.image
+                attachment.image == null ? '' : 'https://fopm-sams.s3.amazonaws.com/' + attachment.image
               "
             />
           </div>
         </div>
         <div
           v-if="this.medical.health == true"
-          class=" rounded-lg content-center lg:mr-50"
+          class="content-center rounded-lg  lg:mr-50"
         >
           <div>
             <span v-if="medical.health == true"
@@ -140,7 +135,7 @@
               class="w-64 h-64"
               v-if="attachment.type == 4"
               :src="
-                attachment.image == null ? '' : '../../../' + attachment.image
+                attachment.image == null ? '' : 'https://fopm-sams.s3.amazonaws.com/' + attachment.image
               "
             />
           </div>
@@ -148,7 +143,7 @@
       </div>
       <div
         v-if="this.medical.status == 'For Release'"
-        class="bg-white w-full p-5 rounded-lg shadow-xl"
+        class="w-full p-5 bg-white rounded-lg shadow-xl"
       >
         <p class="font-semibold">Good News!</p>
         <p>Your Medical Reimbursement has been processed.</p>
@@ -158,13 +153,13 @@
       </div>
       <div
         v-if="this.medical.status == 'Released'"
-        class="bg-white w-full p-5 rounded-lg shadow-xl"
+        class="w-full p-5 bg-white rounded-lg shadow-xl"
       >
-        <div class="flex gap-x-2 m-auto w-fit">
+        <div class="flex m-auto gap-x-2 w-fit">
           <p class="font-semibold">Amount:</p>
           <p>{{this.medical.amount.toLocaleString("en-US")}}.00</p>
         </div>
-        <div class="flex gap-x-2 m-auto w-fit">
+        <div class="flex m-auto gap-x-2 w-fit">
           <p class="font-semibold">Date Released:</p>
           <p>{{new Date(this.medical.updated_at)}}</p>
         </div>
@@ -177,9 +172,9 @@
       @close="showForReleasedModal = !showForReleasedModal"
     >
       <div class="p-5">
-        <div class="flex justify-end text-xl font-bold text-gray-900 my-3">
+        <div class="flex justify-end my-3 text-xl font-bold text-gray-900">
           <svg
-            class="h-6 w-6 cursor-pointer"
+            class="w-6 h-6 cursor-pointer"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -195,14 +190,7 @@
           </svg>
         </div>
         <div
-          class="
-            flex flex-col
-            items-center
-            text-xl
-            font-bold
-            text-gray-900
-            my-10
-          "
+          class="flex flex-col items-center my-10 text-xl font-bold text-gray-900 "
         >
           <span
             >{{
@@ -216,23 +204,9 @@
         </div>
 
         <div class="flex justify-center">
-          <div class="flex text-xl font-bold dark:text-gray-200 my-3">
+          <div class="flex my-3 text-xl font-bold dark:text-gray-200">
             <div
-              class="
-                flex
-                space-x-2
-                px-4
-                py-1
-                border
-                text-md text-red-600
-                dark:text-red-600 dark:border-red-600
-                border-red-600
-                uppercase
-                rounded-full
-                dark:hover:text-gray-200
-                hover:text-white hover:border-none hover:bg-red-500
-                cursor-pointer
-              "
+              class="flex px-4 py-1 space-x-2 text-red-600 uppercase border border-red-600 rounded-full cursor-pointer  text-md dark:text-red-600 dark:border-red-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500"
               @click="reimbursementReleaseFunction()"
             >
               <span>For Release</span>
@@ -248,9 +222,9 @@
       @close="(showReleasedModal = !showReleasedModal)"
     >
       <div class="p-5">
-        <div class="flex justify-end text-xl font-bold text-gray-900 my-3">
+        <div class="flex justify-end my-3 text-xl font-bold text-gray-900">
           <svg
-            class="h-6 w-6 cursor-pointer"
+            class="w-6 h-6 cursor-pointer"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -266,14 +240,7 @@
           </svg>
         </div>
         <div
-          class="
-            flex flex-col
-            items-center
-            text-xl
-            font-bold
-            text-gray-900
-            my-10
-          "
+          class="flex flex-col items-center my-10 text-xl font-bold text-gray-900 "
         >
           <span
             >{{
@@ -287,23 +254,9 @@
         </div>
 
         <div class="flex justify-center">
-          <div class="flex text-xl font-bold dark:text-gray-200 my-3">
+          <div class="flex my-3 text-xl font-bold dark:text-gray-200">
             <div
-              class="
-                flex
-                space-x-2
-                px-4
-                py-1
-                border
-                text-md text-red-600
-                dark:text-red-600 dark:border-red-600
-                border-red-600
-                uppercase
-                rounded-full
-                dark:hover:text-gray-200
-                hover:text-white hover:border-none hover:bg-red-500
-                cursor-pointer
-              "
+              class="flex px-4 py-1 space-x-2 text-red-600 uppercase border border-red-600 rounded-full cursor-pointer  text-md dark:text-red-600 dark:border-red-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500"
               @click="reimbursementReleasedFunction()"
             >
               <span>Released</span>

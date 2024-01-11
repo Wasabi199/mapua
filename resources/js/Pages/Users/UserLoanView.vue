@@ -110,7 +110,7 @@
                 <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
                     <img :src="loans.attachment1 == null
                         ? ''
-                        : '../' + loans.attachment1
+                        : loans.attachment1
                         " class="w-auto h-auto" />
                 </div>
                 <div v-if="loans.loan_type == 'Housing Loan'">
@@ -130,7 +130,7 @@
                 <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
                     <img :src="loans.attachment2 == null
                         ? ''
-                        : '../' + loans.attachment2
+                        : loans.attachment2
                         " class="w-auto h-auto" />
                 </div>
                 <div v-if="loans.loan_type == 'Housing Loan'">
@@ -145,7 +145,7 @@
                 <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
                     <img :src="loans.attachment3 == null
                         ? ''
-                        : '../' + loans.attachment3
+                        :  loans.attachment3
                         " class="w-auto h-auto" />
                 </div>
             </div>

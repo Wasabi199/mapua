@@ -4,13 +4,13 @@
       <div class="flex justify-between">
         <div class="flex items-center">
           <Link :href="route('adminLoansView')" class="hover:underline">
-            <h1 class="font-extrabold text-xl text-gray-800 leading-tight">
+            <h1 class="text-xl font-extrabold leading-tight text-gray-800">
               Loans
             </h1>
           </Link>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
+            class="w-6 h-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -22,17 +22,17 @@
               d="M9 5l7 7-7 7"
             />
           </svg>
-          <h1 class="font-extrabold text-xl text-gray-800 leading-tight">
+          <h1 class="text-xl font-extrabold leading-tight text-gray-800">
             {{ info.first_name }} {{ info.middle_name }} {{ info.last_name }}'s
           </h1>
         </div>
       </div>
     </template>
 
-    <div class="grid grid-cols-1 m-8 gap-8 lg:m-10 lg:grid-cols-2">
+    <div class="grid grid-cols-1 gap-8 m-8 lg:m-10 lg:grid-cols-2">
       <!-- Left Box -->
       <div
-        class=" overflow-hidden"
+        class="overflow-hidden "
       >
         <div v-if="loan.approval === 'Denied'">
           <form>
@@ -44,15 +44,7 @@
                   >
                   <input
                     type="text"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="fname + ' ' + lname"
                     disabled
                   />
@@ -64,15 +56,7 @@
                   >
                   <input
                     type="text"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="loan_type"
                     disabled
                   />
@@ -84,15 +68,7 @@
                   >
                   <input
                     type="text"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="loan_status"
                     disabled
                   />
@@ -104,15 +80,7 @@
                   >
                   <input
                     type="date"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="employment"
                     disabled
                   />
@@ -124,15 +92,7 @@
                   >
                   <input
                     type="number"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="service"
                     disabled
                   />
@@ -144,15 +104,7 @@
                   >
                   <input
                     type="text"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="department"
                     disabled
                   />
@@ -167,16 +119,7 @@
 
                   <input
                     type="number"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                      pl-6
-                    "
+                    class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="amount"
                     disabled
                   />
@@ -190,15 +133,7 @@
                   >
                   <input
                     type="number"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="duration"
                     disabled
                   />
@@ -218,15 +153,7 @@
                   >
                   <input
                     type="text"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="fname + ' ' + lname"
                     disabled
                   />
@@ -238,15 +165,7 @@
                   >
                   <input
                     type="text"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="loan_type"
                     disabled
                   />
@@ -258,15 +177,7 @@
                   >
                   <input
                     type="text"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="loan_status"
                     disabled
                   />
@@ -278,15 +189,7 @@
                   >
                   <input
                     type="date"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="employment"
                     disabled
                   />
@@ -298,35 +201,19 @@
                   >
                   <input
                     type="number"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="service"
                     disabled
                   />
                 </div>
 
                 <div class="col-span-6 sm:col-span-4">
-                  <label class="w-full block text-sm font-medium text-gray-700"
+                  <label class="block w-full text-sm font-medium text-gray-700"
                     >If Administration Employee, state department</label
                   >
                   <input
                     type="text"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="department"
                     disabled
                   />
@@ -340,16 +227,7 @@
                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
                         <input
                     type="number"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                      pl-6
-                    "
+                    class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="loan.amount"
                     disabled
                   />
@@ -365,16 +243,7 @@
 
                   <input
                     type="number"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                      pl-6
-                    "
+                    class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="amount"
                     disabled
                   />
@@ -387,15 +256,7 @@
                   >
                   <input
                     type="number"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="duration"
                     disabled
                   />
@@ -406,32 +267,10 @@
           <div class="flex justify-center">
             <Link :href="route('printingLoan', loan.id)">
               <div
-                class="
-                  flex
-                  justify-between
-                  text-xl
-                  font-bold
-                  dark:text-gray-200
-                  my-3
-                "
+                class="flex justify-between my-3 text-xl font-bold dark:text-gray-200"
               >
                 <div
-                  class="
-                    flex
-                    space-x-2
-                    mr-5
-                    px-4
-                    py-1
-                    border
-                    text-md text-green-600
-                    dark:text-green-600 dark:border-green-600
-                    border-green-600
-                    uppercase
-                    rounded-full
-                    dark:hover:text-gray-200
-                    hover:text-white hover:border-none hover:bg-green-500
-                    cursor-pointer
-                  "
+                  class="flex px-4 py-1 mr-5 space-x-2 text-green-600 uppercase border border-green-600 rounded-full cursor-pointer text-md dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-green-500"
                 >
                   <span>Print</span>
                 </div>
@@ -442,14 +281,7 @@
 
         <div
           v-if="loan.approval == 'Processed'"
-          class="
-            bg-white
-            p-4
-            overflow-hidden
-            border-gray-300
-            shadow-xl
-            sm:rounded-lg
-          "
+          class="p-4 overflow-hidden bg-white border-gray-300 shadow-xl sm:rounded-lg"
         >
           <!-- Contact -->
           <div class="mb-8">
@@ -457,7 +289,7 @@
 
             <div class="flex text-lg">
               <svg
-                class="h-6 w-6 text-red-900"
+                class="w-6 h-6 text-red-900"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
@@ -476,7 +308,7 @@
           </div>
 
           <!-- Name -->
-          <div class="justify-between flex">
+          <div class="flex justify-between">
             <div class="flex text-lg">
               <p class="font-semibold">Name:</p>
               <p class="ml-2 underline">
@@ -532,15 +364,7 @@
                   >
                   <input
                     type="text"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="fname + ' ' + lname"
                     disabled
                   />
@@ -552,15 +376,7 @@
                   >
                   <input
                     type="text"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="loan_type"
                     disabled
                   />
@@ -572,15 +388,7 @@
                   >
                   <input
                     type="text"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="loan_status"
                     disabled
                   />
@@ -592,15 +400,7 @@
                   >
                   <input
                     type="date"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="employment"
                     disabled
                   />
@@ -612,15 +412,7 @@
                   >
                   <input
                     type="number"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="service"
                     disabled
                   />
@@ -632,15 +424,7 @@
                   >
                   <input
                     type="text"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="department"
                     disabled
                   />
@@ -654,16 +438,7 @@
                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
                     <input
                     type="number"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                      pl-6
-                    "
+                    class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="loan.amount"
                     disabled
                   />
@@ -678,16 +453,7 @@
                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
                     <input
                     type="number"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                      pl-6
-                    "
+                    class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="amount"
                     disabled
                   />
@@ -703,15 +469,7 @@
                   >
                   <input
                     type="number"
-                    class="
-                      mt-1
-                      block
-                      w-full
-                      shadow-sm
-                      sm:text-sm
-                      border-gray-300
-                      rounded-md
-                    "
+                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="duration"
                     disabled
                   />
@@ -722,32 +480,10 @@
           <div class="flex justify-center">
             <Link :href="route('printingLoan', loan.id)">
               <div
-                class="
-                  flex
-                  justify-between
-                  text-xl
-                  font-bold
-                  dark:text-gray-200
-                  my-3
-                "
+                class="flex justify-between my-3 text-xl font-bold dark:text-gray-200"
               >
                 <div
-                  class="
-                    flex
-                    space-x-2
-                    mr-5
-                    px-4
-                    py-1
-                    border
-                    text-md text-green-600
-                    dark:text-green-600 dark:border-green-600
-                    border-green-600
-                    uppercase
-                    rounded-full
-                    dark:hover:text-gray-200
-                    hover:text-white hover:border-none hover:bg-green-500
-                    cursor-pointer
-                  "
+                  class="flex px-4 py-1 mr-5 space-x-2 text-green-600 uppercase border border-green-600 rounded-full cursor-pointer text-md dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-green-500"
                 >
                   <span>Print</span>
                 </div>
@@ -758,19 +494,12 @@
 
         <div
           v-if="loan.approval == 'For Release'"
-          class="
-            bg-white
-            p-4
-            overflow-hidden
-            border-gray-300
-            shadow-xl
-            sm:rounded-lg
-          "
+          class="p-4 overflow-hidden bg-white border-gray-300 shadow-xl sm:rounded-lg"
         >
           <div class="mb-8">
             <div class="flex text-lg">
               <svg
-                class="h-6 w-6 text-red-900"
+                class="w-6 h-6 text-red-900"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
@@ -788,7 +517,7 @@
           </div>
 
           <!-- Name -->
-          <div class="justify-between flex">
+          <div class="flex justify-between">
             <div class="flex text-lg">
               <p class="font-semibold">Name:</p>
               <p class="ml-2 underline">
@@ -843,19 +572,12 @@
 
         <div
           v-if="loan.approval == 'Released'"
-          class="
-            bg-white
-            p-4
-            overflow-hidden
-            border-gray-300
-            shadow-xl
-            sm:rounded-lg
-          "
+          class="p-4 overflow-hidden bg-white border-gray-300 shadow-xl sm:rounded-lg"
         >
           <div class="mb-8">
             <div class="flex text-lg">
               <svg
-                class="h-6 w-6 text-red-900"
+                class="w-6 h-6 text-red-900"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
@@ -873,7 +595,7 @@
           </div>
 
           <!-- Name -->
-          <div class="justify-between flex">
+          <div class="flex justify-between">
             <div class="flex text-lg">
               <p class="font-semibold">Name:</p>
               <p class="ml-2 underline">
@@ -929,11 +651,11 @@
       <!-- Right Box -->
       <div
         v-if="loan.approval == 'For Release'"
-        class="bg-white shadow-xl rounded-lg content-center lg:mr-50"
+        class="content-center bg-white rounded-lg shadow-xl lg:mr-50"
       >
-        <div class="justify-between flex m-4">
+        <div class="flex justify-between m-4">
           <div class="text-lg">
-            <p class="font-bold content-center">Good news!</p>
+            <p class="content-center font-bold">Good news!</p>
             <p>Your Personal Loan application has been processed.</p>
             <p>
               A representative will send you an email for updates on the release of your loan.
@@ -944,24 +666,16 @@
 
       <div
         v-if="loan.approval == 'Released'"
-        class="w-full bg-white shadow-xl rounded-lg content-center lg:mr-50"
+        class="content-center w-full bg-white rounded-lg shadow-xl lg:mr-50"
       >
-        <table class="min-w-full divide-y divide-gray-200 mt-5 mx-auto">
+        <table class="min-w-full mx-auto mt-5 divide-y divide-gray-200">
           <thead class="inline-auto">
             <tr
-              class="
-                box-content
-                h-10
-                w-20
-                p-4
-                border-10
-                bg-red-800
-                text-yellow-400
-              "
+              class="box-content w-20 h-10 p-4 text-yellow-400 bg-red-800 border-10"
             >
-              <th class="text-left px-16">ID</th>
-              <th class="text-left px-16">Amount</th>
-              <th class="text-left px-16">Date of Payment</th>
+              <th class="px-16 text-left">ID</th>
+              <th class="px-16 text-left">Amount</th>
+              <th class="px-16 text-left">Date of Payment</th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
@@ -1004,16 +718,7 @@
 
       <div
         v-if="loan.approval == 'Processed'"
-        class="
-        min-w-full
-          row-span-3
-          bg-white
-          overflow-hidden
-          border-gray-300
-          sm:rounded-lg
-          max-w-lg
-          place-self-center
-        "
+        class="max-w-lg min-w-full row-span-3 overflow-hidden bg-white border-gray-300 sm:rounded-lg place-self-center"
       >
         <div v-if="loan.loan_type == 'Housing Loan'">
           <p class="font-semibold">Member's Payslip for Validation:</p>
@@ -1027,9 +732,9 @@
         <br />
 
         <!-- IMAGE 1-->
-        <div class="bg-white shadow-xl rounded-lg content-center lg:mr-50">
+        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <img
-            :src="loan.attachment1 == null ? '' : loan.attachment1"
+            :src="loan.attachment1 == null ? 'https://fopm-sams.s3.amazonaws.com/' : loan.attachment1"
             class="w-auto h-auto"
           />
         </div>
@@ -1050,9 +755,9 @@
         </div> -->
 
         <!-- IMAGE 2-->
-        <div class="bg-white shadow-xl rounded-lg content-center lg:mr-50">
+        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <img
-            :src="loan.attachment2 == null ? '' : loan.attachment2"
+            :src="loan.attachment2 == null ? 'https://fopm-sams.s3.amazonaws.com/' : loan.attachment2"
             class="w-auto h-auto"
           />
         </div>
@@ -1072,9 +777,9 @@
         </div> -->
 
         <!-- IMAGE 3-->
-        <div class="bg-white shadow-xl rounded-lg content-center lg:mr-50">
+        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <img
-            :src="loan.attachment3 == null ? '' : loan.attachment3"
+            :src="loan.attachment3 == null ? 'https://fopm-sams.s3.amazonaws.com/' : loan.attachment3"
             class="w-auto h-auto"
           />
         </div>
@@ -1083,15 +788,7 @@
       </div>
       <div
         v-if="loan.approval == 'For Processing'"
-        class="
-          row-span-3
-          bg-white
-          overflow-hidden
-          border-gray-300
-          sm:rounded-lg
-          w-full
-          place-self-center
-        "
+        class="w-full row-span-3 overflow-hidden bg-white border-gray-300 sm:rounded-lg place-self-center"
       >
         <div v-if="loan.loan_type == 'Housing Loan'">
           <p class="font-semibold">Member's Payslip for Validation:</p>
@@ -1105,9 +802,9 @@
         <br />
 
         <!-- IMAGE 1-->
-        <div class="bg-white shadow-xl rounded-lg content-center lg:mr-50">
+        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <img
-            :src="loan.attachment1 == null ? '' : loan.attachment1"
+            :src="loan.attachment1 == null ? 'https://fopm-sams.s3.amazonaws.com/' : loan.attachment1"
             class="w-auto h-auto"
           />
         </div>
@@ -1128,9 +825,9 @@
         </div> -->
 
         <!-- IMAGE 2-->
-        <div class="bg-white shadow-xl rounded-lg content-center lg:mr-50">
+        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <img
-            :src="loan.attachment2 == null ? '' : loan.attachment2"
+            :src="loan.attachment2 == null ? 'https://fopm-sams.s3.amazonaws.com/' : loan.attachment2"
             class="w-auto h-auto"
           />
         </div>
@@ -1150,9 +847,9 @@
         </div> -->
 
         <!-- IMAGE 3-->
-        <div class="bg-white shadow-xl rounded-lg content-center lg:mr-50">
+        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <img
-            :src="loan.attachment3 == null ? '' : loan.attachment3"
+            :src="loan.attachment3 == null ? 'https://fopm-sams.s3.amazonaws.com/' : loan.attachment3"
             class="w-auto h-auto"
           />
         </div>
@@ -1160,27 +857,11 @@
         <br />
         <div
           v-if="loan.approval == 'For Processing'"
-          class="w-full p-0 m-0 flex items-center justify-center gap-20"
+          class="flex items-center justify-center w-full gap-20 p-0 m-0"
         >
           <button
             type="button"
-            class="
-              py-2
-              px-4
-              mb-5
-              bg-red-600
-              hover:bg-red-700
-              focus:ring focus:ring-red-300
-              text-white
-              w-64
-              transition
-              ease-in
-              duration-150
-              text-lg text-center
-              font-semibold
-              shadow-md
-              rounded-lg
-            "
+            class="w-64 px-4 py-2 mb-5 text-lg font-semibold text-center text-white transition duration-150 ease-in bg-red-600 rounded-lg shadow-md hover:bg-red-700 focus:ring focus:ring-red-300"
             @click="rejectLoan(loan)"
           >
             Reject
@@ -1188,23 +869,7 @@
 
           <button
             type="button"
-            class="
-              py-2
-              px-4
-              mb-5
-              bg-green-600
-              hover:bg-green-700
-              focus:ring focus:ring-green-300
-              text-white
-              w-64
-              transition
-              ease-in
-              duration-150
-              text-lg text-center
-              font-semibold
-              shadow-md
-              rounded-lg
-            "
+            class="w-64 px-4 py-2 mb-5 text-lg font-semibold text-center text-white transition duration-150 ease-in bg-green-600 rounded-lg shadow-md hover:bg-green-700 focus:ring focus:ring-green-300"
             @click="acceptLoan(loan)"
           >
             Accept
@@ -1213,17 +878,7 @@
       </div>
       <div
       v-else-if="loan.approval == 'Denied'"
-      class="
-        bg-white
-        p-4
-        border-gray-300
-        shadow-xl
-        rounded-lg
-        h-fit
-        m-auto
-        w-full
-        text-center
-      "
+      class="w-full p-4 m-auto text-center bg-white border-gray-300 rounded-lg shadow-xl h-fit"
     >
       <h1>Rejected Loan Application</h1>
       <div class="font-semibold">{{loan.reason}}</div>
@@ -1238,9 +893,9 @@
         <div v-if="loan.loan_type == 'Emergency Loan'">
           <p class="font-semibold">Member's Payslip for Validation:</p>
         </div>
-        <div class="bg-white shadow-xl rounded-lg content-center lg:mr-50">
+        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <img
-            :src="loan.attachment1 == null ? '' : loan.attachment1"
+            :src="loan.attachment1 == null ? 'https://fopm-sams.s3.amazonaws.com/' : loan.attachment1"
             class="w-auto h-auto"
           />
         </div>
@@ -1257,9 +912,9 @@
         <!-- <div v-if="loan.loan_type == 'Emergency Loan'">
           <p class="font-semibold">4.5% interest for a 2-year term:</p>
         </div> -->
-        <div class="bg-white shadow-xl rounded-lg content-center lg:mr-50">
+        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <img
-            :src="loan.attachment2 == null ? '' : loan.attachment2"
+            :src="loan.attachment2 == null ? 'https://fopm-sams.s3.amazonaws.com/' : loan.attachment2"
             class="w-auto h-auto"
           />
         </div>
@@ -1275,9 +930,9 @@
         <!-- <div v-if="loan.loan_type == 'Emergency Loan'">
           <p class="font-semibold">2.25% interest for a 1-year term:</p>
         </div> -->
-        <div class="bg-white shadow-xl rounded-lg content-center lg:mr-50">
+        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <img
-            :src="loan.attachment3 == null ? '' : loan.attachment3"
+            :src="loan.attachment3 == null ? 'https://fopm-sams.s3.amazonaws.com/' : loan.attachment3"
             class="w-auto h-auto"
           />
         </div>
@@ -1287,27 +942,11 @@
 
     <div
       v-if="loan.approval == 'For Release'"
-      class="w-full p-0 m-0 flex items-center justify-center gap-20"
+      class="flex items-center justify-center w-full gap-20 p-0 m-0"
     >
       <button
         type="button"
-        class="
-          py-2
-          px-4
-          mb-5
-          bg-red-600
-          hover:bg-red-700
-          focus:ring focus:ring-red-300
-          text-white
-          w-64
-          transition
-          ease-in
-          duration-150
-          text-lg text-center
-          font-semibold
-          shadow-md
-          rounded-lg
-        "
+        class="w-64 px-4 py-2 mb-5 text-lg font-semibold text-center text-white transition duration-150 ease-in bg-red-600 rounded-lg shadow-md hover:bg-red-700 focus:ring focus:ring-red-300"
         @click="releasedLoan(loan)"
       >
         Released
@@ -1318,27 +957,11 @@
 
     <div
       v-if="loan.approval == 'Processed'"
-      class="w-full p-0 m-0 flex items-center justify-center gap-20"
+      class="flex items-center justify-center w-full gap-20 p-0 m-0"
     >
       <button
         type="button"
-        class="
-          py-2
-          px-4
-          mb-5
-          bg-green-600
-          hover:bg-green-700
-          focus:ring focus:ring-green-300
-          text-white
-          w-64
-          transition
-          ease-in
-          duration-150
-          text-lg text-center
-          font-semibold
-          shadow-md
-          rounded-lg
-        "
+        class="w-64 px-4 py-2 mb-5 text-lg font-semibold text-center text-white transition duration-150 ease-in bg-green-600 rounded-lg shadow-md hover:bg-green-700 focus:ring focus:ring-green-300"
         @click="releaseLoan(loan)"
       >
         For Release
@@ -1351,10 +974,10 @@
       @close="showApproveModal = !showApproveModal"
     >
       <div class="p-5">
-        <div class="flex justify-between text-xl font-bold text-gray-900 my-3">
+        <div class="flex justify-between my-3 text-xl font-bold text-gray-900">
           <span></span>
           <svg
-            class="h-6 w-6 cursor-pointer"
+            class="w-6 h-6 cursor-pointer"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -1370,14 +993,7 @@
           </svg>
         </div>
         <div
-          class="
-            flex flex-col
-            items-center
-            text-xl
-            font-bold
-            text-gray-900
-            my-3
-          "
+          class="flex flex-col items-center my-3 text-xl font-bold text-gray-900 "
         >
           <span class="text-center"
             >Accept {{ info.first_name }} {{ info.last_name }}'s loan?</span
@@ -1385,32 +1001,10 @@
         </div>
         <div class="flex justify-center">
           <div
-            class="
-              flex
-              justify-between
-              text-xl
-              font-bold
-              dark:text-gray-200
-              my-3
-            "
+            class="flex justify-between my-3 text-xl font-bold dark:text-gray-200"
           >
             <div
-              class="
-                flex
-                space-x-2
-                mr-5
-                px-4
-                py-1
-                border
-                text-md text-green-600
-                dark:text-green-600 dark:border-green-600
-                border-green-600
-                uppercase
-                rounded-full
-                dark:hover:text-gray-200
-                hover:text-white hover:border-none hover:bg-green-500
-                cursor-pointer
-              "
+              class="flex px-4 py-1 mr-5 space-x-2 text-green-600 uppercase border border-green-600 rounded-full cursor-pointer text-md dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-green-500"
               @click="submitApproveLoan"
             >
               <span>Accept</span>
@@ -1425,10 +1019,10 @@
       @close="showReleaseModal = !showReleaseModal"
     >
       <div class="p-5">
-        <div class="flex justify-between text-xl font-bold text-gray-900 my-3">
+        <div class="flex justify-between my-3 text-xl font-bold text-gray-900">
           <span></span>
           <svg
-            class="h-6 w-6 cursor-pointer"
+            class="w-6 h-6 cursor-pointer"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -1444,14 +1038,7 @@
           </svg>
         </div>
         <div
-          class="
-            flex flex-col
-            items-center
-            text-xl
-            font-bold
-            text-gray-900
-            my-3
-          "
+          class="flex flex-col items-center my-3 text-xl font-bold text-gray-900 "
         >
           <span class="text-center"
             >Release {{ info.first_name }} {{ info.last_name }} loan?</span
@@ -1459,32 +1046,10 @@
         </div>
         <div class="flex justify-center">
           <div
-            class="
-              flex
-              justify-between
-              text-xl
-              font-bold
-              dark:text-gray-200
-              my-3
-            "
+            class="flex justify-between my-3 text-xl font-bold dark:text-gray-200"
           >
             <div
-              class="
-                flex
-                space-x-2
-                mr-5
-                px-4
-                py-1
-                border
-                text-md text-green-600
-                dark:text-green-600 dark:border-green-600
-                border-green-600
-                uppercase
-                rounded-full
-                dark:hover:text-gray-200
-                hover:text-white hover:border-none hover:bg-green-500
-                cursor-pointer
-              "
+              class="flex px-4 py-1 mr-5 space-x-2 text-green-600 uppercase border border-green-600 rounded-full cursor-pointer text-md dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-green-500"
               @click="submitReleaseLoan"
             >
               <span>Release</span>
@@ -1499,10 +1064,10 @@
       @close="showReleasedModal = !showReleasedModal"
     >
       <div class="p-5">
-        <div class="flex justify-between text-xl font-bold text-gray-900 my-3">
+        <div class="flex justify-between my-3 text-xl font-bold text-gray-900">
           <span></span>
           <svg
-            class="h-6 w-6 cursor-pointer"
+            class="w-6 h-6 cursor-pointer"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -1518,14 +1083,7 @@
           </svg>
         </div>
         <div
-          class="
-            flex flex-col
-            items-center
-            text-xl
-            font-bold
-            text-gray-900
-            my-3
-          "
+          class="flex flex-col items-center my-3 text-xl font-bold text-gray-900 "
         >
           <span class="text-center"
             >Released {{ info.first_name }} {{ info.last_name }}'s loan?</span
@@ -1533,32 +1091,10 @@
         </div>
         <div class="flex justify-center">
           <div
-            class="
-              flex
-              justify-between
-              text-xl
-              font-bold
-              dark:text-gray-200
-              my-3
-            "
+            class="flex justify-between my-3 text-xl font-bold dark:text-gray-200"
           >
             <div
-              class="
-                flex
-                space-x-2
-                mr-5
-                px-4
-                py-1
-                border
-                text-md text-red-600
-                dark:text-red-600 dark:border-red-600
-                border-red-600
-                uppercase
-                rounded-full
-                dark:hover:text-gray-200
-                hover:text-white hover:border-none hover:bg-red-500
-                cursor-pointer
-              "
+              class="flex px-4 py-1 mr-5 space-x-2 text-red-600 uppercase border border-red-600 rounded-full cursor-pointer text-md dark:text-red-600 dark:border-red-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500"
               @click="submitReleasedLoan"
             >
               <span>Released</span>
@@ -1573,10 +1109,10 @@
       @close="showRejectModal = !showRejectModal"
     >
       <div class="p-5">
-        <div class="flex justify-between text-xl font-bold text-gray-900 my-3">
+        <div class="flex justify-between my-3 text-xl font-bold text-gray-900">
 
           <svg
-            class="h-6 w-6 cursor-pointer"
+            class="w-6 h-6 cursor-pointer"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -1592,14 +1128,7 @@
           </svg>
         </div>
         <div
-          class="
-            flex flex-col
-            items-center
-            text-xl
-            font-bold
-            text-gray-900
-            my-3
-          "
+          class="flex flex-col items-center my-3 text-xl font-bold text-gray-900 "
         >
           <span class="text-center"
             >Reject {{ info.first_name }} {{ info.last_name }}'s loan?</span
@@ -1616,23 +1145,9 @@
           <textarea class="w-full" v-model="this.rejectForm.reason"></textarea>
         </div>
         <div class="flex justify-center">
-          <div class="flex text-xl font-bold dark:text-gray-200 my-3">
+          <div class="flex my-3 text-xl font-bold dark:text-gray-200">
             <div
-              class="
-                flex
-                space-x-2
-                px-4
-                py-1
-                border
-                text-md text-red-600
-                dark:text-red-600 dark:border-red-600
-                border-red-600
-                uppercase
-                rounded-full
-                dark:hover:text-gray-200
-                hover:text-white hover:border-none hover:bg-red-500
-                cursor-pointer
-              "
+              class="flex px-4 py-1 space-x-2 text-red-600 uppercase border border-red-600 rounded-full cursor-pointer text-md dark:text-red-600 dark:border-red-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500"
               @click="submitRejectLoan"
             >
               <span>Reject</span>

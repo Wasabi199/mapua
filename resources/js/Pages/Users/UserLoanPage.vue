@@ -3,13 +3,13 @@
     <template #header>
       <div class="flex items-center">
         <Link :href="route('loansView')" class="hover:underline">
-          <h1 class="font-extrabold text-xl text-gray-800 leading-tight">
+          <h1 class="text-xl font-extrabold leading-tight text-gray-800">
             Current Loan
           </h1>
         </Link>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
+          class="w-6 h-6"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -21,22 +21,22 @@
             d="M9 5l7 7-7 7"
           />
         </svg>
-        <h1 class="font-extrabold text-xl text-gray-800 leading-tight">
+        <h1 class="text-xl font-extrabold leading-tight text-gray-800">
           Apply For Loan
         </h1>
       </div>
     </template>
     <!-- <form @submit.prevent="submit"> -->
     <div class="py-12">
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
           <JetValidationErrors class="mb-4" />
-          <div class="ml-6 lg:ml-20 mt-10">
-            <p class="mb-1 mt-4 text-lg">Purpose of Loan</p>
+          <div class="mt-10 ml-6 lg:ml-20">
+            <p class="mt-4 mb-1 text-lg">Purpose of Loan</p>
             <select
               v-model="form.loan_type"
               @change="showModal = !showModal"
-              class="border-2 border-gray-400 border-opacity-50 hover:border-indigo-500 transition ease-in duration-150 rounded-md mb-10"
+              class="mb-10 transition duration-150 ease-in border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
             >
               <option value="placeholder" disabled>Select Loan Type</option>
               <option v-for="type in loanTypes" v-bind:key="type" :value="type">
@@ -55,7 +55,7 @@
             <p class="mb-1 text-lg">Terms (Months)</p>
             <select
               v-model="form.terms"
-              class="mb-5 border-2 border-gray-400 border-opacity-50 hover:border-indigo-500 transition ease-in duration-150 rounded-md"
+              class="mb-5 transition duration-150 ease-in border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
             >
               <option value="12">12</option>
               <option value="24">24</option>
@@ -65,36 +65,36 @@
                 >Amount(Minimum of 30,000 and maximum of 100,000)</label
               ><br />
 
-              <div class="mt-1 relative w-64 rounded-md">
+              <div class="relative w-64 mt-1 rounded-md">
                 <div
-                  class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                  class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
                 >
-                  <span class="text-gray-500 text-lg"> ₱ </span>
+                  <span class="text-lg text-gray-500"> ₱ </span>
                 </div>
                 <input
                   v-model="form.amount"
                   @change="onChangeAmount"
                   type="number"
                   placeholder="0.00"
-                  class="focus:ring-indigo-500 border-2 border-opacity-50 border-gray-400 hover:border-indigo-500 text-black block pl-7 pr-12 w-64 font-lg rounded-md"
+                  class="block w-64 pr-12 text-black border-2 border-gray-400 border-opacity-50 rounded-md focus:ring-indigo-500 hover:border-indigo-500 pl-7 font-lg"
                 />
               </div>
               <span v-show="amountValidation" class="text-red-500"
                 ><li>Minimum of 30,000 and maximum of 100,000</li></span
               >
             </div>
-            <p class="mb-1 text-lg mt-6 font-semibold">Upload requirements</p>
-            <p class="italic text-sm mb-5">
+            <p class="mt-6 mb-1 text-lg font-semibold">Upload requirements</p>
+            <p class="mb-5 text-sm italic">
               *Total maximum size for uploading is 30mb
             </p>
-            <p class="mb-1 text-lg mt-4">
+            <p class="mt-4 mb-1 text-lg">
               Member's Payslip for Validation<span
                 class="text-sm italic font-thin"
                 >Must be image file (jpg,jpeg)</span
               >
             </p>
             <div
-              class="border-2 border-gray-400 border-opacity-50 hover:border-indigo-500 w-6/12 rounded-md mb-5"
+              class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
             >
               <input
                 @change="onChange"
@@ -110,7 +110,7 @@
               >
             </p>
             <div
-              class="border-2 border-gray-400 border-opacity-50 hover:border-indigo-500 w-6/12 rounded-md mb-5"
+              class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
             >
               <input
                 @change="onChange2"
@@ -126,7 +126,7 @@
               >
             </p>
             <div
-              class="border-2 border-gray-400 border-opacity-50 hover:border-indigo-500 w-6/12 rounded-md mb-5"
+              class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
             >
               <input
                 @change="onChange3"
@@ -139,7 +139,7 @@
               <button
                 type="button"
                 @click="submit"
-                class="py-2 px-4 mb-5 bg-red-800 hover:bg-red-700 focus:ring focus:ring-indigo-300 text-yellow-500 w-64 transition ease-in duration-150 text-lg text-center font-semibold shadow-md rounded-lg"
+                class="w-64 px-4 py-2 mb-5 text-lg font-semibold text-center text-yellow-500 transition duration-150 ease-in bg-red-800 rounded-lg shadow-md hover:bg-red-700 focus:ring focus:ring-indigo-300"
               >
                 Submit
               </button>
@@ -156,11 +156,11 @@
               <label class="mb-1 text-lg text-gray-700" for="amount"
                 >Amount(Maximum of 30,000)</label
               ><br />
-              <div class="mt-1 relative w-64 rounded-md">
+              <div class="relative w-64 mt-1 rounded-md">
                 <div
-                  class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                  class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
                 >
-                  <span class="text-gray-500 text-lg"> ₱ </span>
+                  <span class="text-lg text-gray-500"> ₱ </span>
                 </div>
                 <input
                   required
@@ -168,31 +168,31 @@
                   @change="onChangeAmount"
                   type="number"
                   placeholder="0.00"
-                  class="focus:ring-indigo-500 border-2 border-opacity-50 border-gray-400 hover:border-indigo-500 text-black block pl-7 pr-12 w-64 font-lg rounded-md"
+                  class="block w-64 pr-12 text-black border-2 border-gray-400 border-opacity-50 rounded-md focus:ring-indigo-500 hover:border-indigo-500 pl-7 font-lg"
                 />
               </div>
               <span v-show="amountValidation" class="text-red-500"
                 ><li>Maximum of 30,000</li></span
               >
             </div>
-            <p class="mb-1 text-lg mt-6 font-semibold">Upload Requirements</p>
-            <p class="italic text-sm mb-5">
+            <p class="mt-6 mb-1 text-lg font-semibold">Upload Requirements</p>
+            <p class="mb-5 text-sm italic">
               *Total maximum size for uploading is 30mb
             </p>
             <div class="flex">
               <input v-model="forRelative" class="w-5 h-5" type="checkbox" />
 
-              <span class="text-center text-xl px-2">For Relative</span>
+              <span class="px-2 text-xl text-center">For Relative</span>
             </div>
 
             <p class="mb-1 text-lg">
               Member's Payslip for Validation
-              <span class="italic font-thin text-sm">
+              <span class="text-sm italic font-thin">
                 Must be image file (jpg,jpeg)</span
               >
             </p>
             <div
-              class="border-2 border-gray-400 border-opacity-50 hover:border-indigo-500 w-6/12 rounded-md mb-5"
+              class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
             >
               <input
                 @change="onChange"
@@ -204,13 +204,13 @@
 
             <p v-if="this.forRelative == true" class="mb-1 text-lg">
               Upload Proof of Relation (Birth Certificate in Case of Relatives)
-              <span class="italic font-thin text-sm">
+              <span class="text-sm italic font-thin">
                 Must be image file (jpg,jpeg)</span
               >
             </p>
             <div
               v-if="this.forRelative == true"
-              class="border-2 border-gray-400 border-opacity-50 hover:border-indigo-500 w-6/12 rounded-md mb-5"
+              class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
             >
               <!-- <form @submit.prevent="sendMessage"> -->
               <input
@@ -226,12 +226,12 @@
             <p class="mb-1 text-lg">
               Upload Certificate of Enrollment and Statement of Account from
               School
-              <span class="italic font-thin text-sm">
+              <span class="text-sm italic font-thin">
                 Must be image file (jpg,jpeg)</span
               >
             </p>
             <div
-              class="border-2 border-gray-400 border-opacity-50 hover:border-indigo-500 w-6/12 rounded-md mb-5"
+              class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
             >
               <input
                 @change="onChange3"
@@ -245,7 +245,7 @@
             <div class="flex justify-center">
               <button
                 type="submit"
-                class="py-2 px-4 mb-5 bg-red-800 hover:bg-red-700 focus:ring focus:ring-indigo-300 text-yellow-500 w-64 transition ease-in duration-150 text-lg text-center font-semibold shadow-md rounded-lg"
+                class="w-64 px-4 py-2 mb-5 text-lg font-semibold text-center text-yellow-500 transition duration-150 ease-in bg-red-800 rounded-lg shadow-md hover:bg-red-700 focus:ring focus:ring-indigo-300"
               >
                 Submit
               </button>
@@ -261,7 +261,7 @@
             <p class="mb-1 text-lg">Terms (Months)</p>
             <select
               v-model="emergencyForm.terms"
-              class="mb-5 border-2 border-gray-400 border-opacity-50 hover:border-indigo-500 transition ease-in duration-150 rounded-md"
+              class="mb-5 transition duration-150 ease-in border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
             >
               <option value="12">12</option>
               <option value="24">24</option>
@@ -270,37 +270,37 @@
               <label class="mb-1 text-lg" for="amount"
                 >Amount(Maximum of 30,000)</label
               ><br />
-              <div class="mt-1 relative w-64 rounded-md">
+              <div class="relative w-64 mt-1 rounded-md">
                 <div
-                  class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                  class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
                 >
-                  <span class="text-gray-500 text-lg"> ₱ </span>
+                  <span class="text-lg text-gray-500"> ₱ </span>
                 </div>
                 <input
                   v-model="emergencyForm.amount"
                   @change="onChangeAmount"
                   type="number"
                   placeholder="0.00"
-                  class="focus:ring-indigo-500 border-2 border-opacity-50 border-gray-400 hover:border-indigo-500 text-black block pl-7 pr-12 w-64 font-lg rounded-md"
+                  class="block w-64 pr-12 text-black border-2 border-gray-400 border-opacity-50 rounded-md focus:ring-indigo-500 hover:border-indigo-500 pl-7 font-lg"
                 />
               </div>
               <span v-show="amountValidation" class="text-red-500"
                 ><li>Maximum of 30,000</li></span
               >
             </div>
-            <p class="mb-1 text-lg mt-6 font-semibold">Upload Requirements</p>
-            <p class="italic text-sm mb-5">
+            <p class="mt-6 mb-1 text-lg font-semibold">Upload Requirements</p>
+            <p class="mb-5 text-sm italic">
               *Total maximum size for uploading is 30mb
             </p>
 
             <p class="mb-1 text-lg">
               Member's Payslip for Validation
-              <span class="italic font-thin text-sm">
+              <span class="text-sm italic font-thin">
                 Must be image file (jpg,jpeg)</span
               >
             </p>
             <div
-              class="border-2 border-gray-400 border-opacity-50 hover:border-indigo-500 w-6/12 rounded-md mb-5"
+              class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
             >
               <input
                 @change="onChange1"
@@ -313,7 +313,7 @@
             <div class="flex justify-center">
               <button
                 type="submit"
-                class="py-2 px-4 mb-5 bg-red-800 hover:bg-red-700 focus:ring focus:ring-indigo-300 text-yellow-500 w-64 transition ease-in duration-150 text-lg text-center font-semibold shadow-md rounded-lg"
+                class="w-64 px-4 py-2 mb-5 text-lg font-semibold text-center text-yellow-500 transition duration-150 ease-in bg-red-800 rounded-lg shadow-md hover:bg-red-700 focus:ring focus:ring-indigo-300"
               >
                 Submit
               </button>
@@ -323,7 +323,7 @@
       </div>
       <div class="flex justify-center px-6 py-4 whitespace-nowrap">
         <div
-          class="flex space-x-2 mr-5 px-4 py-1 border text-md text-red-600 dark:text-red-600 dark:border-red-600 border-red-600 uppercase rounded-full dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500 cursor-pointer"
+          class="flex px-4 py-1 mr-5 space-x-2 text-red-600 uppercase border border-red-600 rounded-full cursor-pointer text-md dark:text-red-600 dark:border-red-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500"
         >
           <Link :href="route('userDashboard')">
             <button>BACK TO HOME</button>
@@ -336,24 +336,24 @@
     <Modal :show="showModal" :closeable="true">
       <!-- Housing Loan Guidelines -->
       <div v-if="form.loan_type == 'Housing Loan'" class="p-5">
-        <div class="flex justify-center text-xl font-bold text-gray-900 my-3">
+        <div class="flex justify-center my-3 text-xl font-bold text-gray-900">
           <span>Guidelines : {{ form.loan_type }}</span>
         </div>
         <br />
-        <div class="flex justify-left text-l font-bold text-gray-900 my-3">
+        <div class="flex my-3 font-bold text-gray-900 justify-left text-l">
           <span><u>MITRF LOAN TERMS AND CONDITIONS</u> </span>
         </div>
         <br />
-        <div class="flex justify-left text-m font-bold text-gray-900 my-3">
+        <div class="flex my-3 font-bold text-gray-900 justify-left text-m">
           <span>Eligibility Requirements </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >1. Member-borrower must be a regular employee of the institute and
             contributing 5% of his monthly basic salary to MITRF.
           </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >2. Member-borrower must maintain at least 45% net take home pay
             after deducting all his obligations including the MITRF
@@ -361,38 +361,38 @@
           </span>
         </div>
         <br />
-        <div class="flex justify-left text-m font-bold text-gray-900 my-3">
+        <div class="flex my-3 font-bold text-gray-900 justify-left text-m">
           <span>Loan Amount </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >1. The maximum amount shall be the total member-follower's fund
             contribution and earnings.
           </span>
         </div>
         <br />
-        <div class="flex justify-left text-m font-bold text-gray-900 my-3">
+        <div class="flex my-3 font-bold text-gray-900 justify-left text-m">
           <span>Housing Assistance </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >For housing, Loan requirements are the following: (30,000 - 100,000
             maximum, 1-2 years term)
           </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span>1. Application Form </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >2. Photo of you including the place to be improved/repaired.
           </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span>3. Laborer's quotation. </span>
         </div>
         <br />
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             ><u
               ><i
@@ -401,7 +401,7 @@
             >
           </span>
         </div>
-        <div class="flex justify-left text-s font-bold text-gray-900 my-3">
+        <div class="flex my-3 font-bold text-gray-900 justify-left text-s">
           <span
             ><u
               >Note: It cannot be loaned at the same time with Education
@@ -412,12 +412,12 @@
 
         <div></div>
         <div
-          class="flex justify-center text-xl font-bold dark:text-gray-200 my-3 space-x-40"
+          class="flex justify-center my-3 space-x-40 text-xl font-bold dark:text-gray-200"
         >
           <!-- Accept Button -->
           <div
             @click="accept"
-            class="flex space-x-2 px-4 py-1 border text-sm leading-snug font-semibold text-green-600 dark:text-green-600 dark:border-green-600 border-green-600 uppercase rounded-full dark:hover:text-gray-200 hover:bg-green-500 cursor-pointer"
+            class="flex px-4 py-1 space-x-2 text-sm font-semibold leading-snug text-green-600 uppercase border border-green-600 rounded-full cursor-pointer dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:bg-green-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -441,24 +441,24 @@
 
       <!-- Educational Loan Guidelines -->
       <div v-if="form.loan_type == 'Educational Loan'" class="p-5">
-        <div class="flex justify-center text-xl font-bold text-gray-900 my-3">
+        <div class="flex justify-center my-3 text-xl font-bold text-gray-900">
           <span>Guidelines : {{ form.loan_type }}</span>
         </div>
         <br />
-        <div class="flex justify-left text-l font-bold text-gray-900 my-3">
+        <div class="flex my-3 font-bold text-gray-900 justify-left text-l">
           <span><u>MITRF LOAN TERMS AND CONDITIONS</u> </span>
         </div>
         <br />
-        <div class="flex justify-left text-m font-bold text-gray-900 my-3">
+        <div class="flex my-3 font-bold text-gray-900 justify-left text-m">
           <span>Eligibility Requirements </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >1. Member-borrower must be a regular employee of the institute and
             contributing 5% of his monthly basic salary to MITRF.
           </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >2. Member-borrower must maintain at least 45% net take home pay
             after deducting all his obligations including the MITRF
@@ -467,11 +467,11 @@
         </div>
 
         <br />
-        <div class="flex justify-left text-m font-bold text-gray-900 my-3">
+        <div class="flex my-3 font-bold text-gray-900 justify-left text-m">
           <span>Loan Amount </span>
         </div>
 
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >1. The maximum amount shall be the total member-follower's fund
             contribution and earnings.
@@ -479,31 +479,31 @@
         </div>
 
         <br />
-        <div class="flex justify-left text-m font-bold text-gray-900 my-3">
+        <div class="flex my-3 font-bold text-gray-900 justify-left text-m">
           <span>Education Assistance </span>
         </div>
 
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >For Education, Loan requirements are the following: (30,000
             maximum, 1 year term)
           </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span>1. Application Form </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >2. Proof of relation (Birth certificate in case of relatives).
           </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >3. Certificate of Enrollment and Statement of Account from school.
           </span>
         </div>
         <br />
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             ><u
               ><i
@@ -512,7 +512,7 @@
             >
           </span>
         </div>
-        <div class="flex justify-left text-s font-bold text-gray-900 my-3">
+        <div class="flex my-3 font-bold text-gray-900 justify-left text-s">
           <span
             ><u
               >Note: It cannot be loaned at the same time with Housing Loan.</u
@@ -520,11 +520,11 @@
           </span>
         </div>
         <div
-          class="flex justify-center text-xl font-bold dark:text-gray-200 my-3"
+          class="flex justify-center my-3 text-xl font-bold dark:text-gray-200"
         >
           <div
             @click="accept"
-            class="flex space-x-2 px-4 py-1 border text-sm leading-snug font-semibold text-green-600 dark:text-green-600 dark:border-green-600 border-green-600 uppercase rounded-full dark:hover:text-gray-200 hover:bg-green-500 cursor-pointer"
+            class="flex px-4 py-1 space-x-2 text-sm font-semibold leading-snug text-green-600 uppercase border border-green-600 rounded-full cursor-pointer dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:bg-green-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -548,24 +548,24 @@
 
       <!-- Emergency Loan Guidelines -->
       <div v-if="form.loan_type == 'Emergency Loan'" class="p-5">
-        <div class="flex justify-center text-xl font-bold text-gray-900 my-3">
+        <div class="flex justify-center my-3 text-xl font-bold text-gray-900">
           <span>Guidelines : {{ form.loan_type }}</span>
         </div>
         <br />
-        <div class="flex justify-left text-l font-bold text-gray-900 my-3">
+        <div class="flex my-3 font-bold text-gray-900 justify-left text-l">
           <span><u>MITRF LOAN TERMS AND CONDITIONS</u> </span>
         </div>
         <br />
-        <div class="flex justify-left text-m font-bold text-gray-900 my-3">
+        <div class="flex my-3 font-bold text-gray-900 justify-left text-m">
           <span>Eligibility Requirements </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >1. Member-borrower must be a regular employee of the institute and
             contributing 5% of his monthly basic salary to MITRF.
           </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >2. Member-borrower must maintain at least 45% net take home pay
             after deducting all his obligations including the MITRF
@@ -574,11 +574,11 @@
         </div>
 
         <br />
-        <div class="flex justify-left text-m font-bold text-gray-900 my-3">
+        <div class="flex my-3 font-bold text-gray-900 justify-left text-m">
           <span>Loan Amount </span>
         </div>
 
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >1. The maximum amount shall be the total member-follower's fund
             contribution and earnings.
@@ -586,26 +586,26 @@
         </div>
 
         <br />
-        <div class="flex justify-left text-m font-bold text-gray-900 my-3">
+        <div class="flex my-3 font-bold text-gray-900 justify-left text-m">
           <span>Emergency Assistance </span>
         </div>
 
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >For emergency, Loan requirements are the following: (30,000
             maximum, 1-2 years term)
           </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span>1. Application Form </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span>2. 4.5% interest for a 2-year term. </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span>3. 2.25% interest for a 1-year term. </span>
         </div>
-        <div class="flex justify-left text-s text-gray-900 my-3">
+        <div class="flex my-3 text-gray-900 justify-left text-s">
           <span
             >4. 45% threshold of net pay is not applicable but must not be zero
             or negative.
@@ -613,12 +613,12 @@
         </div>
 
         <div
-          class="flex justify-center text-xl font-bold dark:text-gray-200 my-3 space-x-40"
+          class="flex justify-center my-3 space-x-40 text-xl font-bold dark:text-gray-200"
         >
           <!-- Accept Button -->
           <div
             @click="accept"
-            class="flex space-x-2 px-4 py-1 border text-sm leading-snug font-semibold text-green-600 dark:text-green-600 dark:border-green-600 border-green-600 uppercase rounded-full dark:hover:text-gray-200 hover:bg-green-500 cursor-pointer"
+            class="flex px-4 py-1 space-x-2 text-sm font-semibold leading-snug text-green-600 uppercase border border-green-600 rounded-full cursor-pointer dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:bg-green-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -648,13 +648,13 @@
       @close="submitModal = !submitModal"
     >
       <div class="p-5">
-        <div class="flex justify-between text-xl font-bold text-gray-900 my-2">
+        <div class="flex justify-between my-2 text-xl font-bold text-gray-900">
           <span>Data Privacy Compliance</span>
-          <div class="flex text-justify font-normal text-gray-900 my-5"></div>
+          <div class="flex my-5 font-normal text-justify text-gray-900"></div>
           <svg
             @click="submitModal = !submitModal"
             xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 cursor-pointer"
+            class="w-6 h-6 cursor-pointer"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -681,11 +681,11 @@
           >
         </div>
         <div
-          class="flex justify-center text-xl font-bold dark:text-gray-200 my-3"
+          class="flex justify-center my-3 text-xl font-bold dark:text-gray-200"
         >
           <div
             @click="proceed"
-            class="flex space-x-2 px-4 py-1 border text-sm leading-snug font-semibold text-green-600 dark:text-green-600 dark:border-green-600 border-green-600 uppercase rounded-full dark:hover:text-gray-200 hover:bg-green-500 cursor-pointer"
+            class="flex px-4 py-1 space-x-2 text-sm font-semibold leading-snug text-green-600 uppercase border border-green-600 rounded-full cursor-pointer dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:bg-green-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -66,14 +66,14 @@
         <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <span>Official Receipt</span>
           <div v-for="attachment in medical.attachments" v-bind:key="attachment.id">
-            <img class="w-64 h-64" v-if="attachment.type == 1" :src="attachment.image == null ? '' : '../../../' + attachment.image
+            <img class="w-64 h-64" v-if="attachment.type == 1" :src="attachment.image == null ? '' : attachment.image
               " />
           </div>
         </div>
         <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <span>Medical Certificate/Doctor's Prescription</span>
           <div v-for="attachment in medical.attachments" v-bind:key="attachment.id">
-            <img class="w-64 h-64" v-if="attachment.type == 2" :src="attachment.image == null ? '' : '../../../' + attachment.image
+            <img class="w-64 h-64" v-if="attachment.type == 2" :src="attachment.image == null ? '' :  attachment.image
               " />
           </div>
         </div>
