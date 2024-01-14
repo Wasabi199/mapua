@@ -43,7 +43,7 @@ class UsersImport implements   WithHeadingRow, ToCollection, WithValidation, Ski
                                 'userType'  =>2,
                                 'password'=>Hash::make('mitrf_test'),
                                 // 'password'  =>Hash::make($pass[(int)\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('m')-1].\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('d').\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y')),
-                                'member_id'=>$row['member_id']
+                                'member_id'=>rand(10,100)
                             ]);
                             $userNew->adminReg()->create([
                                 'first_name'    =>$row['first_name'],
@@ -70,7 +70,7 @@ class UsersImport implements   WithHeadingRow, ToCollection, WithValidation, Ski
     {
         return[
             'email'=>'required|email|unique:users,email',
-            'member_id'=>'required',
+            'member_id'=>'nullable',
             'first_name'=>'required',
             'last_name'=>'required',
             
