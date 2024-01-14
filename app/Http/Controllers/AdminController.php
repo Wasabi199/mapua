@@ -189,7 +189,7 @@ class AdminController extends Controller
                 [NotificationService::notificationItem('success', '', 'Sucessfully Uploaded')]
             );
         } else {
-            return Redirect::back()->with(
+            return Redirect::route('dashboard')->with(
                 'message',
                 [NotificationService::notificationItem('failed', '', 'Password Not Match')]
             );

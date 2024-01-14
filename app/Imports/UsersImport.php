@@ -38,7 +38,7 @@ class UsersImport implements   WithHeadingRow, ToCollection, WithValidation, Ski
                         // dd($pass[(int)\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('m')-1].\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('d').\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y'));
                         DB::transaction(function () use ($userNew,$row, $pass) {
                             $userNew = User::create([
-                                'name'      =>$row['first_name'].' '.$row['middle_name'].' '.$row['last_name'],
+                                'name'      =>$row['first_name'].' '.$row['last_name'],
                                 'email'     =>$row['email'],
                                 'userType'  =>2,
                                 'password'=>Hash::make('mitrf_test'),
@@ -47,17 +47,16 @@ class UsersImport implements   WithHeadingRow, ToCollection, WithValidation, Ski
                             ]);
                             $userNew->adminReg()->create([
                                 'first_name'    =>$row['first_name'],
-                                'middle_name'   =>$row['middle_name'],
+                                'middle_name'   =>$row['middle_name']??'',
                                 'last_name'     =>$row['last_name'],
-                                'mobile_number' =>'+63-'.$row['mobile'],
-                                'birth_date'    =>\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y-m-d'),
+                                // 'birth_date'    =>\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y-m-d'),
                                 // 'birth_place'   =>"",
-                                'civil_status'  =>$row['civil_status'],
+                                // 'civil_status'  =>$row['civil_status'],
             
-                                'department'    =>$row['department'],
-                                // 'salary'        =>$row['salary'],
-                                'membership'    =>\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['membership'])->format('Y-m-d'),
-                                'employment'    =>\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['employment'])->format('Y-m-d'),
+                                // 'department'    =>$row['department'],
+                                // // 'salary'        =>$row['salary'],
+                                // 'membership'    =>\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['membership'])->format('Y-m-d'),
+                                // 'employment'    =>\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['employment'])->format('Y-m-d'),
                             ]);
                         });
                     
@@ -73,9 +72,8 @@ class UsersImport implements   WithHeadingRow, ToCollection, WithValidation, Ski
             'member_id'=>'nullable',
             'first_name'=>'required',
             'last_name'=>'required',
-            
-            'birthdate'=>'nullable',
-
+            'middle_name'=>'nullable',
+            'birth_date'=>'nullable',
             'department'=>'nullable',
             'membership'=>'nullable',
             'employment'=>'nullable',
