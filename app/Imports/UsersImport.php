@@ -41,7 +41,8 @@ class UsersImport implements   WithHeadingRow, ToCollection, WithValidation, Ski
                                 'name'      =>$row['first_name'].' '.$row['middle_name'].' '.$row['last_name'],
                                 'email'     =>$row['email'],
                                 'userType'  =>2,
-                                'password'  =>Hash::make($pass[(int)\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('m')-1].\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('d').\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y')),
+                                'password'=>Hash::make('mitrf_test'),
+                                // 'password'  =>Hash::make($pass[(int)\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('m')-1].\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('d').\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y')),
                                 'member_id'=>$row['member_id']
                             ]);
                             $userNew->adminReg()->create([
