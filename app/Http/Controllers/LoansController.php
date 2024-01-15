@@ -342,7 +342,7 @@ class LoansController extends Controller
         $reimbursement_balance_in = 5000;
         $reimbursement_balance_out = 7000;
 
-        foreach (Medical::where('user_id', auth()->id())->where('status', '!=', 'Pending')->where('status', '!=', 'Denied')->get() as $medical) {
+        foreach (Medical::where('user_id', auth()->id())->where('status', '!=', 'Pending')->where('status', '!=', 'Denied')->where('status', '!=', 'Rejected')->get() as $medical) {
             if (date_format($medical->created_at, 'Y') == Carbon::now()->format('Y')) {
                 if ($medical->reimbursment_type == "IN-PATIENT") {
                     $reimbursement_balance_in = $reimbursement_balance_in - $medical->amount;
