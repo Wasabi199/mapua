@@ -236,7 +236,7 @@
                 </div>
                 <div class="col-span-6 sm:col-span-3">
                   <label class="block text-sm font-medium text-gray-700"
-                    >Net Amount due to Borrower</label
+                    >Net Proceeds Recieved</label
                   >
                   <div class="relative">
                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
@@ -345,8 +345,8 @@
             <p class="ml-2 underline">&#8369 {{ loan.amount.toLocaleString("en-US") }}</p>
           </div>
           <div class="flex text-lg">
-            <p class="font-semibold">Net Amount due to Borrower:</p>
-            <p class="ml-2 underline">&#8369 {{ loan.loan_amount.toLocaleString("en-US") }}</p>
+            <p class="font-semibold">Net Proceeds Recieved:</p>
+            <p class="ml-2 underline">&#8369 {{ amount.toLocaleString("en-US") }}</p>
           </div>
           <div class="flex text-lg">
             <p class="font-semibold">Loan Duration:</p>
@@ -447,7 +447,7 @@
                 </div>
                 <div class="col-span-6 sm:col-span-3">
                   <label class="block text-sm font-medium text-gray-700"
-                    >Net Amount due to Borrower</label
+                    >Net Proceeds Recieved</label
                   >
                   <div>
                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
@@ -559,8 +559,8 @@
            <!-- LOAN AMOUNT-->
 
            <div class="flex text-lg">
-            <p class="font-semibold">Net Amount Due to Borrower:</p>
-            <p class="ml-2 underline">&#8369 {{ loan.loan_amount.toLocaleString("en-US") }}</p>
+            <p class="font-semibold">Net Proceeds Recieved:</p>
+            <p class="ml-2 underline">&#8369 {{ amount.toLocaleString("en-US") }}</p>
           </div>
 
           <div class="flex text-lg">
@@ -635,8 +635,8 @@
           <!-- LOAN AMOUNT-->
 
           <div class="flex text-lg">
-            <p class="font-semibold">Net Amount Due to Borrower:</p>
-            <p class="ml-2 underline">&#8369 {{ loan.loan_amount.toLocaleString("en-US") }}</p>
+            <p class="font-semibold">Net Proceeds Recieved:</p>
+            <p class="ml-2 underline">&#8369 {{ amount.toLocaleString("en-US") }}</p>
           </div>
 
 
@@ -1202,7 +1202,7 @@ export default {
         new Date().getUTCFullYear() -
         new Date(this.$props.info.membership).getUTCFullYear(),
       department: this.$props.info.department,
-      amount: this.$props.loan.loan_amount,
+      amount:  this.$props.loan.amount - (this.$props.loan.amount * 0.02),
       duration: this.$props.loan.duration,
 
       rejectForm: this.$inertia.form({

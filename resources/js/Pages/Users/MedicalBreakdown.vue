@@ -83,7 +83,7 @@
             <span v-if="medical.health == true">Doctor's Endorsement</span>
           </div>
           <div v-for="attachment in medical.attachments" v-bind:key="attachment.id">
-            <img class="w-64 h-64" v-if="attachment.type == 3" :src="attachment.image == null ? '' : '../../../' + attachment.image
+            <img class="w-64 h-64" v-if="attachment.type == 3" :src="attachment.image == null ? '' :  attachment.image
               " />
           </div>
         </div>
@@ -92,7 +92,7 @@
             <span v-if="medical.health == true">Lab Results</span>
           </div>
           <div v-for="attachment in medical.attachments" v-bind:key="attachment.id">
-            <img class="w-64 h-64" v-if="attachment.type == 4" :src="attachment.image == null ? '' : '../../../' + attachment.image
+            <img class="w-64 h-64" v-if="attachment.type == 4" :src="attachment.image == null ? '' :  attachment.image
               " />
           </div>
         </div>

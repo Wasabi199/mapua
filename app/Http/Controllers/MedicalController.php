@@ -7,30 +7,35 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Request as QueryRequest;
 use App\Models\{Admin, BoardMembers, Medical, User, UserNotifications};
+use App\Services\Approval;
 use Illuminate\Support\Facades\{Hash, DB, Redirect,Auth };
 use App\Services\NotificationService;
 class MedicalController extends Controller
 {
     //
     public function index(QueryRequest $query){
+        $filters = $query::only('status');
+        isset($filters['status']) ? $filters['status'] = Approval::status($filters['status']) : $filters['status'] = Approval::status($filters['status'] = 'All');
+
         $notification = UserNotifications::filter(Auth::user()->userType)->orderByRaw('created_at DESC')->get();
         $notificationCount = $notification->where('onRead',false)->count();
 
         // $user = User::with('medicals')
-        $medical = Medical::with('user')->whereRelation('user','status',1)
+        $medical = Medical::with('user')
         // ->orderBy('name')
-        // ->filter($query::only('search'))
+        ->filterAdmin($filters)
         // ->get()
         ->limit(5)
         ->orderByRaw('created_at DESC')
         ->paginate(5);
         // ->appends($query::only('search'));
         // $filters = $query::all('search');
-
+// dd($medical);
         return Inertia::render('Medical/Medical_Reimbursment',[
             'medical'=>$medical,
             'notification'=>$notification,
             'count'=>$notificationCount,
+            'filter'=>$filters
         ]);
     }
     public function medicalProfile($id){

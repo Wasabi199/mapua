@@ -733,6 +733,7 @@ export default {
 
   data() {
     return {
+
       amountValidation: false,
       isSubmiting: false,
       showModal: false,
@@ -740,9 +741,11 @@ export default {
       forRelative: false,
       total_amount: 0,
 
+
       membership: this.$props.users.admin_reg.membership,
 
-      loanTypes: ["Housing Loan", "Educational Loan", "Emergency Loan"],
+      loanTypes: ["Housing Loan", "Educational Loan"],
+
       form: this.$inertia.form({
         loan_type: "",
         amount: "",
@@ -760,7 +763,6 @@ export default {
         terms: "",
         interest: "",
         attachment1: "",
-        // proof:'',
         attachment3: "",
       }),
 
@@ -821,34 +823,34 @@ export default {
     submit() {
       this.submitModal = true;
       if (this.form.loan_type == "Housing Loan") {
-        let interest = 0.09;
-        this.form.interest = (0.02 + interest * (this.form.terms / 12)).toFixed(
-          2
-        );
+
+        if(this.form.terms == 12){
+          let interest = 0.0475473;
+        this.form.interest = (interest * (this.form.terms / 12)).toFixed(7);
         this.form.loan_amount =
-          this.form.amount + this.form.amount * this.form.interest;
+          (this.form.amount + (this.form.amount * this.form.interest)).toFixed(2);
+        }else{
+          let interest = 0.0945673;
+        this.form.interest = (interest * (this.form.terms / 24)).toFixed(7);
+        this.form.loan_amount =
+          (this.form.amount + (this.form.amount * this.form.interest)).toFixed(2);
+        }
+
+
+
       } else if (this.form.loan_type == "Educational Loan") {
         if (this.forRelative == true) {
-          let interest = 0.09;
+          let interest = 0.0475473;
           this.form.terms = 12;
-          this.form.interest = (
-            0.02 +
-            interest * (this.form.terms / 12)
-          ).toFixed(2);
-          this.form.loan_amount =
-            this.form.amount + this.form.amount * this.form.interest;
+          this.form.interest = (interest * (this.form.terms / 12)).toFixed(7);
+          this.form.loan_amount =(this.form.amount + (this.form.amount * this.form.interest)).toFixed(2);
         } else {
-          let interest = 0.09;
+          let interest = 0.0475473;
           this.educationalForm.terms = 12;
           this.educationalForm.amount = this.form.amount;
           this.educationalForm.loan_type = "Educational Loan";
-          this.educationalForm.interest = (
-            0.02 +
-            interest * (this.educationalForm.terms / 12)
-          ).toFixed(2);
-          this.educationalForm.loan_amount =
-            this.educationalForm.amount +
-            this.educationalForm.amount * this.educationalForm.interest;
+          this.educationalForm.interest = (interest * (this.educationalForm.terms / 12)).toFixed(7);
+          this.educationalForm.loan_amount =(this.educationalForm.amount + (this.educationalForm.amount * this.educationalForm.interest));
         }
       } else {
         let interest = 0.0225;

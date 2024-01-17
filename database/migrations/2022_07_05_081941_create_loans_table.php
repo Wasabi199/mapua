@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('loan_type');
             $table->double('loan_amount');
             $table->double('amount');
-            // $table->string('department');
             $table->double('interest');
 
             $table->string('attachment1')->nullable();

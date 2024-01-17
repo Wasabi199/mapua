@@ -49,8 +49,8 @@ class Approval{
                 case 'Released':
                     return 'Released';
                 break;
-                case 'Denied':
-                    return 'Denied';
+                case 'Rejected':
+                    return 'Rejected';
                 break;
                 default:
                     return null;

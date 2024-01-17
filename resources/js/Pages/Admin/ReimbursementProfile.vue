@@ -70,7 +70,7 @@
               class="w-64 h-64"
               v-if="attachment.type == 1"
               :src="
-                attachment.image == null ? '' : 'https://fopm-sams.s3.amazonaws.com/' + attachment.image
+                attachment.image == null ? '' :  attachment.image
               "
             />
           </div>
@@ -85,7 +85,7 @@
               class="w-64 h-64"
               v-if="attachment.type == 2"
               :src="
-                attachment.image == null ? '' : 'https://fopm-sams.s3.amazonaws.com/' + attachment.image
+                attachment.image == null ? '' : attachment.image
               "
             />
           </div>
@@ -113,7 +113,7 @@
               class="w-64 h-64"
               v-if="attachment.type == 3"
               :src="
-                attachment.image == null ? '' : 'https://fopm-sams.s3.amazonaws.com/' + attachment.image
+                attachment.image == null ? '' :  attachment.image
               "
             />
           </div>
@@ -135,7 +135,7 @@
               class="w-64 h-64"
               v-if="attachment.type == 4"
               :src="
-                attachment.image == null ? '' : 'https://fopm-sams.s3.amazonaws.com/' + attachment.image
+                attachment.image == null ? '' :  attachment.image
               "
             />
           </div>

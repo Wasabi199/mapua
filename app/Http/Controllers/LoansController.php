@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 // use Illuminate\Http\Request;
+
+use App\Helpers\ReimbursementHelper;
 use App\Http\Requests\EducationalLoanRequest;
 use App\Http\Requests\ForRelativeRequest;
 use App\Http\Requests\HousingLoanRequest;
@@ -334,14 +336,17 @@ class LoansController extends Controller
         ]);
     }
 
+
     public function createReimburstment()
     {
+
+
         $userNotification = UserNotifications::filterOwner(Auth::user()->userType)->orderByRaw('created_at DESC')->get();
         $notificationCount = $userNotification->where('onRead', false)->count();
         $info = Admin::where('user_id', auth()->id())->get()->first();
-        $reimbursement_balance_in = 5000;
-        $reimbursement_balance_out = 7000;
-
+        
+        $reimbursement_balance_in = ReimbursementHelper::inPatient(auth()->id());
+        $reimbursement_balance_out = ReimbursementHelper::outPatient(auth()->id());
         foreach (Medical::where('user_id', auth()->id())->where('status', '!=', 'Pending')->where('status', '!=', 'Denied')->where('status', '!=', 'Rejected')->get() as $medical) {
             if (date_format($medical->created_at, 'Y') == Carbon::now()->format('Y')) {
                 if ($medical->reimbursment_type == "IN-PATIENT") {
@@ -357,7 +362,7 @@ class LoansController extends Controller
             'notification' => $userNotification,
             'count' => $notificationCount,
             'reimbursement_balance_in' => $reimbursement_balance_in,
-            'reimbursement_balance_out' => $reimbursement_balance_out
+            'reimbursement_balance_out' => $reimbursement_balance_out,
         ]);
     }
     public function submitCreateReimburstment(medicalRequest $request)
