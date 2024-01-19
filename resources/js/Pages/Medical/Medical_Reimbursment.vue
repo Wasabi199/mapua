@@ -171,7 +171,7 @@ export default {
     medical: Object,
     notification: Object,
     count: Number,
-    filter: Object
+    filter: Object,
   },
   data() {
     return {

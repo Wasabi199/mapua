@@ -654,6 +654,8 @@ export default {
     count: Number,
     reimbursement_balance_in: Number,
     reimbursement_balance_out: Number,
+    benifit:String
+
   },
   setup() {},
   data() {
@@ -669,7 +671,7 @@ export default {
         amount: "",
         clinic_name: "",
         appointment_date: "",
-        medical_benifit: "",
+        medical_benifit: this.benifit,
         medical_record1: File,
         medical_record2: File,
         medical_record3: File,
@@ -736,33 +738,33 @@ export default {
       this.submitModal = true;
     },
     proceed() {
-      if (this.form.reimbursment_type == "IN-PATIENT") {
-        this.form.hospital = true;
-        if (this.form.amount <= this.computationAmount) {
-          if (this.form.amount <= this.$props.reimbursement_balance_in) {
-            this.form.amount = this.form.amount;
-            console.log("checkedasdasd");
-          } else {
-            this.form.amount = this.$props.reimbursement_balance_in;
-            console.log("checked");
-          }
-        } else {
-          // this.form.amount = this.$props.reimbursement_balance_in;
-          this.form.amount = this.computationAmount;
-        }
-      } else {
-        this.form.hospital = false;
-        if (this.form.amount <= this.computationAmount) {
-          if (this.form.amount < this.$props.reimbursement_balance_out) {
-            this.form.amount = this.form.amount;
-          } else {
-            this.form.amount = this.$props.reimbursement_balance_out;
-          }
-        } else {
-          // this.form.amount = this.$props.reimbursement_balance_in;
-          this.form.amount = this.computationAmount;
-        }
-      }
+      // if (this.form.reimbursment_type == "IN-PATIENT") {
+      //   this.form.hospital = true;
+      //   if (this.form.amount <= this.computationAmount) {
+      //     if (this.form.amount <= this.$props.reimbursement_balance_in) {
+      //       this.form.amount = this.form.amount;
+      //       console.log("checkedasdasd");
+      //     } else {
+      //       this.form.amount = this.$props.reimbursement_balance_in;
+      //       console.log("checked");
+      //     }
+      //   } else {
+      //     // this.form.amount = this.$props.reimbursement_balance_in;
+      //     this.form.amount = this.computationAmount;
+      //   }
+      // } else {
+      //   this.form.hospital = false;
+      //   if (this.form.amount <= this.computationAmount) {
+      //     if (this.form.amount < this.$props.reimbursement_balance_out) {
+      //       this.form.amount = this.form.amount;
+      //     } else {
+      //       this.form.amount = this.$props.reimbursement_balance_out;
+      //     }
+      //   } else {
+      //     // this.form.amount = this.$props.reimbursement_balance_in;
+      //     this.form.amount = this.computationAmount;
+      //   }
+      // }
 
       this.form.post(route("ReimburstmentSubmit"), {
         onStart: (visit) => {

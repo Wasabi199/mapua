@@ -347,6 +347,8 @@ class LoansController extends Controller
         
         $reimbursement_balance_in = ReimbursementHelper::inPatient(auth()->id());
         $reimbursement_balance_out = ReimbursementHelper::outPatient(auth()->id());
+
+        
         foreach (Medical::where('user_id', auth()->id())->where('status', '!=', 'Pending')->where('status', '!=', 'Denied')->where('status', '!=', 'Rejected')->get() as $medical) {
             if (date_format($medical->created_at, 'Y') == Carbon::now()->format('Y')) {
                 if ($medical->reimbursment_type == "IN-PATIENT") {
@@ -363,6 +365,7 @@ class LoansController extends Controller
             'count' => $notificationCount,
             'reimbursement_balance_in' => $reimbursement_balance_in,
             'reimbursement_balance_out' => $reimbursement_balance_out,
+            'benifit'=>ReimbursementHelper::benifits(auth()->id())
         ]);
     }
     public function submitCreateReimburstment(medicalRequest $request)
