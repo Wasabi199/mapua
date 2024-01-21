@@ -236,7 +236,7 @@
                 </div>
                 <div class="col-span-6 sm:col-span-3">
                   <label class="block text-sm font-medium text-gray-700"
-                    >Net Proceeds Recieved</label
+                    >Net Proceeds Received</label
                   >
                   <div class="relative">
                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
@@ -345,8 +345,8 @@
             <p class="ml-2 underline">&#8369 {{ loan.amount.toLocaleString("en-US") }}</p>
           </div>
           <div class="flex text-lg">
-            <p class="font-semibold">Net Proceeds Recieved:</p>
-            <p class="ml-2 underline">&#8369 {{ amount.toLocaleString("en-US") }}</p>
+            <p class="font-semibold">Net Proceeds Received:</p>
+            <p class="ml-2 underline">&#8369 {{amount.toLocaleString("en-US") }}</p>
           </div>
           <div class="flex text-lg">
             <p class="font-semibold">Loan Duration:</p>
@@ -447,7 +447,7 @@
                 </div>
                 <div class="col-span-6 sm:col-span-3">
                   <label class="block text-sm font-medium text-gray-700"
-                    >Net Proceeds Recieved</label
+                    >Net Proceeds Received</label
                   >
                   <div>
                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
@@ -559,7 +559,7 @@
            <!-- LOAN AMOUNT-->
 
            <div class="flex text-lg">
-            <p class="font-semibold">Net Proceeds Recieved:</p>
+            <p class="font-semibold">Net Proceeds Received:</p>
             <p class="ml-2 underline">&#8369 {{ amount.toLocaleString("en-US") }}</p>
           </div>
 
@@ -635,7 +635,7 @@
           <!-- LOAN AMOUNT-->
 
           <div class="flex text-lg">
-            <p class="font-semibold">Net Proceeds Recieved:</p>
+            <p class="font-semibold">Net Proceeds Received:</p>
             <p class="ml-2 underline">&#8369 {{ amount.toLocaleString("en-US") }}</p>
           </div>
 
@@ -668,14 +668,16 @@
         v-if="loan.approval == 'Released'"
         class="content-center w-full bg-white rounded-lg shadow-xl lg:mr-50"
       >
-        <table class="min-w-full mx-auto mt-5 divide-y divide-gray-200">
+        <table class="w-full mx-auto mt-5 divide-y divide-gray-200">
           <thead class="inline-auto">
             <tr
               class="box-content w-20 h-10 p-4 text-yellow-400 bg-red-800 border-10"
             >
-              <th class="px-16 text-left">ID</th>
-              <th class="px-16 text-left">Amount</th>
-              <th class="px-16 text-left">Date of Payment</th>
+              <th class="px-8 text-left">ID</th>
+              <th class="px-8 text-left">Amount</th>
+              <th class="px-8 text-left">Remaining Balance</th>
+
+              <th class="px-8 text-left">Date of Payment</th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
@@ -683,7 +685,7 @@
               v-for="contribution in contributions.data"
               v-bind:key="contribution.id"
             >
-              <td class="px-6 py-6 whitespace-nowrap">
+              <td class=" py-6 whitespace-nowrap">
                 <div class="flex items-center">
                   <div>
                     <div class="px-10 text-sm font-medium text-gray-900">
@@ -692,16 +694,25 @@
                   </div>
                 </div>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap">
+              <td class=" py-4 whitespace-nowrap">
                 <div class="flex items-center">
                   <div>
                     <div class="px-10 text-sm font-medium text-gray-900">
-                        &#8369 {{ contribution.contribution_amount }}
+                        &#8369 {{ contribution.contribution_amount.toLocaleString("en-US") }}
                     </div>
                   </div>
                 </div>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap">
+              <td class=" py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div>
+                    <div class="px-10 text-sm font-medium text-gray-900">
+                        &#8369 {{ contribution.remaining_balance.toLocaleString("en-US") }}
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class=" py-4 whitespace-nowrap">
                 <div class="flex items-center">
                   <div>
                     <div class="px-8 text-sm font-medium text-gray-900">
@@ -1177,6 +1188,7 @@ export default {
     contributions: Object,
     notification: Object,
     count: Number,
+    // last_contribution:Ob
   },
   setup() {},
   data() {

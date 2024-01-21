@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('treasurer');
             $table->string('internal_auditor');
             $table->string('accountant');
+            $table->string('school_physician');
             $table->timestamps();
         });
     }

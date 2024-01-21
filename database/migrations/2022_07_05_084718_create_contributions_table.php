@@ -18,7 +18,7 @@ return new class extends Migration
             // $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('loans_id')->references('id')->on('loans')->onDelete('cascade');
             $table->integer('contribution_amount');
-            // $table->date('date');
+            $table->float('remaining_balance')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

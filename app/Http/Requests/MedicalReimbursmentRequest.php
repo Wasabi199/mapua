@@ -26,22 +26,25 @@ class MedicalReimbursmentRequest extends FormRequest
         return [
             //
             'reimbursment_type' => 'required',
-
             'amount' => 'required',
             'medical_benifit' => 'required',
-
             'clinic_name' => 'required',
             'appointment_date' => 'required',
-
             'medical_record1' => 'required',
             'medical_record2' => 'required',
-            // 'medical_record3'=>'required',
-            // 'medical_record4'=>'required',
             'hospital' => 'required',
             'health' => 'required',
             'eye' => 'required',
             'dental' => 'required',
             'mental' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'medical_benifit.required' => 'The Medical Benefit is required'
+
         ];
     }
 }

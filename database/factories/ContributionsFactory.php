@@ -21,6 +21,7 @@ class ContributionsFactory extends Factory
         return [
             //
             'contribution_amount'=>$this->faker->numberBetween($min = 1000, $max=1000000),
+            'remaining_balance'=>$this->faker->numberBetween($min = 1000, $max=1000000),
         ];
     }
     

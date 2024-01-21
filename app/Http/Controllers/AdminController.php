@@ -361,18 +361,17 @@ class AdminController extends Controller
         $loanProfile = Loans::find($id);
         $info = Admin::where('user_id', $loanProfile->user_id)->get()->first();
         $contribution = Contributions::where('loans_id', '=', $loanProfile->id)
-
             ->limit(5)
             ->paginate(5);
-        // dd($info);
+        $last_contribution = Contributions::where('loans_id', '=', $loanProfile->id)->first();
 
         return Inertia::render('Admin/Contributions', [
             'notification' => $notification,
             'loan' => $loanProfile,
             'info' => $info,
             'contributions' => $contribution,
-            'count' => $notificationCount
-
+            'count' => $notificationCount,
+            'last_contribution'=>$last_contribution
         ]);
     }
     public function addContribution()
@@ -483,7 +482,7 @@ class AdminController extends Controller
         $board->update([
             'chairman' => $validated_data['chairman'],
             'committee_chairman' => $validated_data['committee_chairman'],
-            // 'benefits_chairman' => $validated_data['benefits_chairman'],
+            'school_physician' => $validated_data['school_physician'],
             'vice_chairman' => $validated_data['vice_chairman'],
             'corporate_secretary' => $validated_data['corporate_secretary'],
             'treasurer' => $validated_data['treasurer'],

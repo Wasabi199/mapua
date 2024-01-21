@@ -27,11 +27,15 @@ class ContributionImport implements ToCollection, WithHeadingRow, WithValidation
                         // dd($loanUpdate);
                         if($loanUpdate->approval == 'Released'){
                             if(!$loanUpdate->loan_amount >= 0){
-                                $loanUpdate->update([
-                                    'loan_amount'=>$loanUpdate->loan_amount - $row['loan_payment'],
-                                ]); 
+                                
+                                if(!(int)$row['remaining_balance'] == 0){
+                                    $loanUpdate->update([
+                                        'loan_status'=>'Paid'
+                                    ]);
+                                }
                                 $loanUpdate->contributions()->create([
-                                    'contribution_amount'=>$row['loan_payment']
+                                    'contribution_amount'=>$row['loan_payment'],
+                                    'remaining_balance'=>$row['remaining_balance']
                                 ]);
     
                                 if($loanUpdate->loan_amount <= 0){
@@ -59,7 +63,9 @@ class ContributionImport implements ToCollection, WithHeadingRow, WithValidation
     {
         return[
             'member_id'=>'required',
-            'loan_type'=>'required'
+            'loan_type'=>'required',
+            'loan_payment'=>'required',
+            'remaining_balance'=>'required'
         ];
     }
 }

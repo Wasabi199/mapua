@@ -90,6 +90,12 @@
                       </td>
                       <td class=" ">{{this.boards.accountant}}</td>
                     </tr>
+                    <tr>
+                      <td class="font-bold whitespace-nowrap">
+                        School Physician
+                      </td>
+                      <td class=" ">{{this.boards.school_physician}}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -165,6 +171,10 @@
                 <JetLabel>MITRF Accountant</JetLabel>
                 <JetInput class="w-full border-2 border-black py-1 pl-1" v-model="this.updateBoards.accountant" :placeholder="this.boards.accountant" required/>
             </div>
+            <div>
+                <JetLabel>School Physician</JetLabel>
+                <JetInput class="w-full border-2 border-black py-1 pl-1" v-model="this.updateBoards.school_physician" :placeholder="this.boards.school_physician" required/>
+            </div>
         </div>
         <div class="w-full flex justify-center">
             <button @click="submit()" class="py-2 px-5 border-2 border-green-500 rounded-lg text-green-500 hover:bg-green-500 hover:text-white">UPDATE</button>
@@ -209,6 +219,7 @@ export default {
             treasurer:'',
             internal_auditor:'',
             accountant:'',
+            school_physician:''
         })
     }
   },

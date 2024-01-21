@@ -10,7 +10,7 @@ class Contributions extends Model
     use HasFactory;
     protected $fillable =[
         'contribution_amount',
-        // 'date'
+        'remaining_balance'
     ];
     // public function user(){
     //     return $this->belongsTo(User::class);

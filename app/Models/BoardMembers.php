@@ -11,7 +11,7 @@ class BoardMembers extends Model
     protected $fillable = [
         'chairman',
         'committee_chairman',
-        // 'benefits_chairman',
+        'school_physician',
         'vice_chairman',
         'corporate_secretary',
         'treasurer',
