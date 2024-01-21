@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\User;
+use Carbon\Carbon;
 use DateTime;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Illuminate\Support\Facades\Hash;
@@ -55,7 +56,7 @@ class UsersImport implements   WithHeadingRow, ToCollection, WithValidation, Ski
             
                                 // 'department'    =>$row['department'],
                                 // // 'salary'        =>$row['salary'],
-                                // 'membership'    =>\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['membership'])->format('Y-m-d'),
+                                'membership'    =>Carbon::now(),
                                 // 'employment'    =>\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['employment'])->format('Y-m-d'),
                             ]);
                         });

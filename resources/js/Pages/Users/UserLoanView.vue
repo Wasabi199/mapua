@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                             <div class="col-span-6 sm:col-span-3">
-                                <label class="block text-sm font-medium text-gray-700">Net Amount Due to Borrower</label>
+                                <label class="block text-sm font-medium text-gray-700">Net Proceeds Recieved</label>
                                 <div>
                                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
 
