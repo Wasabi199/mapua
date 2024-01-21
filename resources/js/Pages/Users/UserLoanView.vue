@@ -34,7 +34,13 @@
                                 <input type="date" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                                     :value="$props.users.admin_reg.membership" disabled />
                             </div>
-
+                            <div class="col-span-6 sm:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700">Remaining Term of Payments
+                                    &lpar;Months&rpar;</label>
+                                <input type="number"
+                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
+                                    :value="loan_duration" disabled />
+                            </div>
                             <div class="col-span-6 sm:col-span-2">
                                 <label class="block text-sm font-medium text-gray-700">Years of Membership</label>
                                 <input type="number"
@@ -50,28 +56,32 @@
                                 <div>
                                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
 
-                                    <input type="number"
+                                    <input type="text"
                                         class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
-                                        :value="$props.loans.amount" disabled />
+                                        :value="$props.loans.amount.toLocaleString('en-us')" disabled />
                                 </div>
                             </div>
-                            <div class="col-span-6 sm:col-span-3">
-                                <label class="block text-sm font-medium text-gray-700">Net Proceeds Recieved</label>
+                            <!-- <div class="col-span-6 sm:col-span-3">
+                                <label class="block text-sm font-medium text-gray-700">Principal Amount</label>
                                 <div>
                                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
 
                                     <input type="number"
                                         class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
-                                        :value="$props.loans.loan_amount" disabled />
+                                        :value="$props.loans.amount" disabled />
+                                </div>
+                            </div> -->
+                            <div class="col-span-6 sm:col-span-3">
+                                <label class="block text-sm font-medium text-gray-700">Net Proceeds Recieved</label>
+                                <div>
+                                    <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
+
+                                    <input type="text"
+                                        class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
+                                        :value="proceed.toLocaleString('en-us')" disabled />
                                 </div>
                             </div>
-                            <div class="col-span-6 sm:col-span-2">
-                                <label class="block text-sm font-medium text-gray-700">Remaining Term of Payments
-                                    &lpar;Months&rpar;</label>
-                                <input type="number"
-                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
-                                    :value="loan_duration" disabled />
-                            </div>
+                    
 
                             <div class="col-span-6 sm:col-span-2">
                                 <label class="block text-sm font-medium text-gray-700">Approval Status</label>
@@ -172,8 +182,9 @@
                 <table class="min-w-full mx-auto divide-y divide-gray-200">
                     <thead class="inline-auto">
                         <tr class="box-content w-20 h-10 p-4 text-yellow-400 bg-red-800 border-10">
-                            <th class="px-8 text-center">Loan </th>
+                            <th class="px-8 text-center">ID </th>
                             <th class="px-10 text-center">Amount</th>
+                            <th class="px-10 text-center">Remaining Balance</th>
                             <th class="px-16 text-center">Date of Payment</th>
                         </tr>
                     </thead>
@@ -195,6 +206,18 @@
                                             &#8369
                                             {{
                                                 contribution.contribution_amount.toLocaleString("en-US")
+                                            }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="">
+                                    <div>
+                                        <div class="px-12 text-sm font-medium text-center text-gray-900">
+                                            &#8369
+                                            {{
+                                                contribution.remaining_balance.toLocaleString("en-US")
                                             }}
                                         </div>
                                     </div>
@@ -283,6 +306,7 @@ export default {
     data() {
         return {
             loan_duration: this.loans.duration - this.contributions.total,
+            proceed:this.loans.amount - (this.loans.amount * 0.02)
         };
     },
     setup() { },
