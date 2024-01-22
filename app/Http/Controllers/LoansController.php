@@ -101,27 +101,16 @@ class LoansController extends Controller
             } else {
                 if ($request->hasFile('attachment1') || $request->hasFile('attachment2') || $request->hasFile('attachment3')) {
 
-                    // $file1 = $request->file('attachment1');
-                    // $file2 = $request->file('attachment2');
-                    // $file3 = $request->file('attachment3');
-
-                    // $file_name1 = time() . '.' . $file1->getClientOriginalName();
-                    // $file_name2 = time() . '.' . $file2->getClientOriginalName();
-                    // $file_name3 = time() . '.' . $file3->getClientOriginalName();
-
-                    // $file1->move(public_path('uploads/loans'), $file_name1);
-                    // $file2->move(public_path('uploads/loans'), $file_name2);
-                    // $file3->move(public_path('uploads/loans'), $file_name3);
-
 
                     $user_loans = $user->loans()->create([
 
                         'loan_type' => $validate_data['loan_type'],
                         'duration' => $validate_data['terms'],
-                        'attachment1' =>'https://fopm-sams.s3.amazonaws.com/'.$request->attachment1->store('LoanImage',  's3'),
-                        'attachment2' =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment2->store('LoanImage',  's3'),
-                        "attachment3" =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment3->store('LoanImage',  's3'),
+                        'attachment1' => 'https://fopm-sams.s3.amazonaws.com/' . $request->attachment1->store('LoanImage',  's3'),
+                        'attachment2' => 'https://fopm-sams.s3.amazonaws.com/' . $request->attachment2->store('LoanImage',  's3'),
+                        "attachment3" => 'https://fopm-sams.s3.amazonaws.com/' . $request->attachment3->store('LoanImage',  's3'),
                         'loan_amount' => $validate_data['loan_amount'],
+                        'amortization'=>$validate_data['loan_amount'] / ($validate_data['terms'] * 2),
                         'amount' => $validate_data['amount'],
                         'interest' => $validate_data['interest'],
                         'loan_status' => 'Ongoing',
@@ -166,28 +155,18 @@ class LoansController extends Controller
             } else {
                 if ($request->hasFile('attachment1') || $request->hasFile('attachment2') || $request->hasFile('attachment3')) {
 
-                    // $file1 = $request->file('attachment1');
-                    // $file2 = $request->file('attachment2');
-                    // $file3 = $request->file('attachment3');
-
-                    // $file_name1 = time() . '.' . $file1->getClientOriginalName();
-                    // $file_name2 = time() . '.' . $file2->getClientOriginalName();
-                    // $file_name3 = time() . '.' . $file3->getClientOriginalName();
-
-                    // $file1->move(public_path('uploads/loans'), $file_name1);
-                    // $file2->move(public_path('uploads/loans'), $file_name2);
-                    // $file3->move(public_path('uploads/loans'), $file_name3);
-
 
                     $user_loans = $user->loans()->create([
 
                         'loan_type' => $validate_data['loan_type'],
                         'duration' => $validate_data['terms'],
-                        'attachment1' =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment1->store('LoanImage',  's3'),
-                        'attachment2' =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment2->store('LoanImage',  's3'),
-                        "attachment3" =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment3->store('LoanImage',  's3'),
+                        'attachment1' => 'https://fopm-sams.s3.amazonaws.com/' . $request->attachment1->store('LoanImage',  's3'),
+                        'attachment2' => 'https://fopm-sams.s3.amazonaws.com/' . $request->attachment2->store('LoanImage',  's3'),
+                        "attachment3" => 'https://fopm-sams.s3.amazonaws.com/' . $request->attachment3->store('LoanImage',  's3'),
                         'loan_amount' => $validate_data['loan_amount'],
                         'amount' => $validate_data['amount'],
+                        'amortization'=>$validate_data['loan_amount'] / ($validate_data['terms'] * 2),
+
                         'interest' => $validate_data['interest'],
                         'loan_status' => 'Ongoing',
                         'approval' => 'Submitted',
@@ -225,16 +204,16 @@ class LoansController extends Controller
         } else {
             if ($request->hasFile('attachment1')) {
 
-                // $file1 = $request->file('attachment1');
-                // $file_name1 = time() . '.' . $file1->getClientOriginalName();
-                // $file1->move(public_path('uploads/loans'), $file_name1);
+
                 $user_loans = $user->loans()->create([
 
                     'loan_type' => $validate_data['loan_type'],
                     'duration' => $validate_data['terms'],
-                    'attachment1' =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment1->store('LoanImage',  's3'),
+                    'attachment1' => 'https://fopm-sams.s3.amazonaws.com/' . $request->attachment1->store('LoanImage',  's3'),
                     'loan_amount' => $validate_data['loan_amount'],
                     'amount' => $validate_data['amount'],
+                    'amortization'=>$validate_data['loan_amount'] / ($validate_data['terms'] * 2),
+
                     'interest' => $validate_data['interest'],
                     'loan_status' => 'Ongoing',
                     'approval' => 'Submitted',
@@ -274,23 +253,18 @@ class LoansController extends Controller
                 );
             } else {
                 if ($request->hasFile('attachment1') && $request->hasFile('attachment3')) {
-                    // $file1 = $request->file('attachment1');
-                    // $file3 = $request->file('attachment3');
 
-                    // $file_name1 = time() . '.' . $file1->getClientOriginalName();
-                    // $file_name3 = time() . '.' . $file3->getClientOriginalName();
-
-                    // $file1->move(public_path('uploads/loans'), $file_name1);
-                    // $file3->move(public_path('uploads/loans'), $file_name3);
 
                     $user_loans = $user->loans()->create([
                         'loan_type' => $validate_data['loan_type'],
                         'duration' => $validate_data['terms'],
-                        'attachment1' =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment1->store('LoanImage',  's3'),
+                        'attachment1' => 'https://fopm-sams.s3.amazonaws.com/' . $request->attachment1->store('LoanImage',  's3'),
                         //    'attachment2'=>'../../../uploads/loans/'.$file_name2,
-                        "attachment3" =>'https://fopm-sams.s3.amazonaws.com/'. $request->attachment3->store('LoanImage',  's3'),
+                        "attachment3" => 'https://fopm-sams.s3.amazonaws.com/' . $request->attachment3->store('LoanImage',  's3'),
                         'loan_amount' => $validate_data['loan_amount'],
                         'amount' => $validate_data['amount'],
+                        'amortization'=>$validate_data['loan_amount'] / ($validate_data['terms'] * 2),
+
                         'interest' => $validate_data['interest'],
                         'loan_status' => 'Ongoing',
                         'approval' => 'Submitted',
@@ -344,11 +318,11 @@ class LoansController extends Controller
         $userNotification = UserNotifications::filterOwner(Auth::user()->userType)->orderByRaw('created_at DESC')->get();
         $notificationCount = $userNotification->where('onRead', false)->count();
         $info = Admin::where('user_id', auth()->id())->get()->first();
-        
+
         $reimbursement_balance_in = ReimbursementHelper::inPatient(auth()->id());
         $reimbursement_balance_out = ReimbursementHelper::outPatient(auth()->id());
 
-        
+
         foreach (Medical::where('user_id', auth()->id())->where('status', '!=', 'Pending')->where('status', '!=', 'Denied')->where('status', '!=', 'Rejected')->get() as $medical) {
             if (date_format($medical->created_at, 'Y') == Carbon::now()->format('Y')) {
                 if ($medical->reimbursment_type == "IN-PATIENT") {
@@ -365,7 +339,7 @@ class LoansController extends Controller
             'count' => $notificationCount,
             'reimbursement_balance_in' => $reimbursement_balance_in,
             'reimbursement_balance_out' => $reimbursement_balance_out,
-            'benifit'=>ReimbursementHelper::benifits(auth()->id())
+            'benifit' => ReimbursementHelper::benifits(auth()->id())
         ]);
     }
     public function submitCreateReimburstment(medicalRequest $request)

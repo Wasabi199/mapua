@@ -50,6 +50,11 @@
                                         ).getUTCFullYear()
                                         " disabled />
                             </div>
+                            <div class="col-span-6 sm:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700">Approval Status</label>
+                                <input type="text" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
+                                    :value="$props.loans.approval" disabled />
+                            </div>
 
                             <div class="col-span-6 sm:col-span-3">
                                 <label class="block text-sm font-medium text-gray-700">Principal Amount</label>
@@ -82,12 +87,18 @@
                                 </div>
                             </div>
                     
+                            <div v-if="this.loans.approval == 'For Release' || this.loans.approval == 'Released'" class="col-span-6 sm:col-span-3">
+                                <label class="block text-sm font-medium text-gray-700">Amortization Per Cut Off</label>
+                                <div>
+                                    <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
 
-                            <div class="col-span-6 sm:col-span-2">
-                                <label class="block text-sm font-medium text-gray-700">Approval Status</label>
-                                <input type="text" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
-                                    :value="$props.loans.approval" disabled />
+                                    <input type="text"
+                                        class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
+                                        :value="amortization.toLocaleString('en-us')" disabled />
+                                </div>
                             </div>
+
+                       
                         </div>
                         <div class="col-span-6 mt-2 sm:col-span-2">
                             <label class="block text-sm font-medium text-gray-700">Date of Loan Application</label>
@@ -306,7 +317,8 @@ export default {
     data() {
         return {
             loan_duration: this.loans.duration - this.contributions.total,
-            proceed:this.loans.amount - (this.loans.amount * 0.02)
+            proceed:this.loans.amount - (this.loans.amount * 0.02),
+            amortization:this.loans.amortization
         };
     },
     setup() { },

@@ -129,7 +129,7 @@
                 </li>
                 <li>2. Balance of Previous Loan &lpar;₱___________&rpar;</li>
                 <li class="flex">
-                  3. Net Amount due to Borrower &lpar;₱
+                  3. Net Proceeds Received &lpar;₱
                   <p class="underline">{{ loan.loan_amount.toLocaleString("en-US") }}.00</p>
                   &rpar;
                 </li>

@@ -564,6 +564,11 @@
           </div>
 
           <div class="flex text-lg">
+            <p class="font-semibold">Amortization Per Cut Off:</p>
+            <p class="ml-2 underline">&#8369 {{ amortization.toLocaleString("en-US") }}</p>
+          </div>
+
+          <div class="flex text-lg">
             <p class="font-semibold">Loan Duration:</p>
             <p class="ml-2 underline">{{ loan.duration }} months</p>
           </div>
@@ -639,6 +644,10 @@
             <p class="ml-2 underline">&#8369 {{ amount.toLocaleString("en-US") }}</p>
           </div>
 
+          <div class="flex text-lg">
+            <p class="font-semibold">Amortization Per Cut Off:</p>
+            <p class="ml-2 underline">&#8369 {{ amortization.toLocaleString("en-US") }}</p>
+          </div>
 
           <div class="flex text-lg">
             <p class="font-semibold">Loan Duration:</p>
@@ -1215,6 +1224,7 @@ export default {
         new Date(this.$props.info.membership).getUTCFullYear(),
       department: this.$props.info.department,
       amount:  this.$props.loan.amount - (this.$props.loan.amount * 0.02),
+      amortization:this.$props.loan.amortization,
       duration: this.$props.loan.duration,
 
       rejectForm: this.$inertia.form({

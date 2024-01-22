@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('loan_type');
             $table->double('loan_amount');
             $table->double('amount');
+            $table->double('amortization');
+
             $table->double('interest');
 
             $table->string('attachment1')->nullable();
@@ -33,6 +35,7 @@ return new class extends Migration
             $table->longText('reason')->nullable();
 
             $table->string('loan_status');
+            
             $table->string('approval');
             
             $table->softDeletes();

@@ -11,6 +11,7 @@ use App\Models\Loans;
  */
 class ContributionsFactory extends Factory
 {
+
     /**
      * Define the model's default state.
      *

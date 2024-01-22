@@ -13,6 +13,7 @@ class Loans extends Model
         'loan_type',    
         'loan_amount',  
         'amount',
+        'amortization',
         'interest',
         'approval',
         'duration',
