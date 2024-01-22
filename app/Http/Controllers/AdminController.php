@@ -304,7 +304,7 @@ class AdminController extends Controller
             'user_id' => $loans->user_id,
             'universal_id' => $request->validated()['id'],
             'onRead' => false,
-            'value' => 'Your application is Ready to RELEASE',
+            'value' => 'Your application is Ready for Release',
             'type' => 2,
             'notification_type' => 3
         ]);
