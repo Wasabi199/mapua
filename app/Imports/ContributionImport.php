@@ -24,23 +24,25 @@ class ContributionImport implements ToCollection, WithHeadingRow, WithValidation
                 foreach($loan as $loanUpdate){
                     
                     if($loanUpdate->loan_type == $row['loan_type']){
-                        // dd($loanUpdate);
                         if($loanUpdate->approval == 'Released'){
                             if(!$loanUpdate->loan_amount >= 0){
-                                
-                                if(!(int)$row['remaining_balance'] == 0){
-                                    $loanUpdate->update([
-                                        'loan_status'=>'Paid'
-                                    ]);
-                                }
+                                 
                                 $loanUpdate->contributions()->create([
                                     'contribution_amount'=>$row['loan_payment'],
                                     'remaining_balance'=>$row['remaining_balance']
                                 ]);
+
+                                
     
-                                if($loanUpdate->loan_amount <= 0){
+                                if($loanUpdate->loan_amount - $row['loan_payment'] <= 0){
                                     $loanUpdate->update([
-                                        'loan_status'=>'Paid'
+                                        'loan_amount'=>$loanUpdate->loan_amount - $row['loan_payment'],
+                                        'loan_status'=>'Paid',
+
+                                    ]);
+                                }else{
+                                    $loanUpdate->update([
+                                        'loan_amount'=>$loanUpdate->loan_amount - $row['loan_payment'],
                                     ]);
                                 }
     

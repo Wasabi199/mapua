@@ -337,8 +337,11 @@ class AdminController extends Controller
     {
         $loans = loans::find($request->validated()['id']);
         $data = $request->validated();
-
-        $loans->update($data);
+        $loans->update([
+            'approval'=>$data['approval'],
+            'reason'=>$data['reason'],
+            'loan_status'=>$data['approval']
+        ]);
         UserNotifications::create([
             'user_id' => $loans->user_id,
             'universal_id' => $request->validated()['id'],

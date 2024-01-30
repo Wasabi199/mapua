@@ -5,7 +5,7 @@
         <div class="flex items-center">
           <Link :href="route('ReimbursementView')">
             <h1
-              class="text-xl font-extrabold leading-tight text-gray-800  hover:underline"
+              class="text-xl font-extrabold leading-tight text-gray-800 hover:underline"
             >
               Reimbursement
             </h1>
@@ -34,7 +34,7 @@
           </div>
           <div class="flex gap-x-2">
             <p>Reimbursement Amount:</p>
-            <p class="font-semibold">&#8369 {{ medical.amount.toLocaleString("en-US") }}.00</p>
+            <p class="font-semibold">&#8369 {{ medical.amount.toLocaleString("en-US") }}</p>
           </div>
           <div class="flex gap-x-2">
             <p>Reimbursement Benefit:</p>
@@ -120,7 +120,7 @@
         </div>
         <div
           v-if="this.medical.health == true"
-          class="content-center rounded-lg  lg:mr-50"
+          class="content-center rounded-lg lg:mr-50"
         >
           <div>
             <span v-if="medical.health == true"
@@ -157,7 +157,7 @@
       >
         <div class="flex m-auto gap-x-2 w-fit">
           <p class="font-semibold">Amount:</p>
-          <p>{{this.medical.amount.toLocaleString("en-US")}}.00</p>
+          <p>{{this.medical.amount.toLocaleString("en-US")}}</p>
         </div>
         <div class="flex m-auto gap-x-2 w-fit">
           <p class="font-semibold">Date Released:</p>
@@ -206,7 +206,7 @@
         <div class="flex justify-center">
           <div class="flex my-3 text-xl font-bold dark:text-gray-200">
             <div
-              class="flex px-4 py-1 space-x-2 text-red-600 uppercase border border-red-600 rounded-full cursor-pointer  text-md dark:text-red-600 dark:border-red-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500"
+              class="flex px-4 py-1 space-x-2 text-red-600 uppercase border border-red-600 rounded-full cursor-pointer text-md dark:text-red-600 dark:border-red-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500"
               @click="reimbursementReleaseFunction()"
             >
               <span>For Release</span>
@@ -256,7 +256,7 @@
         <div class="flex justify-center">
           <div class="flex my-3 text-xl font-bold dark:text-gray-200">
             <div
-              class="flex px-4 py-1 space-x-2 text-red-600 uppercase border border-red-600 rounded-full cursor-pointer  text-md dark:text-red-600 dark:border-red-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500"
+              class="flex px-4 py-1 space-x-2 text-red-600 uppercase border border-red-600 rounded-full cursor-pointer text-md dark:text-red-600 dark:border-red-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500"
               @click="reimbursementReleasedFunction()"
             >
               <span>Released</span>

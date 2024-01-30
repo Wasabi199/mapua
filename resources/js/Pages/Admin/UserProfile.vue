@@ -5,13 +5,13 @@
                 <div class="flex items-center">
                     <Link :href="route('users')" class="hover:underline">
                         <h1
-                            class="font-extrabold text-xl text-gray-800 leading-tight"
+                            class="text-xl font-extrabold leading-tight text-gray-800"
                         >
                             Members
                         </h1>
                     </Link>
                     <svg
-                        class="h-6 w-6"
+                        class="w-6 h-6"
                         fill="none"
                         stroke="blue"
                         viewBox="0 0 24 24"
@@ -25,24 +25,24 @@
                         />
                     </svg>
                     <h1
-                        class="font-extrabold text-xl text-gray-800 leading-tight"
+                        class="text-xl font-extrabold leading-tight text-gray-800"
                     >
                         {{ info.name }}'s Profile
                     </h1>
                 </div>
             </div>
         </template>
-        <div class="flex pl-44 sm:mx-auto mt-10">
+        <div class="flex mt-10 pl-44 sm:mx-auto">
             <div class="py-12">
                 <div class="max-w-7xl sm:px-6 lg:px-8">
                     <div
-                        class="bg-white p-4 overflow-hidden border-gray-300 shadow-xl sm:rounded-lg"
+                        class="p-4 overflow-hidden bg-white border-gray-300 shadow-xl sm:rounded-lg"
                     >
                         <!-- Contact -->
                         <div class="mb-8">
                             <div class="flex text-lg">
                                 <svg
-                                    class="h-6 w-6 text-red-900"
+                                    class="w-6 h-6 text-red-900"
                                     fill="none"
                                     stroke="currentColor"
                                     stroke-width="2"
@@ -63,7 +63,7 @@
 
                             <div class="flex text-lg">
                                 <svg
-                                    class="h-6 w-6 text-red-900"
+                                    class="w-6 h-6 text-red-900"
                                     fill="none"
                                     stroke="currentColor"
                                     stroke-width="2"
@@ -88,7 +88,7 @@
                             <p class="ml-2 underline">{{ info.member_id }}</p>
                         </div>
                         <!-- Name -->
-                        <div class="justify-between flex">
+                        <div class="flex justify-between">
                             <div class="flex text-lg">
                                 <p class="font-semibold">Name:</p>
                                 <p class="ml-2 underline">{{ info.name }}</p>
@@ -96,7 +96,7 @@
 
                             <svg
                                 @click="showModal = !showModal"
-                                class="h-6 w-6 text-red-900 hover:text-red-700"
+                                class="w-6 h-6 text-red-900 hover:text-red-700"
                                 fill="none"
                                 stroke="currentColor"
                                 stroke-width="2"
@@ -169,7 +169,7 @@
                                     info.user_contribution.contribution_amount.toLocaleString(
                                         "en-US"
                                     )
-                                }}.00
+                                }}
                             </p>
                         </div>
                     </div>
@@ -178,14 +178,14 @@
 
             <!-- Past loans -->
 
-            <div class="bg-white shadow-lg mr-20">
+            <div class="mr-20 bg-white shadow-lg">
                 <table class="min-w-full divide-y divide-gray-200 table-auto">
                     <thead>
-                        <tr class="bg-red-800 text-yellow-400">
+                        <tr class="text-yellow-400 bg-red-800">
                             <th class="text-center px-18">Past Loan</th>
                             <th class="text-center px-14">Amount</th>
-                            <th class="text-center px-12">Terms</th>
-                            <th class="text-center px-20">
+                            <th class="px-12 text-center">Terms</th>
+                            <th class="px-20 text-center">
                                 Date of Completion
                             </th>
                         </tr>
@@ -207,9 +207,9 @@
                                 <div class="flex items-center">
                                     <div>
                                         <div
-                                            class="px-14 text-sm font-medium text-gray-900"
+                                            class="text-sm font-medium text-gray-900 px-14"
                                         >
-                                        &#8369 {{ loan.amount.toLocaleString("en-US") }}.00
+                                        &#8369 {{ loan.amount.toLocaleString("en-US") }}
                                         </div>
                                     </div>
                                 </div>
@@ -251,13 +251,13 @@
                 >
                     <div class="p-5">
                         <div
-                            class="flex justify-between text-xl font-bold text-gray-900 my-3"
+                            class="flex justify-between my-3 text-xl font-bold text-gray-900"
                         >
                             <span>Update info Information</span>
                             <svg
                                 @click="showModal = !showModal"
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="h-6 w-6 cursor-pointer"
+                                class="w-6 h-6 cursor-pointer"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -270,71 +270,71 @@
                                 />
                             </svg>
                         </div>
-                        <div class="grid grid-cols-2 p-5 gap-5">
+                        <div class="grid grid-cols-2 gap-5 p-5">
                             <div class="flex flex-col col-span-2">
                                 <span
-                                    class="text-sm leading-snug font-bold text-gray-900"
+                                    class="text-sm font-bold leading-snug text-gray-900"
                                     >Update Personal Information</span
                                 >
                             </div>
                             <!-- First Name -->
                             <div class="flex flex-col">
                                 <span
-                                    class="text-sm leading-snug font-semibold text-gray-900"
+                                    class="text-sm font-semibold leading-snug text-gray-900"
                                     >First Name</span
                                 >
                                 <jet-input
                                     v-model="form.first_name"
                                     :placeholder="info.admin_reg.first_name"
-                                    class="px-3 py-1 mt-2 text-lg text-gray-900 font-bold"
+                                    class="px-3 py-1 mt-2 text-lg font-bold text-gray-900"
                                 />
                             </div>
                             <!-- Middle Name -->
                             <div class="flex flex-col">
                                 <span
-                                    class="text-sm leading-snug font-semibold text-gray-900"
+                                    class="text-sm font-semibold leading-snug text-gray-900"
                                     >Middle Name</span
                                 >
                                 <jet-input
                                     v-model="form.middle_name"
                                     :placeholder="info.admin_reg.middle_name"
-                                    class="px-3 py-1 mt-2 text-lg text-gray-900 font-bold"
+                                    class="px-3 py-1 mt-2 text-lg font-bold text-gray-900"
                                 />
                             </div>
                             <!-- Last Name -->
                             <div class="flex flex-col">
                                 <span
-                                    class="text-sm leading-snug font-semibold text-gray-900"
+                                    class="text-sm font-semibold leading-snug text-gray-900"
                                     >Last Name</span
                                 >
                                 <jet-input
                                     v-model="form.last_name"
                                     :placeholder="info.admin_reg.last_name"
-                                    class="px-3 py-1 mt-2 text-lg text-gray-900 font-bold"
+                                    class="px-3 py-1 mt-2 text-lg font-bold text-gray-900"
                                 />
                             </div>
                             <!-- Mobile Number -->
                             <div class="flex flex-col">
                                 <span
-                                    class="text-sm leading-snug font-semibold text-gray-900"
+                                    class="text-sm font-semibold leading-snug text-gray-900"
                                     >Mobile Number</span
                                 >
                                 <jet-input
                                     v-model="form.mobile_number"
                                     :placeholder="info.admin_reg.mobile_number"
-                                    class="px-3 py-1 mt-2 text-lg text-gray-900 font-bold"
+                                    class="px-3 py-1 mt-2 text-lg font-bold text-gray-900"
                                 />
                             </div>
                             <!-- Birth Date -->
                             <div class="flex flex-col">
                                 <span
-                                    class="text-sm leading-snug font-semibold text-gray-900"
+                                    class="text-sm font-semibold leading-snug text-gray-900"
                                     >Date of Birth</span
                                 >
                                 <jet-input
                                     v-model="form.birth_date"
                                     :placeholder="info.admin_reg.birth_date"
-                                    class="px-3 py-1 mt-2 text-lg text-gray-900 font-bold"
+                                    class="px-3 py-1 mt-2 text-lg font-bold text-gray-900"
                                     type="text"
                                     onfocus="(this.type='date')"
                                 />
@@ -342,13 +342,13 @@
                             <!-- Civil Status -->
                             <div class="flex flex-col">
                                 <span
-                                    class="text-sm leading-snug font-semibold text-gray-900"
+                                    class="text-sm font-semibold leading-snug text-gray-900"
                                     >Civil Status</span
                                 >
                                 <select
                                     v-model="form.civil_status"
                                     :placeholder="info.admin_reg.civil_status"
-                                    class="mt-1 block w-full dark text-gray-900 border-gray-300 focus:ring-opacity-50 rounded-md shadow-sm"
+                                    class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark focus:ring-opacity-50"
                                     required
                                 >
                                     <option disabled value="placeholder">
@@ -367,13 +367,13 @@
                             <!-- Department -->
                             <div class="flex flex-col col-span-2">
                                 <span
-                                    class="text-sm leading-snug font-semibold text-gray-900"
+                                    class="text-sm font-semibold leading-snug text-gray-900"
                                     >Department</span
                                 >
                                 <select
                                     v-model="form.department"
                                     :placeholder="info.admin_reg.department"
-                                    class="mt-1 block w-full dark text-gray-900 border-gray-300 focus:ring-opacity-50 rounded-md shadow-sm"
+                                    class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark focus:ring-opacity-50"
                                     required
                                 >
                                     <option disabled value="placeholder">
@@ -391,7 +391,7 @@
                             <!-- Employment -->
                             <div class="flex flex-col">
                                 <span
-                                    class="text-sm leading-snug font-semibold text-gray-900"
+                                    class="text-sm font-semibold leading-snug text-gray-900"
                                     >Date of Employment</span
                                 >
                                 <jet-input
@@ -399,13 +399,13 @@
                                     :placeholder="info.admin_reg.employment"
                                     type="text"
                                     onfocus="(this.type='date')"
-                                    class="px-3 py-1 mt-2 text-lg text-gray-900 font-bold"
+                                    class="px-3 py-1 mt-2 text-lg font-bold text-gray-900"
                                 />
                             </div>
                             <!-- Membership -->
                             <div class="flex flex-col">
                                 <span
-                                    class="text-sm leading-snug font-semibold text-gray-900"
+                                    class="text-sm font-semibold leading-snug text-gray-900"
                                     >Date of Membership</span
                                 >
                                 <jet-input
@@ -413,21 +413,21 @@
                                     :placeholder="info.admin_reg.membership"
                                     type="text"
                                     onfocus="(this.type='date')"
-                                    class="px-3 py-1 mt-2 text-lg text-gray-900 font-bold"
+                                    class="px-3 py-1 mt-2 text-lg font-bold text-gray-900"
                                 />
                             </div>
                             <!-- Total Contribution -->
                         </div>
                         <div
-                            class="flex justify-end text-xl font-bold dark:text-gray-200 my-3"
+                            class="flex justify-end my-3 text-xl font-bold dark:text-gray-200"
                         >
                             <div
                                 @click="submit"
-                                class="flex space-x-2 px-4 py-1 border text-sm leading-snug font-semibold text-green-600 dark:text-green-600 dark:border-green-600 border-green-600 uppercase rounded-full dark:hover:text-gray-200 hover:bg-green-500 cursor-pointer"
+                                class="flex px-4 py-1 space-x-2 text-sm font-semibold leading-snug text-green-600 uppercase border border-green-600 rounded-full cursor-pointer dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:bg-green-500"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    class="h-6 w-6"
+                                    class="w-6 h-6"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"

@@ -4,7 +4,7 @@
             <div class="flex justify-between">
                 <div class="flex items-center">
                     <h1
-                        class="font-extrabold text-xl text-gray-800 leading-tight"
+                        class="text-xl font-extrabold leading-tight text-gray-800"
                     >
                         Current Loans
                     </h1>
@@ -12,9 +12,9 @@
             </div>
         </template>
         <div
-            class="p-2 px-6 leading-tight flex justify-between items-center overflow-hidden"
+            class="flex items-center justify-between p-2 px-6 overflow-hidden leading-tight"
         >
-            <h1 class="text-xl text-gray-700 font-extrabold pl-8">
+            <h1 class="pl-8 text-xl font-extrabold text-gray-700">
                 Loans Management
             </h1>
 
@@ -24,28 +24,31 @@
             <div class="flex flex-col">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div
-                        class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
+                        class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8"
                     >
                         <div
-                            class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg hidden md:block"
+                            class="hidden overflow-hidden border-b border-gray-200 shadow sm:rounded-lg md:block"
                         >
                             <table class="min-w-full divide-y divide-gray-200">
                                 <tbody
                                     class="bg-white divide-y divide-gray-200"
                                 >
-                                    <th class="text-center px-16 bg-gray-100">
+                                    <th class="px-16 text-center bg-gray-100">
                                         Loan Type
                                     </th>
-                                    <th class="text-center px-16 bg-gray-100">
+                                    <th class="px-16 text-center bg-gray-100">
                                         Loan Amount
                                     </th>
-                                    <th class="text-center px-16 bg-gray-100">
+                                    <th class="px-16 text-center bg-gray-100">
                                         Duration
                                     </th>
-                                    <th class="text-center px-16 bg-gray-100">
+                                    <th class="px-16 text-center bg-gray-100">
                                         Date of Loan Application
                                     </th>
-                                    <th class="text-left px-24 bg-gray-100">
+                                    <th class="px-16 text-center bg-gray-100">
+                                        Loan Status
+                                    </th>
+                                    <th class="px-24 text-left bg-gray-100">
                                         Action
                                     </th>
                                     <tr
@@ -58,7 +61,7 @@
                                             <div class="">
                                                 <div>
                                                     <div
-                                                        class="text-sm text-center font-medium text-gray-900"
+                                                        class="text-sm font-medium text-center text-gray-900"
                                                     >
                                                         {{ loan.loan_type }}
                                                     </div>
@@ -71,11 +74,11 @@
                                             <div class="">
                                                 <div>
                                                     <div
-                                                        class="text-sm text-center font-medium text-gray-900"
+                                                        class="text-sm font-medium text-center text-gray-900"
                                                     >
                                                     &#8369 {{
                                                             loan.loan_amount.toLocaleString("en-US")
-                                                        }}.00
+                                                        }}
 
                                                     </div>
                                                 </div>
@@ -87,7 +90,7 @@
                                             <div class="">
                                                 <div>
                                                     <div
-                                                        class="text-sm text-center font-medium text-gray-900"
+                                                        class="text-sm font-medium text-center text-gray-900"
                                                     >
                                                         {{
                                                             loan.duration
@@ -103,7 +106,7 @@
                                             <div class="">
                                                 <div>
                                                     <div
-                                                        class="text-sm text-center font-medium text-gray-900"
+                                                        class="text-sm font-medium text-center text-gray-900"
                                                     >
                                                         {{
                                                             new Date(
@@ -114,9 +117,25 @@
                                                 </div>
                                             </div>
                                         </td>
+
+                                        <td
+                                            class="px-16 py-4 whitespace-nowrap"
+                                        >
+                                            <div class="">
+                                                <div>
+                                                    <div
+                                                        class="text-sm font-medium text-center text-gray-900"
+                                                    >
+                                                        {{
+                                                            loan.loan_status
+                                                        }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td class="py-4 whitespace-nowrap">
                                             <div
-                                                class="w-fit text-center px-4 py-1 border text-md text-green-600 dark:text-green-600 dark:border-green-600 border-green-600 uppercase rounded-full dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-green-500 cursor-pointer"
+                                                class="px-4 py-1 text-center text-green-600 uppercase border border-green-600 rounded-full cursor-pointer w-fit text-md dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-green-500"
                                             >
                                                 <Link
                                                     :href="
@@ -146,16 +165,17 @@
                 v-bind:key="loan.id"
             >
 
-                <div class="bg-white p-4 rounded-lg shadow">
+                <div class="p-4 bg-white rounded-lg shadow">
                     <div><b>Loan Type:</b> {{ loan.loan_type }}</div>
                     <div><b>Loan Amount:</b> &#8369 {{ loan.loan_amount.toLocaleString("en-US") }}</div>
                     <div><b>Duration:</b> {{ loan.duration }} months</div>
+                    <div><b>Loan Status:</b> {{ loan.loan_status }}</div>
                     <div>
                         <b>Date of Loan Application:</b>
                         {{ new Date(loan.created_at) }}
                     </div>
                     <div
-                        class="flex items-center pl-12 py-1 border text-md text-green-600 dark:text-green-600 dark:border-green-600 border-green-600 uppercase rounded-full dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-green-500 cursor-pointer"
+                        class="flex items-center py-1 pl-12 text-green-600 uppercase border border-green-600 rounded-full cursor-pointer text-md dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-green-500"
                     >
                         <Link :href="route('UserLoanView', loan.id)">
                             <div>
@@ -171,14 +191,14 @@
             <div class="flex justify-center px-6 py-4 whitespace-nowrap">
                 <Link
                     :href="route('userLoan')"
-                    class="flex space-x-2 mr-5 px-4 py-1 border text-md text-yellow-600 dark:text-yellow-600 dark:border-yellow-600 border-yellow-600 uppercase rounded-full dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-yellow-500 cursor-pointer"
+                    class="flex px-4 py-1 mr-5 space-x-2 text-yellow-600 uppercase border border-yellow-600 rounded-full cursor-pointer text-md dark:text-yellow-600 dark:border-yellow-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-yellow-500"
                 >
                     <button>APPLY NEW LOAN</button>
                 </Link>
             </div>
             <div class="flex justify-center px-6 py-4 whitespace-nowrap">
                 <div
-                    class="flex space-x-2 mr-5 px-4 py-1 border text-md text-red-600 dark:text-red-600 dark:border-red-600 border-red-600 uppercase rounded-full dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500 cursor-pointer"
+                    class="flex px-4 py-1 mr-5 space-x-2 text-red-600 uppercase border border-red-600 rounded-full cursor-pointer text-md dark:text-red-600 dark:border-red-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500"
                 >
                     <Link :href="route('userDashboard')">
                         <button>BACK TO HOME</button>

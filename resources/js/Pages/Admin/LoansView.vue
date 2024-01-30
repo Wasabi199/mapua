@@ -3,52 +3,25 @@
     <template #header>
       <div class="flex justify-between">
         <div class="flex items-center">
-          <h1 class="font-extrabold text-xl text-gray-800 leading-tight">
+          <h1 class="text-xl font-extrabold leading-tight text-gray-800">
             Loans
           </h1>
         </div>
       </div>
     </template>
 
-    <div class="p-2 px-6 leading-tight flex justify-end items-center">
-      <!-- <h1 class="text-xl text-gray-700 font-extrabold pl-8">Loans</h1> -->
+    <div class="flex items-center justify-end p-2 px-6 leading-tight">
+      <!-- <h1 class="pl-8 text-xl font-extrabold text-gray-700">Loans</h1> -->
 
-      <div class="flex px-3 py-1 gap-2">
+      <div class="flex gap-2 px-3 py-1">
         <Listbox class="w-80" v-model="form.approval">
           <div class="relative">
             <ListboxButton
-              class="
-                elative
-                w-full
-                py-2
-                pl-3
-                pr-10
-                text-left
-                bg-white
-                rounded-lg
-                shadow-md
-                cursor-default
-                focus:outline-none
-                focus-visible:ring-2
-                focus-visible:ring-opacity-75
-                focus-visible:ring-white
-                focus-visible:ring-offset-orange-300
-                focus-visible:ring-offset-2
-                focus-visible:border-indigo-500
-                sm:text-sm
-              "
+              class="w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default elative focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm"
             >
               View By: {{ form.approval }}
               <span
-                class="
-                  absolute
-                  inset-y-0
-                  right-0
-                  flex
-                  items-center
-                  pr-2
-                  pointer-events-none
-                "
+                class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none "
               >
                 <SelectorIcon
                   class="w-5 h-5 text-gray-400"
@@ -62,28 +35,14 @@
               leave-to-class="opacity-0"
             >
               <ListboxOptions
-                class="
-                  absolute
-                  w-full
-                  py-1
-                  mt-1
-                  overflow-auto
-                  text-base
-                  bg-white
-                  rounded-md
-                  shadow-lg
-                  max-h-60
-                  ring-1 ring-black ring-opacity-5
-                  focus:outline-none
-                  sm:text-sm
-                "
+                class="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
               >
                 <ListboxOption
                   v-for="status in statuses"
                   :key="status"
                   :value="status"
                   as="template"
-                  ><li class="px-3 py-2 hover:bg-gray-200 cursor-pointer">
+                  ><li class="px-3 py-2 cursor-pointer hover:bg-gray-200">
                     {{ status }}
                   </li></ListboxOption
                 >
@@ -98,39 +57,29 @@
       <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div
-            class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
+            class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8"
           >
             <div
-              class="
-                shadow
-                overflow-hidden
-                border-b border-gray-200
-                sm:rounded-lg
-              "
+              class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg"
             >
               <table class="min-w-full divide-y divide-gray-200">
                 <tbody
-                  class="
-                    bg-white
-                    divide-y divide-gray-200
-                    border-gray-200
-                    sm:rounded-lg
-                  "
+                  class="bg-white border-gray-200 divide-y divide-gray-200 sm:rounded-lg"
                 >
-                  <th class="text-center px-16 bg-gray-100">Name</th>
-                  <th class="text-center px-16 bg-gray-100">Loan Type</th>
-                  <th class="text-center px-16 bg-gray-100">Loan Balance</th>
-                  <th class="text-center px-16 bg-gray-100">Status</th>
-                  <th class="text-center px-16 bg-gray-100">Duration</th>
-                  <th class="text-center px-16 bg-gray-100">Last Updated Loan Payment</th>
-                  <th class="text-left px-16 bg-gray-100">Action</th>
+                  <th class="px-16 text-center bg-gray-100">Name</th>
+                  <th class="px-16 text-center bg-gray-100">Loan Type</th>
+                  <th class="px-16 text-center bg-gray-100">Loan Balance</th>
+                  <th class="px-16 text-center bg-gray-100">Status</th>
+                  <th class="px-16 text-center bg-gray-100">Duration</th>
+                  <th class="px-16 text-center bg-gray-100">Last Updated Loan Payment</th>
+                  <th class="px-16 text-left bg-gray-100">Action</th>
 
                   <tr v-for="loan in loans.data" v-bind:key="loan.id">
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="">
                         <div>
                           <Link :href="route('contributions', loan.id)">
-                            <div class="text-sm text-center font-medium text-gray-900">
+                            <div class="text-sm font-medium text-center text-gray-900">
                               {{ loan.user.name }}
                             </div>
                           </Link>
@@ -141,7 +90,7 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="">
                         <div>
-                          <div class="text-sm text-center font-medium text-gray-900">
+                          <div class="text-sm font-medium text-center text-gray-900">
                             {{
                               loan.loan_type
                             }}
@@ -150,19 +99,19 @@
                       </div>
                     </td>
 
-                    <td class="px-14 py-4 whitespace-nowrap">
+                    <td class="py-4 px-14 whitespace-nowrap">
                       <div class="">
                         <div>
-                          <div class="text-sm text-center font-medium text-gray-900">
-                            &#8369 {{loan.loan_amount.toLocaleString("en-US")}}.00
+                          <div class="text-sm font-medium text-center text-gray-900">
+                            &#8369 {{loan.loan_amount.toLocaleString("en-US")}}
                           </div>
                         </div>
                       </div>
                     </td>
-                    <td class=" py-4 whitespace-nowrap">
+                    <td class="py-4 whitespace-nowrap">
                       <div class="">
                         <div class="">
-                          <div class="text-sm text-center font-medium text-gray-900">
+                          <div class="text-sm font-medium text-center text-gray-900">
                             {{
                               loan.approval
                             }}
@@ -171,10 +120,10 @@
                       </div>
                     </td>
 
-                    <td class=" py-4 whitespace-nowrap">
+                    <td class="py-4 whitespace-nowrap">
                       <div class="">
                         <div>
-                          <div class="text-sm text-center font-medium text-gray-900">
+                          <div class="text-sm font-medium text-center text-gray-900">
                             {{
                               loan.duration
                             }} months
@@ -186,7 +135,7 @@
                     <td class="px-10 py-4 whitespace-nowrap">
                       <div class="">
                         <div>
-                          <div class="text-sm text-center font-medium text-gray-900">
+                          <div class="text-sm font-medium text-center text-gray-900">
                            {{
                               loan.contributions[loan.contributions.length-1] != null? new Date(loan.contributions[loan.contributions.length-1].created_at).toLocaleDateString()+" "+new Date(loan.contributions[loan.contributions.length-1].created_at).toLocaleTimeString():'No Loan Payment Yet'
                             }}
@@ -234,18 +183,11 @@
               >
                 <div class="p-5">
                   <div
-                    class="
-                      flex
-                      justify-between
-                      text-xl
-                      font-bold
-                      text-gray-900
-                      my-3
-                    "
+                    class="flex justify-between my-3 text-xl font-bold text-gray-900 "
                   >
                     <span>Update Loan Table</span>
                     <svg
-                      class="h-6 w-6 cursor-pointer"
+                      class="w-6 h-6 cursor-pointer"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -261,17 +203,10 @@
                     </svg>
                   </div>
                   <div
-                    class="
-                      flex flex-col
-                      items-center
-                      text-xl
-                      font-bold
-                      text-gray-900
-                      my-3
-                    "
+                    class="flex flex-col items-center my-3 text-xl font-bold text-gray-900 "
                   >
                     <svg
-                      class="h-36 w-36 rounded-full text-red-700 opacity-60"
+                      class="text-red-700 rounded-full h-36 w-36 opacity-60"
                       fill="none"
                       stroke="currentColor"
                       stroke-width="1.5px"
@@ -310,36 +245,14 @@
                   </div>
                   <div class="flex justify-center">
                     <div
-                      class="
-                        flex
-                        justify-between
-                        text-xl
-                        font-bold
-                        dark:text-gray-200
-                        my-3
-                      "
+                      class="flex justify-between my-3 text-xl font-bold dark:text-gray-200"
                     >
                       <div
-                        class="
-                          flex
-                          space-x-2
-                          mr-5
-                          px-4
-                          py-1
-                          border
-                          text-md text-red-600
-                          dark:text-red-600 dark:border-red-600
-                          border-red-600
-                          uppercase
-                          rounded-full
-                          dark:hover:text-gray-200
-                          hover:text-white hover:border-none hover:bg-red-500
-                          cursor-pointer
-                        "
+                        class="flex px-4 py-1 mr-5 space-x-2 text-red-600 uppercase border border-red-600 rounded-full cursor-pointer text-md dark:text-red-600 dark:border-red-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500"
                         @click="submitDeleteLoan"
                       >
                         <svg
-                          class="h-6 w-6"
+                          class="w-6 h-6"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -355,27 +268,13 @@
                         <span>Yes I'm sure</span>
                       </div>
                     </div>
-                    <div class="flex text-xl font-bold dark:text-gray-200 my-3">
+                    <div class="flex my-3 text-xl font-bold dark:text-gray-200">
                       <div
-                        class="
-                          flex
-                          space-x-2
-                          px-4
-                          py-1
-                          border
-                          text-md text-gray-600
-                          dark:text-gray-600 dark:border-gray-600
-                          border-gray-600
-                          uppercase
-                          rounded-full
-                          dark:hover:text-gray-200
-                          hover:text-white hover:border-none hover:bg-gray-500
-                          cursor-pointer
-                        "
+                        class="flex px-4 py-1 space-x-2 text-gray-600 uppercase border border-gray-600 rounded-full cursor-pointer text-md dark:text-gray-600 dark:border-gray-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-gray-500"
                         @click="showDeleteModal = !showDeleteModal"
                       >
                         <svg
-                          class="h-6 w-6"
+                          class="w-6 h-6"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -406,33 +305,15 @@
         @input="forms.file = $event.target.files[0]"
         name="file"
         type="file"
-        class="
-          border border-yellow-500
-          hover:bg-yellow-300
-          rounded-md
-          m-2
-          p-2
-          flex
-          items-center
-          ml-12
-        "
+        class="flex items-center p-2 m-2 ml-12 border border-yellow-500 rounded-md hover:bg-yellow-300"
       />
       <button
 
         type="submit"
-        class="
-          border border-yellow-500
-          hover:bg-yellow-300
-          rounded-md
-          m-2
-          p-2
-          flex
-          items-center
-          ml-12
-        "
+        class="flex items-center p-2 m-2 ml-12 border border-yellow-500 rounded-md hover:bg-yellow-300"
       >
         <svg
-          class="h-4 w-4 mr-2"
+          class="w-4 h-4 mr-2"
           fill="none"
           stroke="currentColor"
           stroke-width="2"
@@ -454,7 +335,7 @@
         <div class="text-2xl font-semibold">Password</div>
         <div class="">
           <svg
-            class="h-6 w-6 cursor-pointer"
+            class="w-6 h-6 cursor-pointer"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -471,7 +352,7 @@
         </div>
 
       </div>
-      <div class="text-center text-2xl py-5">Please Enter Password for Validation</div>
+      <div class="py-5 text-2xl text-center">Please Enter Password for Validation</div>
       <JetValidationErrors class="mb-4 ml-12"  />
       <div class="pt-5">
 
@@ -479,7 +360,7 @@
         <JetInput v-model="this.forms.password" class="w-full" type="password"/>
       </div>
       <div class="m-auto w-fit">
-        <button @click="submit" class="border-2 border-green-400 py-3 px-10 mt-5 rounded-lg font-semibold text-lg hover:bg-green-500 hover:text-white">Verify</button>
+        <button @click="submit" class="px-10 py-3 mt-5 text-lg font-semibold border-2 border-green-400 rounded-lg hover:bg-green-500 hover:text-white">Verify</button>
       </div>
     </div>
     </Modal>

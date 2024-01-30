@@ -3,21 +3,21 @@
     <template #header>
       <div class="flex justify-between">
         <div class="flex items-center">
-          <h1 class="font-extrabold text-xl text-gray-800 leading-tight">
+          <h1 class="text-xl font-extrabold leading-tight text-gray-800">
             Reimbursement
           </h1>
         </div>
       </div>
     </template>
     <!-- <h1>Reimbursement Page</h1> -->
-    <div class="p-2 px-6 leading-tight flex justify-end items-center">
-      <!-- <h1 class="text-xl text-gray-700 font-extrabold pl-8">Loans</h1> -->
+    <div class="flex items-center justify-end p-2 px-6 leading-tight">
+      <!-- <h1 class="pl-8 text-xl font-extrabold text-gray-700">Loans</h1> -->
 
-      <div class="flex px-3 py-1 gap-2">
+      <div class="flex gap-2 px-3 py-1">
         <Listbox class="w-80" v-model="form.status">
           <div class="relative">
             <ListboxButton
-              class="elative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm"
+              class="w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default elative focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm"
             >
               View By: {{ form.status }}
               <span
@@ -42,7 +42,7 @@
                   :key="status"
                   :value="status"
                   as="template"
-                  ><li class="px-3 py-2 hover:bg-gray-200 cursor-pointer">
+                  ><li class="px-3 py-2 cursor-pointer hover:bg-gray-200">
                     {{ status }}
                   </li></ListboxOption
                 >
@@ -53,29 +53,29 @@
       </div>
     </div>
     <div class="mx-12 my-6 shadow-md">
-      <table class="min-w-fit w-full divide-y divide-gray-200 table-fixed">
-        <th class="text-center py-3 bg-gray-100">Medical Type</th>
-        <th class="text-center py-3 bg-gray-100">Name</th>
-        <th class="text-center py-3 bg-gray-100">Medical Benefit</th>
-        <th class="text-center py-3 bg-gray-100">Status</th>
-        <th class="text-center py-3 bg-gray-100">Amount</th>
-        <th class="text-center py-3 bg-gray-100">Action</th>
+      <table class="w-full divide-y divide-gray-200 table-fixed min-w-fit">
+        <th class="py-3 text-center bg-gray-100">Medical Type</th>
+        <th class="py-3 text-center bg-gray-100">Name</th>
+        <th class="py-3 text-center bg-gray-100">Medical Benefit</th>
+        <th class="py-3 text-center bg-gray-100">Status</th>
+        <th class="py-3 text-center bg-gray-100">Amount</th>
+        <th class="py-3 text-center bg-gray-100">Action</th>
         <tbody class="bg-white divide-y divide-gray-200">
           <tr v-for="medical in medicals.data" v-bind:key="medical.id">
-            <td class="text-center py-5">
+            <td class="py-5 text-center">
               {{ medical.reimbursment_type }}
             </td>
-            <td class="text-center py-5">
+            <td class="py-5 text-center">
               {{ medical.user.name }}
             </td>
-            <td class="text-center py-5">
+            <td class="py-5 text-center">
               {{ medical.medical_benifit }}
             </td>
-            <td class="text-center py-5">
+            <td class="py-5 text-center">
               {{ medical.status }}
             </td>
-            <td class="text-center py-5">
-                &#8369 {{ medical.amount.toLocaleString("en-US") }}.00
+            <td class="py-5 text-center">
+                &#8369 {{ medical.amount.toLocaleString("en-US") }}
             </td>
             <td class="flex justify-center py-5">
               <Link :href="route('ReimbursementProfile', medical.id)">
@@ -84,7 +84,7 @@
                   width="26"
                   height="26"
                   fill="currentColor"
-                  class="bi bi-eye text-green-500"
+                  class="text-green-500 bi bi-eye"
                   viewBox="0 0 16 16"
                 >
                   <path

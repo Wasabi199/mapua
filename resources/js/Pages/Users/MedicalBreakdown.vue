@@ -110,7 +110,7 @@
         <div class="w-full p-5 bg-white rounded-lg shadow-xl">
           <div class="flex m-auto gap-x-2 w-fit">
             <p class="font-semibold">Amount:</p>
-            <p>{{ medical.amount.toLocaleString("en-US") }}.00</p>
+            <p>{{ medical.amount.toLocaleString("en-US") }}</p>
           </div>
           <div class="flex m-auto gap-x-2 w-fit">
             <p class="font-semibold">Date Released:</p>
