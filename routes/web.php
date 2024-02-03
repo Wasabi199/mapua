@@ -65,6 +65,8 @@ Route::prefix('Admin')->middleware(['auth:sanctum', 'Admin'])->group(function ()
     Route::get('Admin/Archive', [AdminController::class, 'userArchive'])->name('archive');
 
     Route::delete('user/permanent/delete', [AdminController::class, 'permanentDeleteUser'])->name('permanentDelete');
+
+    Route::post('Admin/HistoryContribution',[AdminController::class,'contributionHistory'])->name('contributionHistory');
 });
 
 

@@ -314,7 +314,6 @@ class LoansController extends Controller
     public function createReimburstment()
     {
 
-
         $userNotification = UserNotifications::filterOwner(Auth::user()->userType)->orderByRaw('created_at DESC')->get();
         $notificationCount = $userNotification->where('onRead', false)->count();
         $info = Admin::where('user_id', auth()->id())->get()->first();

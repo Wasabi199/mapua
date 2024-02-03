@@ -42,7 +42,7 @@ class ContributionImport implements ToCollection, WithHeadingRow, WithValidation
                                     ]);
                                 }else{
                                     $loanUpdate->update([
-                                        'loan_amount'=>$loanUpdate->loan_amount - $row['loan_payment'],
+                                        'loan_amount'=>$loanUpdate->loan_amount - $row['remaining_balance'],
                                     ]);
                                 }
     

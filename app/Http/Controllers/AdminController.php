@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{User, AddressInformation, BoardMembers, Contributions, UserNotifications, Loans, Medical};
+use App\Models\{User, AddressInformation, BoardMembers, ContributionHistory, Contributions, UserNotifications, Loans, Medical, UserContribution};
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Request as QueryRequest;
@@ -14,6 +14,7 @@ use App\Http\Requests\LoanRejectRequest as rejectLoanRequest;
 use App\Http\Requests\AdminReimbursementUpdateRequest as reimbursementRequest;
 use App\Http\Requests\Admin as RegiterUserRequest;
 use App\Http\Requests\BoardsUpdate;
+use App\Http\Requests\ContributionHistoryRequest;
 use App\Http\Requests\UserSoftDelete;
 use App\Imports\UserAdmin;
 use Carbon\Carbon;
@@ -70,7 +71,7 @@ class AdminController extends Controller
     {
         $notification = UserNotifications::filter(Auth::user()->userType)->orderByRaw('created_at DESC')->get();
         $notificationCount = $notification->where('onRead', false)->count();
-        $userProfile = User::with('AdminReg', 'userContribution')->find($id);
+        $userProfile = User::with('AdminReg', 'userContribution.contributionHistory')->find($id);
         $userLoan = Loans::where('user_id', '=', $id)->where('loan_status', '=', 'Paid')->get();
         // dd($userLoan);
         return Inertia::render('Admin/UserProfile', [
@@ -85,11 +86,9 @@ class AdminController extends Controller
     {
 
         $user_to_delete = User::findOrFail($request->validated()['id']);
-        // dd($request->validated());
         $user_to_delete->update([
             'status' => $request->validated()['status']
         ]);
-        // dd($user_to_delete);
         return Redirect::back()->with(
             'message',
             [NotificationService::notificationItem('success', '', 'Sucessfully Archived')]
@@ -529,5 +528,26 @@ class AdminController extends Controller
             'message',
             [NotificationService::notificationItem('success', '', 'Sucessfully Deleted')]
         );
+    }
+
+    public function contributionHistory(ContributionHistoryRequest $contributionHistory){
+        $validated_data = $contributionHistory->validated();
+        // dd($validated_data);
+        if (Hash::check($validated_data['password'], Auth::user()->password)) {
+
+            UserContribution::findOrFail($validated_data['id'])->contributionHistory()->create([
+                'amount'=>$validated_data['amount']
+            ]);
+
+            return Redirect::route('dashboard')->with(
+                'message',
+                [NotificationService::notificationItem('success', '', 'Sucessfully Claimed Contribution')]
+            );
+        } else {
+            return Redirect::route('dashboard')->with(
+                'message',
+                [NotificationService::notificationItem('failed', '', 'Password Not Match')]
+            );
+        }
     }
 }
