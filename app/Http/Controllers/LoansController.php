@@ -344,9 +344,7 @@ class LoansController extends Controller
     public function submitCreateReimburstment(medicalRequest $request)
     {
         $validate_data = $request->validated();
-        // dd($request);
         $user = User::find(auth()->id());
-        // if ($validate_data['reimbursment_type'] == 'Hospital') {
         $userMedical = $user->medicals()->create([
             'reimbursment_type' => $validate_data['reimbursment_type'],
             'amount' => $validate_data['amount'],
@@ -358,6 +356,8 @@ class LoansController extends Controller
             'eye' => $validate_data['eye'],
             'dental' => $validate_data['dental'],
             'mental' => $validate_data['mental'],
+            'in_patient' => $validate_data['in_patient'],
+
         ]);
         if (isset($request->medical_record1)) {
             if (is_array($request->medical_record1)) {

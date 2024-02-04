@@ -41,6 +41,11 @@
             <p class="font-semibold">{{ medical.medical_benifit }}</p>
           </div>
         </div>
+
+        <!-- <div>
+          
+        </div> -->
+        
         <div class="m-auto mt-10 w-fit">
           <button v-if="this.medical.status == 'Approved'"
             class="bg-[#DC2626] text-white py-4 px-20 text-lg rounded-lg"

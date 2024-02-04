@@ -20,17 +20,12 @@ class MedicalController extends Controller
         $notification = UserNotifications::filter(Auth::user()->userType)->orderByRaw('created_at DESC')->get();
         $notificationCount = $notification->where('onRead',false)->count();
 
-        // $user = User::with('medicals')
         $medical = Medical::with('user')
-        // ->orderBy('name')
         ->filterAdmin($filters)
-        // ->get()
         ->limit(5)
         ->orderByRaw('created_at DESC')
         ->paginate(5);
-        // ->appends($query::only('search'));
-        // $filters = $query::all('search');
-// dd($medical);
+
         return Inertia::render('Medical/Medical_Reimbursment',[
             'medical'=>$medical,
             'notification'=>$notification,
@@ -53,11 +48,11 @@ class MedicalController extends Controller
         ]);
     }
     public function medicalApprove(MedicalApprove $request){
-        // dd($request);
         $medical = Medical::find($request->validated()['id']);
         $data = $request->validated();
-        // dd($data);
         $medical->update($data);
+
+
         UserNotifications::create([
             'user_id'=>$medical->user_id,
             'universal_id'=>$request->validated()['id'],
@@ -66,6 +61,7 @@ class MedicalController extends Controller
             'type'=>2,
             'notification_type'=>5
         ]);
+        
         UserNotifications::create([
             'user_id'=>$medical->user_id,
             'universal_id'=>$request->validated()['id'],
@@ -79,11 +75,13 @@ class MedicalController extends Controller
     }
 
     public function medicalReject(MedicalApprove $request){
-        // dd($request);
-        $medical = Medical::find($request->validated()['id']);
         $data = $request->validated();
-        // dd($medical);
-        $medical->update($data);
+        dd($data);
+        $medical = Medical::find($data['id']);
+        $medical->update([
+            'status'=>$data['status'],
+            'signed_document'=> 'https://fopm-sams.s3.amazonaws.com/' . $request->file->signed_document->store('MedicalPDF',  's3')
+        ]);
         UserNotifications::create([
             'user_id'=>$medical->user_id,
             'universal_id'=>$request->validated()['id'],
@@ -94,11 +92,11 @@ class MedicalController extends Controller
         ]);
 
         return Redirect::back()->with('message',
-            [NotificationService::notificationItem('success', '', 'Successfully Updated')]);
+            [NotificationService::notificationItem('success', '', 'Successfully Forwarded to Admin')]);
     }
 
     public function reimbursemetPrint($id){
-        $medical = Medical::where('id',$id)->get()->first();
+        $medical = Medical::with('attachments')->findOrFail($id);
         $info = Admin::where('user_id',$medical->user_id)->get()->first();
         $board = BoardMembers::findOrFail(1);
         

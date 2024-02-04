@@ -26,7 +26,8 @@ class MedicalApprove extends FormRequest
         return [
             //
             'id'=>'required|exists:medicals,id',
-            'status'=>'required'
+            'status'=>'required',
+            'signed_document'=>'required'
         ];
     }
 }

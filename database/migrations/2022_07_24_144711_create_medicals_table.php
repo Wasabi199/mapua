@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('clinic_name');
             $table->date('appointment_date');
 
-            $table->string('medical_record1')->nullable();
-            $table->string('medical_record2')->nullable();
-            $table->string('medical_record3')->nullable();
-            $table->string('medical_record4')->nullable();
+            $table->string('signed_document')->nullable();
+            // $table->string('medical_record2')->nullable();
+            // $table->string('medical_record3')->nullable();
+            // $table->string('medical_record4')->nullable();
 
             $table->integer('amount');
             $table->string('status')->default('Pending');
@@ -34,6 +34,7 @@ return new class extends Migration
             $table->boolean('eye')->default(false);
             $table->boolean('dental')->default(false);
             $table->boolean('mental')->default(false);
+            $table->boolean('in_patient')->default(false);
             $table->timestamps();
         });
     }

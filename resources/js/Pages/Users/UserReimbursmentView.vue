@@ -3,23 +3,12 @@
     <template #header>
       <div class="flex items-center">
         <Link :href="route('medicalView')" class="hover:underline">
-          <h1 class="text-xl font-extrabold leading-tight text-gray-800">
-            Medical Reimbursement
-          </h1>
+        <h1 class="text-xl font-extrabold leading-tight text-gray-800">
+          Medical Reimbursement
+        </h1>
         </Link>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-6 h-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 5l7 7-7 7"
-          />
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
         <h1 class="text-xl font-extrabold leading-tight text-gray-800">
           Create Medical Reimbursement
@@ -33,65 +22,39 @@
           <JetValidationErrors class="mb-4" />
           <div class="mt-10 ml-6 lg:ml-20">
             <p class="mt-4 mb-1 text-lg">Purpose of Reimbursement</p>
-            <select
-              v-model="form.reimbursment_type"
-              v-on:change="reimbursement(form.reimbursment_type)"
-              class="mb-10 transition duration-150 ease-in border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
-            >
+            <select v-model="form.reimbursment_type" v-on:change="reimbursement(form.reimbursment_type)"
+              class="mb-10 transition duration-150 ease-in border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500">
               <option value="placeholder" disabled>
                 Select Reimbursement Type
               </option>
-              <option
-                v-for="type in reimbursment"
-                v-bind:key="type"
-                :value="type"
-              >
+              <option v-for="type in reimbursment" v-bind:key="type" :value="type">
                 {{ type }}
               </option>
             </select>
           </div>
 
-          <form
-            @submit.prevent="submit"
-            class="p-6 sm:px-20 bg-white border-b border-gray-200 mt-[-40px]"
-            enctype="multipart/form-data"
-          >
+          <form @submit.prevent="submit" class="p-6 sm:px-20 bg-white border-b border-gray-200 mt-[-40px]"
+            enctype="multipart/form-data">
             <div v-if="this.form.reimbursment_type == 'IN-PATIENT'">
               <div>
-                <label class="mb-1 text-lg text-gray-700" for="amount"
-                  >Amount</label
-                ><br />
+                <label class="mb-1 text-lg text-gray-700" for="amount">Amount</label><br />
 
                 <div class="relative w-64 mt-1 rounded-md">
-                  <div
-                    class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
-                  >
+                  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <span class="text-lg text-gray-500"> ₱ </span>
                   </div>
-                  <input
-                    v-model="form.amount"
-                    type="number"
-                    placeholder="0.00"
-                    class="block w-64 pr-12 mb-5 text-black border-2 border-gray-400 border-opacity-50 rounded-md focus:ring-indigo-500 hover:border-indigo-500 pl-7 font-lg"
-                  />
+                  <input v-model="form.amount" type="number" placeholder="0.00"
+                    class="block w-64 pr-12 mb-5 text-black border-2 border-gray-400 border-opacity-50 rounded-md focus:ring-indigo-500 hover:border-indigo-500 pl-7 font-lg" />
                 </div>
               </div>
 
               <div class="pt-5">
                 <p class="font-bold text-md">Clinic / Hospital Name:</p>
-                <input
-                  class="w-6/12 rounded-lg"
-                  type="text"
-                  v-model="this.form.clinic_name"
-                />
+                <input class="w-6/12 rounded-lg" type="text" v-model="this.form.clinic_name" />
               </div>
               <div class="pt-5">
                 <p class="font-bold text-md">Appointment Date:</p>
-                <input
-                  class="w-6/12 rounded-lg"
-                  type="date"
-                  v-model="this.form.appointment_date"
-                />
+                <input class="w-6/12 rounded-lg" type="date" v-model="this.form.appointment_date" />
               </div>
               <p class="mt-6 mb-1 text-lg font-semibold">Upload Requirements</p>
               <p class="text-sm italic">
@@ -99,220 +62,156 @@
               </p>
               <p class="pt-5 font-bold">
                 Official Receipt<span class="text-sm italic font-thin">
-                  Must be image file (jpg,jpeg)</span
-                >
+                  Must be image file (jpg,jpeg)</span>
               </p>
-              <div
-                class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
-              >
-                <input
-                  @change="onChange1"
-                  type="file"
-                  accept=".png, .jpg, .jpeg, .pdf, .docx"
+              <div class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500">
+                <input @change="onChange1" type="file" accept=".png, .jpg, .jpeg, .pdf, .docx"
                   class="block w-full text-[0.8rem] text-slate-500 file:mr-2 file:py-2 file:px-1 file:border-0 file:text-md file:font-semibold file:bg-gray-200 file:text-gray-500 hover:file:bg-gray-300"
-                  multiple
-                />
+                  multiple />
               </div>
               <p class="font-bold">
-                Medical Certificate/Doctor's Prescription<span
-                  class="text-sm italic font-thin"
-                >
-                  Must be image file (jpg,jpeg)</span
-                >
+                Medical Certificate/Doctor's Prescription<span class="text-sm italic font-thin">
+                  Must be image file (jpg,jpeg)</span>
               </p>
-              <div
-                class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
-              >
-                <input
-                  @change="onChange2"
-                  type="file"
-                  accept=".png, .jpg, .jpeg, .pdf, .docx"
+              <div class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500">
+                <input @change="onChange2" type="file" accept=".png, .jpg, .jpeg, .pdf, .docx"
                   class="block w-full text-[0.8rem] text-slate-500 file:mr-2 file:py-2 file:px-1 file:border-0 file:text-md file:font-semibold file:bg-gray-200 file:text-gray-500 hover:file:bg-gray-300"
-                  multiple
-                />
+                  multiple />
               </div>
               <!-- <p>Must be Image File(max 10MB)</p> -->
               <p class="font-bold">
                 Statement of Account<span class="text-sm italic font-thin">
-                  Must be image file (jpg,jpeg)</span
-                >
+                  Must be image file (jpg,jpeg)</span>
               </p>
-              <div
-                class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
-              >
-                <input
-                  @change="onChange3"
-                  type="file"
-                  accept=".png, .jpg, .jpeg, .pdf, .docx"
+              <div class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500">
+                <input @change="onChange3" type="file" accept=".png, .jpg, .jpeg, .pdf, .docx"
                   class="block w-full text-[0.8rem] text-slate-500 file:mr-2 file:py-2 file:px-1 file:border-0 file:text-md file:font-semibold file:bg-gray-200 file:text-gray-500 hover:file:bg-gray-300"
-                  multiple
-                />
+                  multiple />
               </div>
               <!-- <p>Must be Image File(max 10MB)</p> -->
             </div>
+
+
+
             <div v-if="this.form.reimbursment_type == 'OUT-PATIENT'">
               <p>Reimbursement Type</p>
               <div>
                 <div class="space-x-2">
-                  <input v-model="this.form.health" type="checkbox" /><label
-                    >Health Checkup</label
-                  >
+                  <input v-model="this.form.health" type="checkbox" /><label>Health Checkup</label>
                 </div>
                 <div class="space-x-2">
-                  <input v-model="this.form.mental" type="checkbox" /><label
-                    >Mental Checkup</label
-                  >
+                  <input v-model="this.form.mental" type="checkbox" /><label>Mental Checkup</label>
                 </div>
                 <div class="space-x-2">
-                  <input v-model="this.form.dental" type="checkbox" /><label
-                    >Dental Checkup</label
-                  >
+                  <input v-model="this.form.dental" type="checkbox" /><label>Dental Checkup</label>
                 </div>
                 <div class="space-x-2">
-                  <input v-model="this.form.eye" type="checkbox" /><label
-                    >Eye Checkup</label
-                  >
+                  <input v-model="this.form.eye" type="checkbox" /><label>Eye Checkup</label>
+                </div>
+                <div class="space-x-2">
+                  <input v-model="this.form.in_patient" type="checkbox" /><label>In Patient</label>
                 </div>
               </div>
               <div>
-                <label class="mb-1 text-lg text-gray-700" for="amount"
-                  >Amount</label
-                ><br />
+                <label class="mb-1 text-lg text-gray-700" for="amount">Amount</label><br />
 
                 <div class="relative w-64 mt-1 rounded-md">
-                  <div
-                    class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
-                  >
+                  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <span class="text-lg text-gray-500"> ₱ </span>
                   </div>
-                  <input
-                    v-model="form.amount"
-                    type="number"
-                    placeholder="0.00"
-                    class="block w-64 pr-12 mb-5 text-black border-2 border-gray-400 border-opacity-50 rounded-md focus:ring-indigo-500 hover:border-indigo-500 pl-7 font-lg"
-                  />
+                  <input v-model="form.amount" type="number" placeholder="0.00"
+                    class="block w-64 pr-12 mb-5 text-black border-2 border-gray-400 border-opacity-50 rounded-md focus:ring-indigo-500 hover:border-indigo-500 pl-7 font-lg" />
                 </div>
               </div>
 
               <div class="pt-5">
                 <p class="font-bold text-md">Clinic / Hospital Name:</p>
-                <input
-                  class="w-6/12 rounded-lg"
-                  type="text"
-                  v-model="this.form.clinic_name"
-                />
+                <input class="w-6/12 rounded-lg" type="text" v-model="this.form.clinic_name" />
               </div>
               <div class="pt-5">
                 <p class="font-bold text-md">Appointment Date:</p>
-                <input
-                  class="w-6/12 rounded-lg"
-                  type="date"
-                  v-model="this.form.appointment_date"
-                />
+                <input class="w-6/12 rounded-lg" type="date" v-model="this.form.appointment_date" />
               </div>
               <p class="mt-6 mb-1 text-lg font-semibold">Upload Requirements</p>
               <p class="text-sm italic">
                 *Total maximum size for uploading is 30mb
               </p>
 
-              <p class="pt-5 font-bold">
-                Official Receipt<span class="text-sm italic font-thin">
-                  Must be image file (jpg,jpeg)</span
-                >
-              </p>
-              <div
-                class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
-              >
-                <input
-                  @change="onChange1"
-                  type="file"
-                  accept=".png, .jpg, .jpeg, .pdf, .docx"
-                  class="block w-full text-[0.8rem] text-slate-500 file:mr-2 file:py-2 file:px-1 file:border-0 file:text-md file:font-semibold file:bg-gray-200 file:text-gray-500 hover:file:bg-gray-300"
-                  multiple
-                />
+              <div v-if="this.form.in_patient == false">
+                <p class="pt-5 font-bold">
+                  Official Receipt<span class="text-sm italic font-thin">
+                    Must be image file (jpg,jpeg)</span>
+                </p>
+                <div class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500">
+                  <input @change="onChange1" type="file" accept=".png, .jpg, .jpeg, .pdf, .docx"
+                    class="block w-full text-[0.8rem] text-slate-500 file:mr-2 file:py-2 file:px-1 file:border-0 file:text-md file:font-semibold file:bg-gray-200 file:text-gray-500 hover:file:bg-gray-300"
+                    multiple />
+                </div>
+                <!-- <p>Must be Image File(max 10MB)</p> -->
+                <p class="font-bold">
+                  Medical Certificate/Doctor's Prescription<span class="text-sm italic font-thin">
+                    Must be image file (jpg,jpeg)</span>
+                </p>
+                <div class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500">
+                  <input @change="onChange2" type="file" accept=".png, .jpg, .jpeg, .pdf, .docx"
+                    class="block w-full text-[0.8rem] text-slate-500 file:mr-2 file:py-2 file:px-1 file:border-0 file:text-md file:font-semibold file:bg-gray-200 file:text-gray-500 hover:file:bg-gray-300"
+                    multiple />
+                </div>
               </div>
-              <!-- <p>Must be Image File(max 10MB)</p> -->
-              <p class="font-bold">
-                Medical Certificate/Doctor's Prescription<span
-                  class="text-sm italic font-thin"
-                >
-                  Must be image file (jpg,jpeg)</span
-                >
-              </p>
-              <div
-                class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
-              >
-                <input
-                  @change="onChange2"
-                  type="file"
-                  accept=".png, .jpg, .jpeg, .pdf, .docx"
-                  class="block w-full text-[0.8rem] text-slate-500 file:mr-2 file:py-2 file:px-1 file:border-0 file:text-md file:font-semibold file:bg-gray-200 file:text-gray-500 hover:file:bg-gray-300"
-                  multiple
-                />
+              <div v-else>
+                <p class="pt-5 font-bold">
+                  Other Files<span class="text-sm italic font-thin">
+                    Must be image file (jpg,jpeg)</span>
+                </p>
+                <div class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500">
+                  <input @change="onChange1" type="file" accept=".png, .jpg, .jpeg, .pdf, .docx"
+                    class="block w-full text-[0.8rem] text-slate-500 file:mr-2 file:py-2 file:px-1 file:border-0 file:text-md file:font-semibold file:bg-gray-200 file:text-gray-500 hover:file:bg-gray-300"
+                    multiple />
+                </div>
               </div>
+
               <!-- <p>Must be Image File(max 10MB)</p> -->
               <p v-if="this.form.health == true" class="font-bold">
                 Doctor's Endorsement<span class="text-sm italic font-thin">
-                  Must be image file (jpg,jpeg)</span
-                >
+                  Must be image file (jpg,jpeg)</span>
               </p>
-              <div
-                v-if="this.form.health == true"
-                class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
-              >
-                <input
-                  @change="onChange3"
-                  type="file"
-                  accept=".png, .jpg, .jpeg, .pdf, .docx"
+              <div v-if="this.form.health == true"
+                class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500">
+                <input @change="onChange3" type="file" accept=".png, .jpg, .jpeg, .pdf, .docx"
                   class="block w-full text-[0.8rem] text-slate-500 file:mr-2 file:py-2 file:px-1 file:border-0 file:text-md file:font-semibold file:bg-gray-200 file:text-gray-500 hover:file:bg-gray-300"
-                  multiple
-                />
+                  multiple />
               </div>
               <!-- <p>Must be Image File(max 10MB)</p> -->
 
               <p v-if="this.form.health == true" class="font-bold">
                 Lab Results<span class="text-sm italic font-thin">
-                  Must be image file (jpg,jpeg)</span
-                >
+                  Must be image file (jpg,jpeg)</span>
               </p>
-              <div
-                v-if="this.form.health == true"
-                class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500"
-              >
-                <input
-                  @change="onChange4"
-                  type="file"
-                  accept=".png, .jpg, .jpeg, .pdf, .docx"
+              <div v-if="this.form.health == true"
+                class="w-6/12 mb-5 border-2 border-gray-400 border-opacity-50 rounded-md hover:border-indigo-500">
+                <input @change="onChange4" type="file" accept=".png, .jpg, .jpeg, .pdf, .docx"
                   class="block w-full text-[0.8rem] text-slate-500 file:mr-2 file:py-2 file:px-1 file:border-0 file:text-md file:font-semibold file:bg-gray-200 file:text-gray-500 hover:file:bg-gray-300"
-                  multiple
-                />
+                  multiple />
               </div>
               <!-- <p>Must be Image File(max 10MB)</p> -->
             </div>
             <center>
               <button
-                class="w-64 px-4 py-2 mb-5 text-lg font-semibold text-center text-yellow-500 transition duration-150 ease-in bg-red-800 rounded-lg shadow-md hover:bg-red-700 focus:ring focus:ring-indigo-300"
-              >
+                class="w-64 px-4 py-2 mb-5 text-lg font-semibold text-center text-yellow-500 transition duration-150 ease-in bg-red-800 rounded-lg shadow-md hover:bg-red-700 focus:ring focus:ring-indigo-300">
                 Submit
               </button>
             </center>
           </form>
           <Modal :show="showModal" :closeable="true">
             <div class="p-5">
-              <div
-                class="flex justify-center my-3 mb-12 text-xl font-bold text-gray-900"
-              >
+              <div class="flex justify-center my-3 mb-12 text-xl font-bold text-gray-900">
                 <span>Guidelines : Medical Reimbursement</span>
               </div>
 
-              <div
-                class="flex my-3 font-bold text-gray-900 justify-left text-m"
-              >
-                <span
-                  >Note: In-patient and out-patient medical benefits of MITRF
+              <div class="flex my-3 font-bold text-gray-900 justify-left text-m">
+                <span>Note: In-patient and out-patient medical benefits of MITRF
                   members are subject to the conditions found in the attached
-                  Appendix.</span
-                >
+                  Appendix.</span>
               </div>
               <div class="flex text-gray-900 justify-left text-s mb-9">
                 <ol>
@@ -377,23 +276,15 @@
                   </li>
                 </ol>
               </div>
-              <div
-                class="flex my-3 mb-3 italic font-bold text-gray-900 justify-left text-m"
-              >
+              <div class="flex my-3 mb-3 italic font-bold text-gray-900 justify-left text-m">
                 <span>Appendix:</span>
               </div>
-              <div
-                class="flex my-3 mb-5 font-bold text-gray-900 underline justify-left text-m"
-              >
-                <span
-                  >A. Computation of Medical benefits for 2021 Members of
-                  MITRF</span
-                >
+              <div class="flex my-3 mb-5 font-bold text-gray-900 underline justify-left text-m">
+                <span>A. Computation of Medical benefits for 2021 Members of
+                  MITRF</span>
               </div>
 
-              <table
-                class="m-auto bg-white rounded-lg shadow table-auto lg:w-5/6"
-              >
+              <table class="m-auto bg-white rounded-lg shadow table-auto lg:w-5/6">
                 <thead class="bg-blue-100">
                   <tr>
                     <th>Membership Year</th>
@@ -445,20 +336,14 @@
               </table>
 
               <div class="my-3 mb-10 italic text-gray-900 text-m">
-                <span class="float-right pr-12 underline"
-                  >Where x = years as member of MITRF</span
-                ><br />
+                <span class="float-right pr-12 underline">Where x = years as member of MITRF</span><br />
               </div>
 
-              <div
-                class="flex my-3 mb-5 font-bold text-gray-900 underline justify-left text-m"
-              >
+              <div class="flex my-3 mb-5 font-bold text-gray-900 underline justify-left text-m">
                 <span>B. Computation of Medical benefits prior to 2021</span>
               </div>
 
-              <table
-                class="table-auto m-auto bg-white rounded-lg shadow min-w-[100%] lg:w-5/6"
-              >
+              <table class="table-auto m-auto bg-white rounded-lg shadow min-w-[100%] lg:w-5/6">
                 <thead class="bg-blue-100">
                   <tr>
                     <th>Membership Year</th>
@@ -482,148 +367,80 @@
               </table>
 
               <div class="my-3 mb-16 italic text-gray-900 text-m lg:mb-10">
-                <span class="float-right pr-12 underline"
-                  >Where x = years as member of MITRF</span
-                ><br />
+                <span class="float-right pr-12 underline">Where x = years as member of MITRF</span><br />
               </div>
 
               <div class="my-3 mb-10 italic text-gray-900 text-m">
-                <span class="pr-12 underline"
-                  >*The MITRF Board reserves the right to review outpatient
+                <span class="pr-12 underline">*The MITRF Board reserves the right to review outpatient
                   medical benefits annually, as deemed relevant by the
-                  Board.</span
-                ><br />
+                  Board.</span><br />
               </div>
-              <div
-                class="flex justify-center my-3 space-x-40 text-xl font-bold dark:text-gray-200"
-              >
+              <div class="flex justify-center my-3 space-x-40 text-xl font-bold dark:text-gray-200">
                 <!-- Accept Button -->
-                <div
-                  @click="showModal = !showModal"
-                  class="flex px-4 py-1 space-x-2 text-sm font-semibold leading-snug text-green-600 uppercase border border-green-600 rounded-full cursor-pointer dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:bg-green-500"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-check2-all"
-                    viewBox="0 0 16 16"
-                  >
+                <div @click="showModal = !showModal"
+                  class="flex px-4 py-1 space-x-2 text-sm font-semibold leading-snug text-green-600 uppercase border border-green-600 rounded-full cursor-pointer dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:bg-green-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-check2-all" viewBox="0 0 16 16">
                     <path
-                      d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l7-7zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0z"
-                    />
-                    <path
-                      d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z"
-                    />
+                      d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l7-7zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0z" />
+                    <path d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z" />
                   </svg>
                   <span>Accept</span>
                 </div>
               </div>
             </div>
           </Modal>
-          <Modal
-            :show="submitModal"
-            :closeable="true"
-            @close="submitModal = !submitModal"
-          >
+          <Modal :show="submitModal" :closeable="true" @close="submitModal = !submitModal">
             <div class="p-5">
-              <div
-                class="flex justify-between my-3 text-xl font-bold text-gray-900"
-              >
+              <div class="flex justify-between my-3 text-xl font-bold text-gray-900">
                 <span>Agreement</span>
-                <svg
-                  @click="submitModal = !submitModal"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-6 h-6 cursor-pointer"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                <svg @click="submitModal = !submitModal" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 cursor-pointer"
+                  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </div>
               <div class="text-justify">
-                <span
-                  >I hereby agree to submit my documents and to allow MITRFI and
+                <span>I hereby agree to submit my documents and to allow MITRFI and
                   its authorized personnel to process my documents and personal
                   information for specifically for purposes of
-                  <span class="font-bold"
-                    >{{ this.form.reimbursment_type }} Reimbursement</span
-                  >, in compliance with the Data Privacy Act of 2012 and MITRFI
+                  <span class="font-bold">{{ this.form.reimbursment_type }} Reimbursement</span>, in compliance with the
+                  Data Privacy Act of 2012 and MITRFI
                   policies. Acceptance of the document/s does not automatically
                   guarantee approval as the application shall be subject to the
                   evaluation and approval of the MITFRI based on its loan
-                  policies.</span
-                >
+                  policies.</span>
               </div>
-              <div
-                class="flex justify-center my-3 text-xl font-bold dark:text-gray-200"
-              >
-                <div
-                  @click="proceed"
-                  class="flex px-4 py-1 space-x-2 text-sm font-semibold leading-snug text-green-600 uppercase border border-green-600 rounded-full cursor-pointer dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:bg-green-500"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-check2-all"
-                    viewBox="0 0 16 16"
-                  >
+              <div class="flex justify-center my-3 text-xl font-bold dark:text-gray-200">
+                <div @click="proceed"
+                  class="flex px-4 py-1 space-x-2 text-sm font-semibold leading-snug text-green-600 uppercase border border-green-600 rounded-full cursor-pointer dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:bg-green-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-check2-all" viewBox="0 0 16 16">
                     <path
-                      d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l7-7zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0z"
-                    />
-                    <path
-                      d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z"
-                    />
+                      d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l7-7zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0z" />
+                    <path d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z" />
                   </svg>
                   <span>Submit</span>
                 </div>
               </div>
             </div>
           </Modal>
-          <Modal
-            :show="reimbursment_balance_modal"
-            :closeable="false"
-            @close="reimbursment_balance_modal = !reimbursment_balance_modal"
-          >
+          <Modal :show="reimbursment_balance_modal" :closeable="false"
+            @close="reimbursment_balance_modal = !reimbursment_balance_modal">
             <div class="p-5">
-              <div
-                class="flex justify-between my-3 text-xl font-bold text-gray-900"
-              >
+              <div class="flex justify-between my-3 text-xl font-bold text-gray-900">
                 <span>Note:</span>
               </div>
               <div class="text-justify">
                 <span>You already reached your limit</span>
               </div>
-              <div
-                class="flex justify-center my-3 text-xl font-bold dark:text-gray-200"
-              >
-                <div
-                  @click="reroute()"
-                  class="flex px-4 py-1 space-x-2 text-sm font-semibold leading-snug text-green-600 uppercase border border-green-600 rounded-full cursor-pointer dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:bg-green-500"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-check2-all"
-                    viewBox="0 0 16 16"
-                  >
+              <div class="flex justify-center my-3 text-xl font-bold dark:text-gray-200">
+                <div @click="reroute()"
+                  class="flex px-4 py-1 space-x-2 text-sm font-semibold leading-snug text-green-600 uppercase border border-green-600 rounded-full cursor-pointer dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:bg-green-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-check2-all" viewBox="0 0 16 16">
                     <path
-                      d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l7-7zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0z"
-                    />
-                    <path
-                      d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z"
-                    />
+                      d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l7-7zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0z" />
+                    <path d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z" />
                   </svg>
                   <span>Okay</span>
                 </div>
@@ -654,10 +471,10 @@ export default {
     count: Number,
     reimbursement_balance_in: Number,
     reimbursement_balance_out: Number,
-    benifit:String
+    benifit: String
 
   },
-  setup() {},
+  setup() { },
   data() {
     return {
       showModal: true,
@@ -682,6 +499,7 @@ export default {
         eye: false,
         dental: false,
         mental: false,
+        in_patient: false,
       }),
       reimbursment: [
         "IN-PATIENT",
@@ -724,16 +542,16 @@ export default {
     },
     submit() {
 
-      if(this.form.reimbursment_type == "IN-PATIENT"){
-        if(this.form.amount > this.reimbursement_balance_in){
+      if (this.form.reimbursment_type == "IN-PATIENT") {
+        if (this.form.amount > this.reimbursement_balance_in) {
           this.form.amount = this.reimbursement_balance_in
         }
-      }else{
-        if(this.form.amount > this.reimbursement_balance_out){
+      } else {
+        if (this.form.amount > this.reimbursement_balance_out) {
           this.form.amount = this.reimbursement_balance_out
         }
       }
-      
+
       this.submitModal = true;
     },
     proceed() {

@@ -123,6 +123,17 @@
                 />
                 </div>
               </div>
+              <div class="col-span-6 sm:col-span-6">
+                <label class="block text-sm font-medium text-gray-700"
+                  >Signed Document</label
+                >
+                <div>
+             
+                  <input @change="onChange1" type="file" accept=".png, .jpg, .jpeg, .pdf, .docx"
+                    class="block border-black border rounded-md w-full text-[0.8rem] text-slate-500 file:mr-2 file:py-2 file:px-1 file:text-md file:font-semibold file:bg-gray-200 file:text-gray-500 hover:file:bg-gray-300"
+                     />
+                </div>
+              </div>
             </div>
           </div>
         </form>
@@ -133,6 +144,7 @@
         </div>
       </div>
       <div class="row-span-3">
+        <div v-if="userMedical.in_patient== false">
         <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <span>Official Reciept</span>
           <div
@@ -163,6 +175,24 @@
             />
           </div>
         </div>
+      </div>
+      <div v-else>
+        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
+          <span>Other Files</span>
+          <div
+            v-for="attachment in userMedical.attachments"
+            v-bind:key="attachment.id"
+          >
+            <img
+              class="w-64 h-64"
+              v-if="attachment.type == 1"
+              :src="
+                attachment.image == null ? '' :  attachment.image
+              "
+            />
+          </div>
+        </div>
+      </div>
         <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
           <div>
             <span v-if="userMedical.hospital == true"
@@ -256,7 +286,7 @@
           class="flex flex-col items-center my-3 text-xl font-bold text-gray-900 "
         >
           <span class="text-center"
-            >Approve {{ userProfile.first_name }}
+            >For Approval {{ userProfile.first_name }}
             {{ userProfile.last_name }} Medical Reimbursment?</span
           >
         </div>
@@ -366,6 +396,7 @@ export default {
       approveForm: this.$inertia.form({
         id: Number,
         status: "",
+        signed_document:File
       }),
       rejectForm: this.$inertia.form({
         id: Number,
@@ -374,6 +405,9 @@ export default {
     };
   },
   methods: {
+    onChange1(e) {
+      this.approveForm.signed_document = e.target.files;
+    },
     rejectMedical(userMedical) {
       this.medicalToReject = userMedical;
       this.showRejectModal = !this.showRejectModal;
@@ -393,7 +427,7 @@ export default {
     },
     submitApproveMedical() {
       this.approveForm.id = this.medicalToApprove.id;
-      this.approveForm.status = "Approved";
+      this.approveForm.status = "For Approval";
       this.approveForm.post(route("medicalApprove"), {
         onSuccess: () => {
           this.showApproveModal = false;

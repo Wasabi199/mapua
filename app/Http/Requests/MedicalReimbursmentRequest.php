@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class MedicalReimbursmentRequest extends FormRequest
 {
@@ -23,6 +24,7 @@ class MedicalReimbursmentRequest extends FormRequest
      */
     public function rules()
     {
+        $isRequired = Rule::requiredIf(!$this->input('in_patient'));
         return [
             //
             'reimbursment_type' => 'required',
@@ -31,12 +33,13 @@ class MedicalReimbursmentRequest extends FormRequest
             'clinic_name' => 'required',
             'appointment_date' => 'required',
             'medical_record1' => 'required',
-            'medical_record2' => 'required',
+            'medical_record2' => $isRequired,
             'hospital' => 'required',
             'health' => 'required',
             'eye' => 'required',
             'dental' => 'required',
             'mental' => 'required',
+            'in_patient'=>'required'
         ];
     }
 
