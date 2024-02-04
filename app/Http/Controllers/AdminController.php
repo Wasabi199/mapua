@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{User, AddressInformation, BoardMembers, ContributionHistory, Contributions, UserNotifications, Loans, Medical, UserContribution};
+use App\Models\{User, BoardMembers, Contributions, UserNotifications, Loans, Medical, UserContribution};
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Request as QueryRequest;
 use App\Http\Requests\UserDeleteRequest as deleteRequest;
-use App\Http\Requests\LoanDeleteRequest as deleteloanRequest;
 use App\Http\Requests\UserUpdateRequest as updateRequest;
 use App\Http\Requests\LoanReviewRequest as reviewloanRequest;
 use App\Http\Requests\LoanRejectRequest as rejectLoanRequest;
@@ -22,13 +21,11 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\{Auth};
 
 use App\Models\Admin;
-use Illuminate\Routing\Route;
 use App\Imports\{UsersImport, ContributionImport, UserContribImport};
 use App\Services\Approval;
 use Illuminate\Support\Facades\{Hash, DB, Redirect};
 use Maatwebsite\Excel\Facades\Excel;
 use App\Services\NotificationService;
-use Illuminate\Database\Query\JoinClause;
 
 class AdminController extends Controller
 {
@@ -74,7 +71,6 @@ class AdminController extends Controller
         $notificationCount = $notification->where('onRead', false)->count();
         $userProfile = User::with('AdminReg', 'userContribution.contributionHistory')->find($id);
         $userLoan = Loans::where('user_id', '=', $id)->where('loan_status', '=', 'Paid')->get();
-        // dd($userLoan);
         return Inertia::render('Admin/UserProfile', [
             'notification' => $notification,
             'info' => $userProfile,
@@ -509,7 +505,6 @@ class AdminController extends Controller
 
     public function permanentDeleteUser(UserSoftDelete $deleteUser)
     {
-        // dd($deleteUser->validated());
         $user = User::findOrFail($deleteUser->validated()['id']);
         $user->delete();
 
@@ -521,10 +516,12 @@ class AdminController extends Controller
 
     public function contributionHistory(ContributionHistoryRequest $contributionHistory){
         $validated_data = $contributionHistory->validated();
-        // dd($validated_data);
         if (Hash::check($validated_data['password'], Auth::user()->password)) {
-
-            UserContribution::findOrFail($validated_data['id'])->contributionHistory()->create([
+            $contribution = UserContribution::findOrFail($validated_data['id']);
+            $contribution->update([
+                'contribution_amount' => $contribution->contribution_amount - $validated_data['amount']
+            ]);
+            $contribution->contributionHistory()->create([
                 'amount'=>$validated_data['amount']
             ]);
 

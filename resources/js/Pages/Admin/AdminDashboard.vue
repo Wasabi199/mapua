@@ -223,14 +223,14 @@ export default {
   },
   methods:{
     submit(){
-      this.updateBoards.chairman = this.updateBoards.chairman !=''? this.updateBoards.chairman: this.boards.chairman
-      this.updateBoards.committee_chairman = this.updateBoards.committee_chairman !=''? this.updateBoards.committee_chairman: this.boards.committee_chairman
-      this.updateBoards.vice_chairman = this.updateBoards.vice_chairman !=''? this.updateBoards.vice_chairman: this.boards.vice_chairman
-      this.updateBoards.corporate_secretary = this.updateBoards.corporate_secretary !=''? this.updateBoards.corporate_secretary: this.boards.corporate_secretary
-      this.updateBoards.treasurer = this.updateBoards.treasurer !=''? this.updateBoards.treasurer: this.boards.treasurer
-      this.updateBoards.internal_auditor = this.updateBoards.internal_auditor !=''? this.updateBoards.internal_auditor: this.boards.internal_auditor
-      this.updateBoards.accountant = this.updateBoards.accountant !=''? this.updateBoards.accountant: this.boards.accountant
-      this.updateBoards.school_physician = this.updateBoards.school_physician !=''? this.updateBoards.school_physician: this.boards.school_physician
+        this.updateBoards.chairman = this.updateBoards.chairman !=''? this.updateBoards.chairman: this.boards.chairman
+        this.updateBoards.committee_chairman = this.updateBoards.committee_chairman !=''? this.updateBoards.committee_chairman: this.boards.committee_chairman
+        this.updateBoards.vice_chairman = this.updateBoards.vice_chairman !=''? this.updateBoards.vice_chairman: this.boards.vice_chairman
+        this.updateBoards.corporate_secretary = this.updateBoards.corporate_secretary !=''? this.updateBoards.corporate_secretary: this.boards.corporate_secretary
+        this.updateBoards.treasurer = this.updateBoards.treasurer !=''? this.updateBoards.treasurer: this.boards.treasurer
+        this.updateBoards.internal_auditor = this.updateBoards.internal_auditor !=''? this.updateBoards.internal_auditor: this.boards.internal_auditor
+        this.updateBoards.accountant = this.updateBoards.accountant !=''? this.updateBoards.accountant: this.boards.accountant
+        this.updateBoards.school_physician = this.updateBoards.school_physician !=''? this.updateBoards.school_physician: this.boards.school_physician
       
         this.updateBoards.post(route("updateBoards"))
         this.updateBoardsModal =! this.updateBoardsModal;
