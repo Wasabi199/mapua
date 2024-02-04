@@ -50,7 +50,11 @@ class MedicalController extends Controller
     public function medicalApprove(MedicalApprove $request){
         $medical = Medical::find($request->validated()['id']);
         $data = $request->validated();
-        $medical->update($data);
+
+        $medical->update([
+            'status'=>$data['status'],
+            'signed_document'=> 'https://fopm-sams.s3.amazonaws.com/' . $request->signed_document->store('LoanImage',  's3')
+        ]);
 
 
         UserNotifications::create([
@@ -76,12 +80,8 @@ class MedicalController extends Controller
 
     public function medicalReject(MedicalApprove $request){
         $data = $request->validated();
-        dd($data);
         $medical = Medical::find($data['id']);
-        $medical->update([
-            'status'=>$data['status'],
-            'signed_document'=> 'https://fopm-sams.s3.amazonaws.com/' . $request->file->signed_document->store('MedicalPDF',  's3')
-        ]);
+
         UserNotifications::create([
             'user_id'=>$medical->user_id,
             'universal_id'=>$request->validated()['id'],

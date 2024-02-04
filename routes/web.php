@@ -67,6 +67,8 @@ Route::prefix('Admin')->middleware(['auth:sanctum', 'Admin'])->group(function ()
     Route::delete('user/permanent/delete', [AdminController::class, 'permanentDeleteUser'])->name('permanentDelete');
 
     Route::post('Admin/HistoryContribution',[AdminController::class,'contributionHistory'])->name('contributionHistory');
+
+    Route::post('Admin/Reimbursement/Approve',[AdminController::class,'reimbursementToApprove'])->name('reimbursementToApprove');
 });
 
 

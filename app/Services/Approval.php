@@ -40,6 +40,9 @@ class Approval{
                 case 'Pending':
                     return 'Pending';
                 break;
+                case 'For Approval':
+                    return 'For Approval';
+                break;
                 case 'Approved':
                     return 'Approved';
                 break;

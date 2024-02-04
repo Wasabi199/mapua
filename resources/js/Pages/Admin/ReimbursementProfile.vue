@@ -40,11 +40,13 @@
             <p>Reimbursement Benefit:</p>
             <p class="font-semibold">{{ medical.medical_benifit }}</p>
           </div>
+
+          <div class="flex gap-4">
+              <button @click="navigate(medical.signed_document)" class="px-6 py-2 text-white bg-red-800 rounded-md">Download Signed Documents</button>
+              <button v-if="medical.status == 'For Approval'" @click="showApproveModal = !showApproveModal" class="px-6 py-2 text-white bg-green-500 rounded-md">Approve</button>
+          </div>
         </div>
 
-        <!-- <div>
-          
-        </div> -->
         
         <div class="m-auto mt-10 w-fit">
           <button v-if="this.medical.status == 'Approved'"
@@ -62,9 +64,10 @@
         </div>
       </div>
       <div
-        v-if="this.medical.status == 'Approved'"
+        v-if="this.medical.status == 'Approved' || this.medical.status == 'For Approval'"
         class="w-full p-5 bg-white rounded-lg shadow-xl h-fit "
       >
+      <div v-if="medical.in_patient == false">
         <div class="content-center mb-5 rounded-lg lg:mr-50">
           <span>Official Reciept:</span>
           <div
@@ -91,6 +94,24 @@
               v-if="attachment.type == 2"
               :src="
                 attachment.image == null ? '' : attachment.image
+              "
+            />
+          </div>
+          
+        </div>
+        
+      </div>
+      <div v-else class="content-center mb-5 rounded-lg lg:mr-50">
+          <span>Other Document:</span>
+          <div
+            v-for="attachment in medical.attachments"
+            v-bind:key="attachment.id"
+          >
+            <img
+              class="w-64 h-64"
+              v-if="attachment.type == 1"
+              :src="
+                attachment.image == null ? '' :  attachment.image
               "
             />
           </div>
@@ -270,6 +291,56 @@
         </div>
       </div>
     </Modal>
+
+    <Modal
+      :closeable="true"
+      :show="showApproveModal"
+      @close="(showApproveModal = !showApproveModal)"
+    >
+      <div class="p-5">
+        <div class="flex justify-end my-3 text-xl font-bold text-gray-900">
+          <svg
+            class="w-6 h-6 cursor-pointer"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            @click="(showApproveModal = !showApproveModal)"
+          >
+            <path
+              d="M6 18L18 6M6 6l12 12"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <div
+          class="flex flex-col items-center my-10 text-xl font-bold text-gray-900 "
+        >
+          <span
+            >{{
+              this.info.first_name +
+              " " +
+              this.info.middle_name +
+              " " +
+              this.info.last_name
+            }}'s Reimbursement to be Approve.</span
+          >
+        </div>
+
+        <div class="flex justify-center">
+          <div class="flex my-3 text-xl font-bold dark:text-gray-200">
+            <div
+              class="flex px-4 py-1 space-x-2 text-green-600 uppercase border border-green-600 rounded-full cursor-pointer text-md dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-green-500"
+              @click="reimbursementApproveFunction()"
+            >
+              <span>Approve</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Modal>
   </AppLayout>
 </template>
 <script>
@@ -292,10 +363,16 @@ export default {
     return {
       showForReleasedModal: false,
       showReleasedModal:false,
+      showApproveModal:false,
+      
       reimbursementRelease: this.$inertia.form({
         id: Number,
         status: "",
       }),
+      reimbursementApprove:this.$inertia.form({
+        id:Number,
+        status:''
+      })
     };
   },
   methods: {
@@ -319,6 +396,20 @@ export default {
         },
       });
     },
+    reimbursementApproveFunction() {
+      this.reimbursementApprove.id = this.medical.id;
+      this.reimbursementApprove.status = "Approved";
+
+      this.reimbursementApprove.post(route("reimbursementToApprove"), {
+        onSuccess: () => {
+          this.showApproveModal = false;
+        },
+      });
+    },
+
+    navigate(link){
+      location.href = link
+    }
   },
 };
 </script>

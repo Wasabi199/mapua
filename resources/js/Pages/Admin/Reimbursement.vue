@@ -142,6 +142,7 @@ export default {
       statuses: [
         "All",
         "Pending",
+        "For Approval",
         "Approved",
         "For Release",
         "Released",

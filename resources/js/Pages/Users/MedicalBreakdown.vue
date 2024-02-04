@@ -62,22 +62,34 @@
           </div>
         </form>
       </div>
-      <div v-if="medical.status == 'Approved'" class="row-span-3">
-        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
-          <span>Official Receipt</span>
-          <div v-for="attachment in medical.attachments" v-bind:key="attachment.id">
-            <img class="w-64 h-64" v-if="attachment.type == 1" :src="attachment.image == null ? '' : attachment.image
-              " />
+      <div  class="row-span-3">
+        <div v-if="medical.in_patient == false">
+          <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
+            <span>Official Receipt</span>
+            <div v-for="attachment in medical.attachments" v-bind:key="attachment.id">
+              <img class="w-64 h-64" v-if="attachment.type == 1" :src="attachment.image == null ? '' : attachment.image
+                " />
+            </div>
+          </div>
+          <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
+            <span>Medical Certificate/Doctor's Prescription</span>
+            <div v-for="attachment in medical.attachments" v-bind:key="attachment.id">
+              <img class="w-64 h-64" v-if="attachment.type == 2" :src="attachment.image == null ? '' :  attachment.image
+                " />
+            </div>
+          </div>
+        </div>
+        <div v-else>
+          <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
+            <span>Other Document</span>
+            <div v-for="attachment in medical.attachments" v-bind:key="attachment.id">
+              <img class="w-64 h-64" v-if="attachment.type == 1" :src="attachment.image == null ? '' : attachment.image
+                " />
+            </div>
           </div>
         </div>
         <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
-          <span>Medical Certificate/Doctor's Prescription</span>
-          <div v-for="attachment in medical.attachments" v-bind:key="attachment.id">
-            <img class="w-64 h-64" v-if="attachment.type == 2" :src="attachment.image == null ? '' :  attachment.image
-              " />
-          </div>
-        </div>
-        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
+  
           <div>
             <span v-if="medical.hospital == true">Statement of Account</span>
             <span v-if="medical.health == true">Doctor's Endorsement</span>

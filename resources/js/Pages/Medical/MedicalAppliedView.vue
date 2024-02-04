@@ -124,11 +124,8 @@
                 </div>
               </div>
               <div class="col-span-6 sm:col-span-6">
-                <label class="block text-sm font-medium text-gray-700"
-                  >Signed Document</label
-                >
+                <label class="block text-sm font-medium text-gray-700">Signed Document</label>
                 <div>
-             
                   <input @change="onChange1" type="file" accept=".png, .jpg, .jpeg, .pdf, .docx"
                     class="block border-black border rounded-md w-full text-[0.8rem] text-slate-500 file:mr-2 file:py-2 file:px-1 file:text-md file:font-semibold file:bg-gray-200 file:text-gray-500 hover:file:bg-gray-300"
                      />
@@ -406,7 +403,7 @@ export default {
   },
   methods: {
     onChange1(e) {
-      this.approveForm.signed_document = e.target.files;
+      this.approveForm.signed_document = e.target.files[0];
     },
     rejectMedical(userMedical) {
       this.medicalToReject = userMedical;

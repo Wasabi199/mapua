@@ -15,6 +15,7 @@ use App\Http\Requests\AdminReimbursementUpdateRequest as reimbursementRequest;
 use App\Http\Requests\Admin as RegiterUserRequest;
 use App\Http\Requests\BoardsUpdate;
 use App\Http\Requests\ContributionHistoryRequest;
+use App\Http\Requests\MedicalApproveAdmin;
 use App\Http\Requests\UserSoftDelete;
 use App\Imports\UserAdmin;
 use Carbon\Carbon;
@@ -379,15 +380,10 @@ class AdminController extends Controller
     public function addContribution()
     {
         $loans = Loans::all()->where('approval', 'Processed')->where('loan_status', 'Ongoing');
-        // $loans = User::has('loans')->get();
-        // $info = Admin::all()->where($loans->user_id);
-        // dd($loans);
         foreach ($loans as $loan) {
             $info = Admin::find($loan->user_id);
             dd($info->total_contribution + ($info->salary * 0.05));
-            // dd($info);
             if ($loan->loan_amount <= 0) {
-                // dd($loan->loan_amount - $info->salary * 0.05,);
                 $loan->update([
                     'loan_amount' => $loan->loan_amount - $info->salary * 0.05,
                 ]);
@@ -415,7 +411,6 @@ class AdminController extends Controller
             'approval' => 'For Processing',
         ]);
         $board = BoardMembers::findOrFail(1);
-        // dd($info);
         return Inertia::render('Admin/Printing', [
             'loan' => $loan,
             'info' => $info,
@@ -451,7 +446,6 @@ class AdminController extends Controller
         return Inertia::render('Admin/ReimbursementProfile', [
             'notification' => $notification,
             'count' => $notificationCount,
-
             'medical' => $medical,
             'info' => $info
         ]);
@@ -479,7 +473,6 @@ class AdminController extends Controller
     public function updateBoards(BoardsUpdate $request)
     {
         $validated_data = $request->validated();
-        // dd($validated_data);
         $board = BoardMembers::findOrFail(1);
         $board->update([
             'chairman' => $validated_data['chairman'],
@@ -504,10 +497,6 @@ class AdminController extends Controller
         $filters = $query::only('limit');
         isset($filters['limit']);
         $deletedUsers = User::with('adminReg')->where('status', 2)->limit($filters['limit']??5)->paginate($filters['limit']??5);
-        // $deletedUsers = DB::table('users')->join('admins',function(JoinClause $join){
-        //     $join->on('users.id','=','admins.user_id');
-        // })->where('users.deleted_at','!=','null')->limit(5)->paginate(5);
-        // // dd($deletedUsers);
         $notification = UserNotifications::filter(Auth::user()->userType)->orderByRaw('created_at DESC')->get();
         $notificationCount = $notification->where('onRead', false)->count();
         return Inertia::render('Admin/MemberArchive', [
@@ -549,5 +538,24 @@ class AdminController extends Controller
                 [NotificationService::notificationItem('failed', '', 'Password Not Match')]
             );
         }
+    }
+
+    public function reimbursementToApprove(MedicalApproveAdmin $request)
+    {
+        $validated_data = $request->validated();
+        $medical = Medical::where('id', $validated_data['id'])->get()->first();
+        $medical->update($validated_data);
+        UserNotifications::create([
+            'user_id' => $medical->user_id,
+            'universal_id' => $request->validated()['id'],
+            'onRead' => false,
+            'value' => 'Your application has been Updated',
+            'type' => 2,
+            'notification_type' => 5
+        ]);
+        return Redirect::route('dashboard')->with(
+            'message',
+            [NotificationService::notificationItem('success', '', 'Sucessfully Updated')]
+        );
     }
 }
