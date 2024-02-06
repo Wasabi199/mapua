@@ -79,7 +79,7 @@ const submit = () => {
                 </label>
             </div> -->
 
-            <div class="flex items-center justify-end mt-4">
+            <!-- <div class="flex items-center justify-end mt-4">
                 <Link v-if="canResetPassword" :href="route('password.request')" class="text-sm text-gray-600 underline hover:text-gray-900">
                     Forgot your password?
                 </Link>
@@ -87,7 +87,7 @@ const submit = () => {
                 <JetButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
                 </JetButton>
-            </div>
+            </div> -->
         </form>
     </JetAuthenticationCard>
 </template>
