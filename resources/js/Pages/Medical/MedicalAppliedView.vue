@@ -143,7 +143,7 @@
       <div class="row-span-3">
         <div v-if="userMedical.in_patient== false">
         <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
-          <span>Official Reciept</span>
+          <span>Official Receipt</span>
           <div
             v-for="attachment in userMedical.attachments"
             v-bind:key="attachment.id"
@@ -166,6 +166,21 @@
             <img
               class="w-64 h-64"
               v-if="attachment.type == 2"
+              :src="
+                attachment.image == null ? '' :  attachment.image
+              "
+            />
+          </div>
+        </div>
+        <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
+          <span>Statement of Account</span>
+          <div
+            v-for="attachment in userMedical.attachments"
+            v-bind:key="attachment.id"
+          >
+            <img
+              class="w-64 h-64"
+              v-if="attachment.type == 3"
               :src="
                 attachment.image == null ? '' :  attachment.image
               "
@@ -283,7 +298,7 @@
           class="flex flex-col items-center my-3 text-xl font-bold text-gray-900 "
         >
           <span class="text-center"
-            >For Approval {{ userProfile.first_name }}
+            >Transfer {{ userProfile.first_name }}
             {{ userProfile.last_name }} Medical Reimbursment?</span
           >
         </div>
@@ -295,7 +310,7 @@
               class="flex px-4 py-1 mr-5 space-x-2 text-green-600 uppercase border border-green-600 rounded-full cursor-pointer text-md dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-green-500"
               @click="submitApproveMedical"
             >
-              <span>Approve</span>
+              <span>Transfer</span>
             </div>
           </div>
         </div>
