@@ -37,7 +37,7 @@
                                         Loan Type
                                     </th>
                                     <th class="px-16 text-center bg-gray-100">
-                                        Loan Amount
+                                        Amortization
                                     </th>
                                     <th class="px-16 text-center bg-gray-100">
                                         Duration
@@ -167,7 +167,7 @@
 
                 <div class="p-4 bg-white rounded-lg shadow">
                     <div><b>Loan Type:</b> {{ loan.loan_type }}</div>
-                    <div><b>Loan Amount:</b> &#8369 {{ loan.loan_amount.toLocaleString("en-US") }}</div>
+                    <div><b>Amortization:</b> &#8369 {{ (loan.loan_amount.toFixed(2)).toLocaleString("en-US") }}</div>
                     <div><b>Duration:</b> {{ loan.duration }} months</div>
                     <div><b>Loan Status:</b> {{ loan.loan_status }}</div>
                     <div>

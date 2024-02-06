@@ -707,7 +707,7 @@
                 <div class="flex items-center">
                   <div>
                     <div class="px-10 text-sm font-medium text-gray-900">
-                        &#8369 {{ contribution.contribution_amount.toLocaleString("en-US") }}
+                        &#8369 {{ (contribution.contribution_amount.toFixed(2)).toLocaleString("en-US") }}
                     </div>
                   </div>
                 </div>
