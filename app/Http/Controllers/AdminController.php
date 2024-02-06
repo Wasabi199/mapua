@@ -255,7 +255,7 @@ class AdminController extends Controller
         // dd($filters['limit']);
         // $loans2 = Loans::with('user')->whereRelation('user','status',1)->get();
         // dd($loans2);
-        $loans = Loans::with('user')->with('contributions')->whereRelation('user', 'status', 1)->whereNot('approval','Paid')
+        $loans = Loans::with('user')->with('contributions')->whereRelation('user', 'status', 1)->whereNot('loan_status','Paid')
             ->filter($filters)
             ->limit($filters['limit']??5)
             ->orderByRaw('updated_at DESC')
