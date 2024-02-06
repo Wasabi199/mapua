@@ -19,35 +19,37 @@ class AdminFactory extends Factory
     public function definition()
     {
         $department = [
-            "School of Architecture, Industrial Design, and the Built Environment",
+            'Administration',
+            'Faculty'
+        //     "School of Architecture, Industrial Design, and the Built Environment",
 
-            "School of Chemical, Biological, and Materials Engineering and Sciences",
+        //     "School of Chemical, Biological, and Materials Engineering and Sciences",
 
-           "School of Civil, Environmental, and Geological Engineering",
+        //    "School of Civil, Environmental, and Geological Engineering",
 
-           "School of Electrical, Electronics, and Computer Engineering",
+        //    "School of Electrical, Electronics, and Computer Engineering",
 
-            "School of Industrial Engineering and Engineering Management",
+        //     "School of Industrial Engineering and Engineering Management",
 
-            "School of Mechanical and Manufacturing Engineering",
+        //     "School of Mechanical and Manufacturing Engineering",
 
-            "School of Media Studies",
+        //     "School of Media Studies",
 
-            "School of Social Sciences and Education",
+        //     "School of Social Sciences and Education",
 
-            "Department of Arts and Letters",
+        //     "Department of Arts and Letters",
 
-            "Department of Mathematics",
+        //     "Department of Mathematics",
 
-           "Department of Physics",
+        //    "Department of Physics",
 
-            "School of Information Technology",
+        //     "School of Information Technology",
 
-            "E.T. Yuchengo School of Business in collaboration with Arizona State University",
+        //     "E.T. Yuchengo School of Business in collaboration with Arizona State University",
 
-            "Admin office(Treasury, Registrar, Admission)",
+        //     "Admin office(Treasury, Registrar, Admission)",
 
-            "Maintenance",
+        //     "Maintenance",
 
         ];
         $civil_status = [
