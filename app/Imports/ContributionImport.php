@@ -28,7 +28,7 @@ class ContributionImport implements ToCollection, WithHeadingRow, WithValidation
                             if(!$loanUpdate->loan_amount >= 0){
                                  
                                 $loanUpdate->contributions()->create([
-                                    'contribution_amount'=>$row['loan_payment'],
+                                    'contribution_amount'=>number_format((float)$row['loan_payment'], 2, '.', ''),
                                     'remaining_balance'=>$row['remaining_balance']
                                 ]);
     
