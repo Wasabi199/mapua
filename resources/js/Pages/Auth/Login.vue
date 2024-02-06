@@ -37,13 +37,13 @@ const submit = () => {
         <template #logo>
             <JetApplicationLogo class="w-1/2 mx-auto"/>
             <br><center>
-            <h1 class="text-title text-gray-600">MITRF APP</h1>
+            <h1 class="text-gray-600 text-title">MITRF APP</h1>
             </center>
         </template>
 
         <JetValidationErrors class="mb-4" />
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
             {{ status }}
         </div>
 
@@ -54,7 +54,7 @@ const submit = () => {
                     id="email"
                     v-model="form.email"
                     type="email"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     required
                     autofocus
                 />
@@ -66,21 +66,21 @@ const submit = () => {
                     id="password"
                     v-model="form.password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="block w-full mt-1"
                     required
                     autocomplete="current-password"
                 />
             </div>
 
-            <div class="block mt-4">
+            <!-- <div class="block mt-4">
                 <label class="flex items-center">
                     <JetCheckbox v-model:checked="form.remember" name="remember" />
                     <span class="ml-2 text-sm text-gray-600">Remember me</span>
                 </label>
-            </div>
+            </div> -->
 
             <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                <Link v-if="canResetPassword" :href="route('password.request')" class="text-sm text-gray-600 underline hover:text-gray-900">
                     Forgot your password?
                 </Link>
 

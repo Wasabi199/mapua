@@ -268,8 +268,14 @@
                 <div class="p-4 bg-white rounded-lg shadow">
                     <div><b>Loan:</b> {{ contribution.id }}</div>
                     <div>
-                        <b>Loan Amount:</b>
-                        &#8369 {{ contribution.contribution_amount }}
+                        <b>Loan Payment:</b>
+                        &#8369 {{ contribution.contribution_amount.toLocaleString("en-US") }}
+                    </div>
+                    <div>
+                        <b>Remaining Balance:</b>
+                        &#8369 {{ 
+                         contribution.remaining_balance.toLocaleString("en-US")
+                          }}
                     </div>
                     <div>
                         <b>Date of Payment:</b>
@@ -301,11 +307,13 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Modal from "@/Jetstream/Modal";
 import { Link } from "@inertiajs/inertia-vue3";
+import Pagination from '../../Components/Pagination.vue';
 export default {
     components: {
         AppLayout,
         Link,
         Modal,
+        Pagination
     },
     props: {
         users: Object,

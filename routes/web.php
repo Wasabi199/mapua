@@ -25,7 +25,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Auth/Login', [
-        'canResetPassword'=>Route::has('password.request')  
+        // 'canResetPassword'=>Route::has('password.request')  
     ]);
 });
 

@@ -455,7 +455,7 @@ class LoansController extends Controller
         $notificationCount = $userNotification->where('onRead', false)->count();
 
         $loan = Loans::find($id);
-        $contribution = Contributions::where('loans_id', $loan->id)->limit(5)->paginate(5);
+        $contribution = Contributions::where('loans_id', $loan->id)->orderByRaw('created_at DESC')->limit(5)->paginate(5);
         $user = User::with('AdminReg')->find($loan->user_id);
         return Inertia::render('Users/UserLoanView', [
             'users' => $user,

@@ -226,9 +226,9 @@
                   <div class="relative">
                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
                         <input
-                    type="number"
+                    type="text"
                     class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
-                    :value="loan.amount.toLocaleString('en-US')"
+                    :value="loan_amount"
                     disabled
                   />
 
@@ -242,7 +242,7 @@
                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
 
                   <input
-                    type="number"
+                    type="text"
                     class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="amount"
                     disabled
@@ -437,9 +437,9 @@
                   <div class="relative">
                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
                     <input
-                    type="number"
+                    type="text"
                     class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
-                    :value="loan.amount.toLocaleString('en-US')"
+                    :value="loan_amount"
                     disabled
                   />
 
@@ -452,9 +452,9 @@
                   <div>
                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
                     <input
-                    type="number"
+                    type="text"
                     class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
-                    :value="amount.toLocaleString('en-US')"
+                    :value="amount"
                     disabled
                   />
                   </div>
@@ -1223,7 +1223,8 @@ export default {
         new Date().getUTCFullYear() -
         new Date(this.$props.info.membership).getUTCFullYear(),
       department: this.$props.info.department,
-      amount:  this.$props.loan.amount - (this.$props.loan.amount * 0.02),
+      loan_amount:this.$props.loan.amount.toLocaleString("en-US"),
+      amount:  (this.$props.loan.amount - (this.$props.loan.amount * 0.02)).toLocaleString("en-US"),
       amortization:this.$props.loan.amortization,
       duration: this.$props.loan.duration,
 
