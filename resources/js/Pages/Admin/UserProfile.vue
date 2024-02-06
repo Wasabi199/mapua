@@ -353,7 +353,7 @@
                                 </svg>
                                 <span>Close</span>
                             </div>
-                            <div @click="claim()"
+                            <button type="button" :disabled="info.user_contribution.contribution_amount == 0" @click="claim()"
                                 class="flex px-4 py-1 space-x-2 text-sm font-semibold leading-snug text-green-600 uppercase border border-green-600 rounded-full cursor-pointer dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:bg-green-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-check2-all" viewBox="0 0 16 16">
@@ -362,7 +362,7 @@
                                     <path d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z" />
                                 </svg>
                                 <span>Claim</span>
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </Modal>
@@ -397,7 +397,7 @@
         <JetInput v-model="this.contributionToSubmit.password" class="w-full" type="password"/>
       </div>
       <div class="m-auto w-fit">
-        <button @click="proceed()" class="px-10 py-3 mt-5 text-lg font-semibold border-2 border-green-400 rounded-lg hover:bg-green-500 hover:text-white">Verify</button>
+        <button @click="proceed()"  class="px-10 py-3 mt-5 text-lg font-semibold border-2 border-green-400 rounded-lg hover:bg-green-500 hover:text-white">Verify</button>
       </div>
     </div>
     </Modal>

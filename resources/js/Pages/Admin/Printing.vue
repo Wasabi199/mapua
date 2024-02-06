@@ -153,7 +153,7 @@
               <div class="mx-10 text-sm font-bold text-center border-b-2">{{this.board.committee_chairman}}</div>
               <p class="text-center">Committee Chairman</p>
               <br />
-              <div class="mx-10 border-b-2"></div>
+              <div class="mx-10 text-sm font-bold text-center border-b-2">{{this.board.vice_chairman}}</div>
               <p class="text-center">Member</p>
             </div>
 
@@ -162,7 +162,7 @@
               <p class="text-center">Chairman, Board of Directors</p>
             </div>
             <div class="col-span-3 text-sm">
-              <div class="mx-10 border-b-2"></div>
+              <div class="mx-10 text-sm font-bold text-center border-b-2">{{this.board.corporate_secretary}}</div>
               <p class="text-center">Member</p>
             </div>
             <br />

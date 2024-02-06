@@ -30,7 +30,7 @@
             <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
               <table class="min-w-full divide-y divide-gray-200">
                 <th class="px-8 text-center bg-gray-100">Name</th>
-                <th class="text-center bg-gray-100 px-9">Contact No.</th>
+                <!-- <th class="text-center bg-gray-100 px-9">Contact No.</th> -->
                 <th class="px-16 text-center bg-gray-100">E-mail</th>
                 <th class="px-16 text-center bg-gray-100">Department</th>
                 <th class="text-center bg-gray-100 px-14">
@@ -50,7 +50,7 @@
                         </Link>
                       </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <!-- <td class="px-6 py-4 whitespace-nowrap">
                       <div class="">
                         <div>
                           <div class="text-sm font-medium text-center text-gray-900">
@@ -58,7 +58,7 @@
                           </div>
                         </div>
                       </div>
-                    </td>
+                    </td> -->
 
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="">
@@ -95,7 +95,7 @@
                         </div>
                       </div>
                     </td>
-                    <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                    <td class="py-4 text-sm font-medium whitespace-nowrap">
                       <!-- edit user info -->
                       <div class="inline-flex gap-x-5">
                         <Link :href="route('userProfile', user.id)" class="text-indigo-600 hover:text-indigo-900">

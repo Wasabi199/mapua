@@ -100,7 +100,7 @@
 
                 <div class="col-span-6 sm:col-span-4">
                   <label class="block text-sm font-medium text-gray-700"
-                    >If Administration Employee, state department</label
+                    >Department</label
                   >
                   <input
                     type="text"
@@ -209,7 +209,7 @@
 
                 <div class="col-span-6 sm:col-span-4">
                   <label class="block w-full text-sm font-medium text-gray-700"
-                    >If Administration Employee, state department</label
+                    >Department</label
                   >
                   <input
                     type="text"
@@ -228,7 +228,7 @@
                         <input
                     type="number"
                     class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
-                    :value="loan.amount"
+                    :value="loan.amount.toLocaleString('en-US')"
                     disabled
                   />
 
@@ -287,7 +287,7 @@
           <div class="mb-8">
 
 
-            <div class="flex text-lg">
+            <!-- <div class="flex text-lg">
               <svg
                 class="w-6 h-6 text-red-900"
                 fill="none"
@@ -304,7 +304,7 @@
               </svg>
 
               <p class="pl-2 font-semibold">{{ info.mobile_number }}</p>
-            </div>
+            </div> -->
           </div>
 
           <!-- Name -->
@@ -420,7 +420,7 @@
 
                 <div class="col-span-6 sm:col-span-4">
                   <label class="block text-sm font-medium text-gray-700"
-                    >If Administration Employee, state department</label
+                    >Department</label
                   >
                   <input
                     type="text"
@@ -439,7 +439,7 @@
                     <input
                     type="number"
                     class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
-                    :value="loan.amount"
+                    :value="loan.amount.toLocaleString('en-US')"
                     disabled
                   />
 
@@ -454,7 +454,7 @@
                     <input
                     type="number"
                     class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
-                    :value="amount"
+                    :value="amount.toLocaleString('en-US')"
                     disabled
                   />
                   </div>
@@ -694,7 +694,7 @@
               v-for="contribution in contributions.data"
               v-bind:key="contribution.id"
             >
-              <td class=" py-6 whitespace-nowrap">
+              <td class="py-6 whitespace-nowrap">
                 <div class="flex items-center">
                   <div>
                     <div class="px-10 text-sm font-medium text-gray-900">
@@ -703,7 +703,7 @@
                   </div>
                 </div>
               </td>
-              <td class=" py-4 whitespace-nowrap">
+              <td class="py-4 whitespace-nowrap">
                 <div class="flex items-center">
                   <div>
                     <div class="px-10 text-sm font-medium text-gray-900">
@@ -712,7 +712,7 @@
                   </div>
                 </div>
               </td>
-              <td class=" py-4 whitespace-nowrap">
+              <td class="py-4 whitespace-nowrap">
                 <div class="flex items-center">
                   <div>
                     <div class="px-10 text-sm font-medium text-gray-900">
@@ -721,7 +721,7 @@
                   </div>
                 </div>
               </td>
-              <td class=" py-4 whitespace-nowrap">
+              <td class="py-4 whitespace-nowrap">
                 <div class="flex items-center">
                   <div>
                     <div class="px-8 text-sm font-medium text-gray-900">

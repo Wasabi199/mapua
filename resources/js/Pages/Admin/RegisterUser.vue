@@ -4,13 +4,13 @@
       <div class="flex justify-between">
         <div class="flex items-center">
           <Link :href="route('users')" class="hover:underline">
-            <h1 class="font-extrabold text-xl text-gray-800 leading-tight">
+            <h1 class="text-xl font-extrabold leading-tight text-gray-800">
               Users
             </h1>
           </Link>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
+            class="w-6 h-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -22,7 +22,7 @@
               d="M9 5l7 7-7 7"
             />
           </svg>
-          <h1 class="font-extrabold text-xl text-gray-800 leading-tight">
+          <h1 class="text-xl font-extrabold leading-tight text-gray-800">
             User Register
           </h1>
         </div>
@@ -51,7 +51,7 @@
                 id="name"
                 v-model="form.first_name"
                 type="text"
-                class="mt-1 block w-full"
+                class="block w-full mt-1"
                 required
                 autofocus
                 autocomplete="firstname"
@@ -63,7 +63,7 @@
                 id="middlename"
                 v-model="form.middle_name"
                 type="text"
-                class="mt-1 block w-full"
+                class="block w-full mt-1"
                 required
                 autofocus
                 autocomplete="middle"
@@ -76,7 +76,7 @@
                         id="suffix"
 
                         type="text"
-                        class="mt-1 block w-full"
+                        class="block w-full mt-1"
                         required
                         autofocus
 
@@ -89,7 +89,7 @@
               id="lastname"
               v-model="form.last_name"
               type="text"
-              class="mt-1 block w-full"
+              class="block w-full mt-1"
               required
               autofocus
               autocomplete="lastname"
@@ -103,7 +103,7 @@
                 id="date of birth"
                 v-model="form.birth_date"
                 type="date"
-                class="mt-1 block w-full"
+                class="block w-full mt-1"
                 required
               />
             </div>
@@ -114,7 +114,7 @@
                 id="employment"
                 v-model="form.employment"
                 type="date"
-                class="mt-1 block w-full"
+                class="block w-full mt-1"
                 required
               />
             </div>
@@ -125,7 +125,7 @@
               id="birth_place"
               v-model="form.birth_place"
               type="text"
-              class="mt-1 block w-full"
+              class="block w-full mt-1"
               required
               autofocus
             />
@@ -137,7 +137,7 @@
               <JetInput
                 id="date of membership"
                 v-model="form.membership"
-                class="mt-1 block w-full"
+                class="block w-full mt-1"
                 required
                 type="date"
               />
@@ -149,7 +149,7 @@
                 id="number"
                 v-model="form.mobile_number"
                 type="text"
-                class="mt-1 block w-full"
+                class="block w-full mt-1"
                 required
               />
             </div>
@@ -162,7 +162,7 @@
                 id="number"
                 v-model="form.account_information.member_id"
                 type="text"
-                class="mt-1 block w-full"
+                class="block w-full mt-1"
                 placeholder="XX-XXXX-XX"
                 required
               />
@@ -173,7 +173,7 @@
               <jet-label for="department" value="Department" />
               <select
                 v-model="form.department"
-                class="mt-1 block w-full dark text-gray-900 border-gray-300 focus:ring-opacity-50 rounded-md shadow-sm"
+                class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark focus:ring-opacity-50"
                 required
               >
                 <option disabled value="placeholder">Select Department</option>
@@ -193,7 +193,7 @@
               id="salary"
               v-model="form.salary"
               type="text"
-              class="mt-1 block w-full"
+              class="block w-full mt-1"
               required
             />
           </div> -->
@@ -203,7 +203,7 @@
               <jet-label for="role" value="Role" />
               <select
                 v-model="form.account_information.role"
-                class="mt-1 block w-full dark text-gray-900 border-gray-300 focus:ring-opacity-50 rounded-md shadow-sm"
+                class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark focus:ring-opacity-50"
                 required
               >
               <option selected disabled>Select Role</option>
@@ -220,7 +220,7 @@
               <JetLabel for="civil status" value="Civil Status" />
               <select
                 v-model="form.civil_status"
-                class="mt-1 block w-full dark text-gray-900 border-gray-300 focus:ring-opacity-50 rounded-md shadow-sm"
+                class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark focus:ring-opacity-50"
                 required
               >
                 <option disabled value="placeholder">Select Status</option>
@@ -243,7 +243,7 @@
               id="email"
               v-model="form.account_information.email"
               type="email"
-              class="mt-1 block w-full"
+              class="block w-full mt-1"
               required
             />
           </div>
@@ -255,7 +255,7 @@
                 id="password"
                 v-model="form.account_information.password"
                 type="password"
-                class="mt-1 block w-full"
+                class="block w-full mt-1"
                 required
                 autocomplete="new-password"
               />
@@ -267,7 +267,7 @@
                 id="password_confirmation"
                 v-model="form.account_information.password_confirmation"
                 type="password"
-                class="mt-1 block w-full"
+                class="block w-full mt-1"
                 required
                 autocomplete="new-password"
               />
@@ -288,14 +288,14 @@
                 <a
                   target="_blank"
                   :href="route('terms.show')"
-                  class="underline text-sm text-gray-600 hover:text-gray-900"
+                  class="text-sm text-gray-600 underline hover:text-gray-900"
                   >Terms of Service</a
                 >
                 and
                 <a
                   target="_blank"
                   :href="route('policy.show')"
-                  class="underline text-sm text-gray-600 hover:text-gray-900"
+                  class="text-sm text-gray-600 underline hover:text-gray-900"
                   >Privacy Policy</a
                 >
               </div>
@@ -371,35 +371,37 @@ export default {
       member_type: ["Teaching", "Non-Teaching"],
 
       departments: [
-        "School of Architecture, Industrial Design, and the Built Environment",
+        "Administration",
+        "Faculty"
+        // "School of Architecture, Industrial Design, and the Built Environment",
 
-        "School of Chemical, Biological, and Materials Engineering and Sciences",
+        // "School of Chemical, Biological, and Materials Engineering and Sciences",
 
-        "School of Civil, Environmental, and Geological Engineering",
+        // "School of Civil, Environmental, and Geological Engineering",
 
-        "School of Electrical, Electronics, and Computer Engineering",
+        // "School of Electrical, Electronics, and Computer Engineering",
 
-        "School of Industrial Engineering and Engineering Management",
+        // "School of Industrial Engineering and Engineering Management",
 
-        "School of Mechanical and Manufacturing Engineering",
+        // "School of Mechanical and Manufacturing Engineering",
 
-        "School of Media Studies",
+        // "School of Media Studies",
 
-        "School of Social Sciences and Education",
+        // "School of Social Sciences and Education",
 
-        "Department of Arts and Letters",
+        // "Department of Arts and Letters",
 
-        "Department of Mathematics",
+        // "Department of Mathematics",
 
-        "Department of Physics",
+        // "Department of Physics",
 
-        "School of Information Technology",
+        // "School of Information Technology",
 
-        "E.T. Yuchengo School of Business in collaboration with Arizona State University",
+        // "E.T. Yuchengo School of Business in collaboration with Arizona State University",
 
-        "Admin office(Treasury, Registrar, Admission)",
+        // "Admin office(Treasury, Registrar, Admission)",
 
-        "Maintenance",
+        // "Maintenance",
       ],
       roles: ["Admin", "User", "Medical"],
       civil_status: ["Single", "Maried", "Widowed", "Divorced"],

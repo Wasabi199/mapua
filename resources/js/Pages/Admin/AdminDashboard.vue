@@ -63,12 +63,12 @@
                       <td class="">{{this.boards.benefits_chairman}}</td>
                     </tr> -->
                     <tr>
-                      <td class="font-bold whitespace-nowrap">Vice Chairman</td>
+                      <td class="font-bold whitespace-nowrap">Committee Member</td>
                       <td class="">{{this.boards.vice_chairman}}</td>
                     </tr>
                     <tr>
                       <td class="font-bold whitespace-nowrap">
-                        Corporate Secretary
+                        Committee Member
                       </td>
                       <td class="">{{this.boards.corporate_secretary}}</td>
                     </tr>
@@ -150,11 +150,11 @@
                 <JetInput class="w-full py-1 pl-1 border-2 border-black" v-model="this.updateBoards.benefits_chairman" :placeholder="this.boards.benefits_chairman" required/>
             </div> -->
             <div>
-                <JetLabel>Vice Chairman</JetLabel>
+                <JetLabel>Committee Member</JetLabel>
                 <JetInput class="w-full py-1 pl-1 border-2 border-black" v-model="this.updateBoards.vice_chairman" :placeholder="this.boards.vice_chairman" required/>
             </div>
             <div>
-                <JetLabel>Corporate Secretary</JetLabel>
+                <JetLabel>Committee Member</JetLabel>
                 <JetInput class="w-full py-1 pl-1 border-2 border-black" v-model="this.updateBoards.corporate_secretary" :placeholder="this.boards.corporate_secretary" required/>
             </div>
             <div>

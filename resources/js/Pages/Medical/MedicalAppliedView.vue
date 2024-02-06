@@ -236,13 +236,13 @@
           v-if="userMedical.status == 'Pending'"
           class="flex items-center justify-center w-full gap-20 p-0 m-0"
         >
-          <button
+          <!-- <button
             type="button"
             class="w-64 px-4 py-2 mb-5 text-lg font-semibold text-center text-white transition duration-150 ease-in bg-red-600 rounded-lg shadow-md hover:bg-red-700 focus:ring focus:ring-red-300"
             @click="rejectMedical(userMedical)"
           >
             Reject
-          </button>
+          </button> -->
 
           <button
             type="button"
