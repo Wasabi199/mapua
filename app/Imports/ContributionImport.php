@@ -32,9 +32,10 @@ class ContributionImport implements ToCollection, WithHeadingRow, WithValidation
                                     'remaining_balance'=>$row['remaining_balance']
                                 ]);
     
-                                if($row['remaining_balance'] == 0){
+                                if($row['remaining_balance'] <= 0){
                                     $loanUpdate->update([
                                         // 'loan_amount'=>$loanUpdate->loan_amount - $row['loan_payment'],
+                                        'loan_amount'=>$row['remaining_balance'],
                                         'loan_status'=>'Paid',
 
                                     ]);
