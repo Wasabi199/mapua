@@ -118,7 +118,7 @@
                     <span class="absolute mt-1.5 pl-2 font-bold">&#8369</span>
 
                   <input
-                    type="number"
+                    type="text"
                     class="block w-full pl-6 mt-1 border-gray-300 rounded-md shadow-sm sm:text-sm"
                     :value="amount"
                     disabled
