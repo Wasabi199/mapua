@@ -32,19 +32,11 @@
       <template #logo>
         <img src="/images/mu_white.png" alt="mu logo" class="w-64 mt-6" />
       </template>
-
-      <!-- <div class="text-rose-600">
-                    <ul>
-                        <li v-for="error in $page.props.errors" v-bind:key="error">{{error}}</li>
-                    </ul>
-                </div> -->
       <JetValidationErrors class="mb-4" />
-
       <form @submit.prevent="submit">
         <div class="space-y-4">
           <div class="mt-2 text-lg font-extrabold">Personal Information</div>
 
-          <div class="flex justify-between">
             <div>
               <JetLabel for="firstname" value="First Name" />
               <JetInput
@@ -57,32 +49,6 @@
                 autocomplete="firstname"
               />
             </div>
-            <div>
-              <JetLabel for="middlename" value="Middle Name" />
-              <JetInput
-                id="middlename"
-                v-model="form.middle_name"
-                type="text"
-                class="block w-full mt-1"
-                required
-                autofocus
-                autocomplete="middle"
-              />
-            </div>
-            <!--
-                <div >
-                    <JetLabel for="suffix" value="Suffix" />
-                    <JetInput
-                        id="suffix"
-
-                        type="text"
-                        class="block w-full mt-1"
-                        required
-                        autofocus
-
-                    />
-                </div> -->
-          </div>
           <div>
             <JetLabel for="lastname" value="Last Name" />
             <JetInput
@@ -168,7 +134,6 @@
               />
             </div>
           </div>
-          <div class="flex">
             <div class="mt-4">
               <jet-label for="department" value="Department" />
               <select
@@ -185,20 +150,7 @@
                   {{ department }}
                 </option>
               </select>
-            </div>
           </div>
-          <!-- <div class="mt-4">
-            <JetLabel for="salary" value="Salary" />
-            <JetInput
-              id="salary"
-              v-model="form.salary"
-              type="text"
-              class="block w-full mt-1"
-              required
-            />
-          </div> -->
-
-          <div class="flex justify-between">
             <div class="mt-4">
               <jet-label for="role" value="Role" />
               <select
@@ -207,33 +159,12 @@
                 required
               >
               <option selected disabled>Select Role</option>
-                <!-- <option value="User" selected>User</option>
-                <option value="Admin">Admin</option>
-                <option value="Medical">Medical</option> -->
                 <option v-for="role in roles" v-bind:key="role" :value="role">
                   {{ role }}
                 </option>
               </select>
             </div>
-
-            <div class="mt-4">
-              <JetLabel for="civil status" value="Civil Status" />
-              <select
-                v-model="form.civil_status"
-                class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark focus:ring-opacity-50"
-                required
-              >
-                <option disabled value="placeholder">Select Status</option>
-                <option
-                  v-for="status in civil_status"
-                  v-bind:key="status"
-                  :value="status"
-                >
-                  {{ status }}
-                </option>
-              </select>
-            </div>
-          </div>
+          
 
           <div class="mt-2 text-lg font-extrabold">Account Information</div>
 
@@ -247,34 +178,7 @@
               required
             />
           </div>
-
-          <!-- <div class="flex space-x-8">
-            <div class="mt-4">
-              <JetLabel for="password" value="Password" />
-              <JetInput
-                id="password"
-                v-model="form.account_information.password"
-                type="password"
-                class="block w-full mt-1"
-                required
-                autocomplete="new-password"
-              />
-            </div>
-
-            <div class="mt-4">
-              <JetLabel for="password_confirmation" value="Confirm Password" />
-              <JetInput
-                id="password_confirmation"
-                v-model="form.account_information.password_confirmation"
-                type="password"
-                class="block w-full mt-1"
-                required
-                autocomplete="new-password"
-              />
-            </div>
-          </div> -->
         </div>
-
         <div
           v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature"
           class="mt-4"
@@ -373,38 +277,8 @@ export default {
       departments: [
         "Administration",
         "Faculty"
-        // "School of Architecture, Industrial Design, and the Built Environment",
-
-        // "School of Chemical, Biological, and Materials Engineering and Sciences",
-
-        // "School of Civil, Environmental, and Geological Engineering",
-
-        // "School of Electrical, Electronics, and Computer Engineering",
-
-        // "School of Industrial Engineering and Engineering Management",
-
-        // "School of Mechanical and Manufacturing Engineering",
-
-        // "School of Media Studies",
-
-        // "School of Social Sciences and Education",
-
-        // "Department of Arts and Letters",
-
-        // "Department of Mathematics",
-
-        // "Department of Physics",
-
-        // "School of Information Technology",
-
-        // "E.T. Yuchengo School of Business in collaboration with Arizona State University",
-
-        // "Admin office(Treasury, Registrar, Admission)",
-
-        // "Maintenance",
       ],
       roles: ["Admin", "User", "Medical"],
-      civil_status: ["Single", "Maried", "Widowed", "Divorced"],
     };
   },
   methods: {

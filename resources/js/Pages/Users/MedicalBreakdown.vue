@@ -62,7 +62,7 @@
           </div>
         </form>
       </div>
-      <div  class="row-span-3">
+      <div v-if="medical.status != 'Rejected'" class="row-span-3">
         <div v-if="medical.in_patient == false">
           <div class="content-center bg-white rounded-lg shadow-xl lg:mr-50">
             <span>Official Receipt</span>
@@ -108,6 +108,10 @@
               " />
           </div>
         </div>
+      </div>
+      <div v-if="this.medical.status == 'Rejected'" class="w-full bg-white p-5 rounded-md shadow-lg">
+        <div class="text-xl font-bold">Reason:</div>
+        <p>{{ this.medical.reason }}</p>
       </div>
       <div v-if="medical.status == 'For Release'" class="row-span-3">
         <div class="w-full p-5 bg-white rounded-lg shadow-xl">

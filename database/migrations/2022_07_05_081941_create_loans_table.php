@@ -28,9 +28,7 @@ return new class extends Migration
             $table->string('attachment2')->nullable();
             $table->string('attachment3')->nullable();
             $table->string('attachment4')->nullable();
-            
-            // $table->integer('total_contribution');
-            $table->integer('duration');
+                        $table->integer('duration');
 
             $table->longText('reason')->nullable();
 

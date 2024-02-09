@@ -71,6 +71,7 @@ Route::prefix('Admin')->middleware(['auth:sanctum', 'Admin'])->group(function ()
     Route::post('Admin/HistoryContribution',[AdminController::class,'contributionHistory'])->name('contributionHistory');
 
     Route::post('Admin/Reimbursement/Approve',[AdminController::class,'reimbursementToApprove'])->name('reimbursementToApprove');
+    Route::post('Admin/Reimbursement/Reject',[AdminController::class,'reimbursementToReject'])->name('reimbursementToReject');
 });
 
 

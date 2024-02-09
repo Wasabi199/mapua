@@ -15,6 +15,7 @@ use App\Http\Requests\Admin as RegiterUserRequest;
 use App\Http\Requests\BoardsUpdate;
 use App\Http\Requests\ContributionHistoryRequest;
 use App\Http\Requests\MedicalApproveAdmin;
+use App\Http\Requests\MedicalToReject;
 use App\Http\Requests\UserSoftDelete;
 use App\Imports\UserAdmin;
 use Carbon\Carbon;
@@ -43,9 +44,7 @@ class AdminController extends Controller
             ->filter($query::only('search'))
             ->limit($filters['limit']??5)
             ->paginate($filters['limit']??5)
-            ->appends($query::only('search','limit'))
-            // ->get()
-        ;
+            ->appends($query::only('search','limit'));
         $filters = $query::all('search');
         return Inertia::render('Admin/Users', [
             'notification' => $notification,
@@ -111,7 +110,6 @@ class AdminController extends Controller
     public function userRegisterSubmit(RegiterUserRequest $request)
     {
         $validated_data = $request->validated();
-        // dd($validated_data);
         $user = null;
         $role = $this->roleToInt($validated_data['account_information']['role']);
 
@@ -128,17 +126,14 @@ class AdminController extends Controller
             ]);
             $user->adminReg()->create([
                 'first_name' => $validated_data['first_name'],
-                'middle_name' => $validated_data['middle_name'],
                 'last_name' => $validated_data['last_name'],
                 'birth_date' => $validated_data['birth_date'],
                 'birth_place' => $validated_data['birth_place'],
-                'civil_status' => $validated_data['civil_status'],
 
                 'employment' => $validated_data['employment'],
                 'membership' => $validated_data['membership'],
                 'mobile_number' => $validated_data['mobile_number'],
                 'department' => $validated_data['department'],
-                // 'salary' => $validated_data['salary'],
 
 
             ]);
@@ -150,11 +145,8 @@ class AdminController extends Controller
     }
 
 
-    //member profile update
-
     public function userUpdate(updateRequest $request)
     {
-        // dd($request);
         $admin = Admin::find($request->validated()['id']);
 
         $user = $admin->user;
@@ -216,12 +208,8 @@ class AdminController extends Controller
         }
     }
 
-    //member's contribution update
-
-
     public function userContriImport(Request $request)
     {
-        // dd($request);
         $request->validate([
             'file' => 'required|max:10000|mimes:xlsx,xls',
             'password' => 'required'
@@ -244,7 +232,6 @@ class AdminController extends Controller
 
     public function adminLoansView(QueryRequest $query)
     {
-        // dd($query::only('approval','limit'));
         $notification = UserNotifications::filter(Auth::user()->userType)->orderByRaw('created_at DESC')->get();
         $notificationCount = $notification->where('onRead', false)->count();
 
@@ -252,9 +239,7 @@ class AdminController extends Controller
         
         isset($filters['approval']) ? $filters['approval'] = Approval::approval($filters['approval']) : $filters['approval'] = Approval::approval($filters['approval'] = 'All');
         isset($filters['limit']);
-        // dd($filters['limit']);
-        // $loans2 = Loans::with('user')->whereRelation('user','status',1)->get();
-        // dd($loans2);
+
         $loans = Loans::with('user')->with('contributions')->whereRelation('user', 'status', 1)->whereNot('loan_status','Paid')
             ->filter($filters)
             ->limit($filters['limit']??5)
@@ -538,6 +523,25 @@ class AdminController extends Controller
     }
 
     public function reimbursementToApprove(MedicalApproveAdmin $request)
+    {
+        $validated_data = $request->validated();
+        $medical = Medical::where('id', $validated_data['id'])->get()->first();
+        $medical->update($validated_data);
+        UserNotifications::create([
+            'user_id' => $medical->user_id,
+            'universal_id' => $request->validated()['id'],
+            'onRead' => false,
+            'value' => 'Your application has been Updated',
+            'type' => 2,
+            'notification_type' => 5
+        ]);
+        return Redirect::route('dashboard')->with(
+            'message',
+            [NotificationService::notificationItem('success', '', 'Sucessfully Updated')]
+        );
+    }
+
+    public function reimbursementToReject(MedicalToReject $request)
     {
         $validated_data = $request->validated();
         $medical = Medical::where('id', $validated_data['id'])->get()->first();

@@ -18,26 +18,14 @@ return new class extends Migration
 
             $table->foreignId('user_id')->references('id')->on('users');
             $table->string('first_name');
-            $table->string('middle_name');
             $table->string('last_name');
             $table->string('mobile_number')->nullable();
             $table->date('birth_date')->nullable();
             $table->string('birth_place')->nullable();
-            $table->string('civil_status')->nullable();
-
-
-            
-            // $table->string('region');
-            // $table->string('province');
-            // $table->string('municipality');
-            // $table->string('barangay');
-            // $table->string('current_address');
-           
             $table->string('department')->nullable();
             $table->string('salary')->nullable();
             $table->date('membership')->nullable();
             $table->date('employment')->nullable();
-            // $table->string('total_contribution')->default(0);
             $table->string('current_loan')->nullable();
             
             $table->timestamps();

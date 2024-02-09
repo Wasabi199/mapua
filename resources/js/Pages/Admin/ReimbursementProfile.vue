@@ -4,11 +4,9 @@
       <div class="flex justify-between">
         <div class="flex items-center">
           <Link :href="route('ReimbursementView')">
-            <h1
-              class="text-xl font-extrabold leading-tight text-gray-800 hover:underline"
-            >
-              Reimbursement
-            </h1>
+          <h1 class="text-xl font-extrabold leading-tight text-gray-800 hover:underline">
+            Reimbursement
+          </h1>
           </Link>
         </div>
       </div>
@@ -42,199 +40,123 @@
           </div>
 
           <div class="flex gap-4">
-              <button @click="navigate(medical.signed_document)" class="px-6 py-2 text-white bg-red-800 rounded-md">Download Signed Documents</button>
-              <button v-if="medical.status == 'For Approval'" @click="showApproveModal = !showApproveModal" class="px-6 py-2 text-white bg-green-500 rounded-md">Approve</button>
+            <button @click="navigate(medical.signed_document)" class="px-6 py-2 text-white bg-red-800 rounded-md">Download
+              Signed Documents</button>
+            <button v-if="medical.status == 'For Approval'" @click="showRejectModal = !showRejectModal"
+              class="px-6 py-2 text-white bg-red-500 rounded-md">Reject</button>
+            <button v-if="medical.status == 'For Approval'" @click="showApproveModal = !showApproveModal"
+              class="px-6 py-2 text-white bg-green-500 rounded-md">Approve</button>
           </div>
         </div>
 
-        
+
         <div class="m-auto mt-10 w-fit">
-          <button v-if="this.medical.status == 'Approved'"
-            class="bg-[#DC2626] text-white py-4 px-20 text-lg rounded-lg"
-            @click="showForReleasedModal = !showForReleasedModal"
-          >
+          <button v-if="this.medical.status == 'Approved'" class="bg-[#DC2626] text-white py-4 px-20 text-lg rounded-lg"
+            @click="showForReleasedModal = !showForReleasedModal">
             For Release
           </button>
           <button v-if="this.medical.status == 'For Release'"
             class="bg-[#DC2626] text-white py-4 px-20 text-lg rounded-lg"
-            @click="(showReleasedModal = !showReleasedModal)"
-          >
+            @click="(showReleasedModal = !showReleasedModal)">
             Released
           </button>
         </div>
       </div>
-      <div
-        v-if="this.medical.status == 'Approved' || this.medical.status == 'For Approval'"
-        class="w-full p-5 bg-white rounded-lg shadow-xl h-fit "
-      >
-      <div v-if="medical.in_patient == false">
-        <div class="content-center mb-5 rounded-lg lg:mr-50">
-          <span>Official Reciept:</span>
-          <div
-            v-for="attachment in medical.attachments"
-            v-bind:key="attachment.id"
-          >
-            <img
-              class="w-64 h-64"
-              v-if="attachment.type == 1"
-              :src="
-                attachment.image == null ? '' :  attachment.image
-              "
-            />
+      <div v-if="this.medical.status == 'Approved' || this.medical.status == 'For Approval'"
+        class="w-full p-5 bg-white rounded-lg shadow-xl h-fit ">
+        <div v-if="medical.in_patient == false">
+          <div class="content-center mb-5 rounded-lg lg:mr-50">
+            <span>Official Reciept:</span>
+            <div v-for="attachment in medical.attachments" v-bind:key="attachment.id">
+              <img class="w-64 h-64" v-if="attachment.type == 1" :src="attachment.image == null ? '' : attachment.image
+                " />
+            </div>
           </div>
-        </div>
-        <div class="content-center rounded-lg lg:mr-50">
-          <span>Medical Certificate/Doctor's Prescription:</span>
-          <div
-            v-for="attachment in medical.attachments"
-            v-bind:key="attachment.id"
-          >
-            <img
-              class="w-64 h-64"
-              v-if="attachment.type == 2"
-              :src="
-                attachment.image == null ? '' : attachment.image
-              "
-            />
+          <div class="content-center rounded-lg lg:mr-50">
+            <span>Medical Certificate/Doctor's Prescription:</span>
+            <div v-for="attachment in medical.attachments" v-bind:key="attachment.id">
+              <img class="w-64 h-64" v-if="attachment.type == 2" :src="attachment.image == null ? '' : attachment.image
+                " />
+            </div>
+
           </div>
-          
+
         </div>
-        
-      </div>
-      <div v-else class="content-center mb-5 rounded-lg lg:mr-50">
+        <div v-else class="content-center mb-5 rounded-lg lg:mr-50">
           <span>Other Document:</span>
-          <div
-            v-for="attachment in medical.attachments"
-            v-bind:key="attachment.id"
-          >
-            <img
-              class="w-64 h-64"
-              v-if="attachment.type == 1"
-              :src="
-                attachment.image == null ? '' :  attachment.image
-              "
-            />
+          <div v-for="attachment in medical.attachments" v-bind:key="attachment.id">
+            <img class="w-64 h-64" v-if="attachment.type == 1" :src="attachment.image == null ? '' : attachment.image
+              " />
           </div>
         </div>
-        <div
-          v-if="
-            this.medical.hospital == true ||
-            this.medical.health == true
-          "
-          class="content-center rounded-lg lg:mr-50"
-        >
+        <div v-if="this.medical.hospital == true ||
+          this.medical.health == true
+          " class="content-center rounded-lg lg:mr-50">
           <div>
-            <span v-if="this.medical.hospital == true"
-              >Statement of Account</span
-            >
-            <span v-if="this.medical.health == true"
-              >Doctor's Endorsement</span
-            >
+            <span v-if="this.medical.hospital == true">Statement of Account</span>
+            <span v-if="this.medical.health == true">Doctor's Endorsement</span>
           </div>
-          <div
-            v-for="attachment in medical.attachments"
-            v-bind:key="attachment.id"
-          >
-            <img
-              class="w-64 h-64"
-              v-if="attachment.type == 3"
-              :src="
-                attachment.image == null ? '' :  attachment.image
-              "
-            />
+          <div v-for="attachment in medical.attachments" v-bind:key="attachment.id">
+            <img class="w-64 h-64" v-if="attachment.type == 3" :src="attachment.image == null ? '' : attachment.image
+              " />
           </div>
         </div>
-        <div
-          v-if="this.medical.health == true"
-          class="content-center rounded-lg lg:mr-50"
-        >
+        <div v-if="this.medical.health == true" class="content-center rounded-lg lg:mr-50">
           <div>
-            <span v-if="medical.health == true"
-              >Lab Results</span
-            >
+            <span v-if="medical.health == true">Lab Results</span>
           </div>
-          <div
-            v-for="attachment in medical.attachments"
-            v-bind:key="attachment.id"
-          >
-            <img
-              class="w-64 h-64"
-              v-if="attachment.type == 4"
-              :src="
-                attachment.image == null ? '' :  attachment.image
-              "
-            />
+          <div v-for="attachment in medical.attachments" v-bind:key="attachment.id">
+            <img class="w-64 h-64" v-if="attachment.type == 4" :src="attachment.image == null ? '' : attachment.image
+              " />
           </div>
         </div>
       </div>
-      <div
-        v-if="this.medical.status == 'For Release'"
-        class="w-full p-5 bg-white rounded-lg shadow-xl"
-      >
+      <div v-if="this.medical.status == 'For Release'" class="w-full p-5 bg-white rounded-lg shadow-xl">
         <p class="font-semibold">Good News!</p>
         <p>Your Medical Reimbursement has been processed.</p>
         <p>
           A representative will send you an email for updates on the release of your loan.
         </p>
       </div>
-      <div
-        v-if="this.medical.status == 'Released'"
-        class="w-full p-5 bg-white rounded-lg shadow-xl"
-      >
+      <div v-if="this.medical.status == 'Released'" class="w-full p-5 bg-white rounded-lg shadow-xl">
         <div class="flex m-auto gap-x-2 w-fit">
           <p class="font-semibold">Amount:</p>
-          <p>{{this.medical.amount.toLocaleString("en-US")}}</p>
+          <p>{{ this.medical.amount.toLocaleString("en-US") }}</p>
         </div>
         <div class="flex m-auto gap-x-2 w-fit">
           <p class="font-semibold">Date Released:</p>
-          <p>{{new Date(this.medical.updated_at)}}</p>
+          <p>{{ new Date(this.medical.updated_at) }}</p>
         </div>
+      </div>
+      <div v-if="this.medical.status == 'Rejected'" class="w-full bg-white p-5 rounded-md shadow-lg">
+        <div class="text-xl font-bold">Reason:</div>
+        <p>{{ this.medical.reason }}</p>
       </div>
     </div>
 
-    <Modal
-      :closeable="true"
-      :show="showForReleasedModal"
-      @close="showForReleasedModal = !showForReleasedModal"
-    >
+    <Modal :closeable="true" :show="showForReleasedModal" @close="showForReleasedModal = !showForReleasedModal">
       <div class="p-5">
         <div class="flex justify-end my-3 text-xl font-bold text-gray-900">
-          <svg
-            class="w-6 h-6 cursor-pointer"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            @click="showForReleasedModal = !showForReleasedModal"
-          >
-            <path
-              d="M6 18L18 6M6 6l12 12"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-            />
+          <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" @click="showForReleasedModal = !showForReleasedModal">
+            <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
           </svg>
         </div>
-        <div
-          class="flex flex-col items-center my-10 text-xl font-bold text-gray-900 "
-        >
-          <span
-            >{{
-              this.info.first_name +
-              " " +
-              this.info.middle_name +
-              " " +
-              this.info.last_name
-            }}'s Reimbursement is for Release.</span
-          >
+        <div class="flex flex-col items-center my-10 text-xl font-bold text-gray-900 ">
+          <span>{{
+            this.info.first_name +
+            " " +
+            this.info.middle_name +
+            " " +
+            this.info.last_name
+          }}'s Reimbursement is for Release.</span>
         </div>
 
         <div class="flex justify-center">
           <div class="flex my-3 text-xl font-bold dark:text-gray-200">
             <div
               class="flex px-4 py-1 space-x-2 text-red-600 uppercase border border-red-600 rounded-full cursor-pointer text-md dark:text-red-600 dark:border-red-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500"
-              @click="reimbursementReleaseFunction()"
-            >
+              @click="reimbursementReleaseFunction()">
               <span>For Release</span>
             </div>
           </div>
@@ -242,49 +164,29 @@
       </div>
     </Modal>
 
-    <Modal
-      :closeable="true"
-      :show="showReleasedModal"
-      @close="(showReleasedModal = !showReleasedModal)"
-    >
+    <Modal :closeable="true" :show="showReleasedModal" @close="(showReleasedModal = !showReleasedModal)">
       <div class="p-5">
         <div class="flex justify-end my-3 text-xl font-bold text-gray-900">
-          <svg
-            class="w-6 h-6 cursor-pointer"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            @click="(showReleasedModal = !showReleasedModal)"
-          >
-            <path
-              d="M6 18L18 6M6 6l12 12"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-            />
+          <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" @click="(showReleasedModal = !showReleasedModal)">
+            <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
           </svg>
         </div>
-        <div
-          class="flex flex-col items-center my-10 text-xl font-bold text-gray-900 "
-        >
-          <span
-            >{{
-              this.info.first_name +
-              " " +
-              this.info.middle_name +
-              " " +
-              this.info.last_name
-            }}'s Reimbursement has been Released.</span
-          >
+        <div class="flex flex-col items-center my-10 text-xl font-bold text-gray-900 ">
+          <span>{{
+            this.info.first_name +
+            " " +
+            this.info.middle_name +
+            " " +
+            this.info.last_name
+          }}'s Reimbursement has been Released.</span>
         </div>
 
         <div class="flex justify-center">
           <div class="flex my-3 text-xl font-bold dark:text-gray-200">
             <div
               class="flex px-4 py-1 space-x-2 text-red-600 uppercase border border-red-600 rounded-full cursor-pointer text-md dark:text-red-600 dark:border-red-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500"
-              @click="reimbursementReleasedFunction()"
-            >
+              @click="reimbursementReleasedFunction()">
               <span>Released</span>
             </div>
           </div>
@@ -292,50 +194,65 @@
       </div>
     </Modal>
 
-    <Modal
-      :closeable="true"
-      :show="showApproveModal"
-      @close="(showApproveModal = !showApproveModal)"
-    >
+    <Modal :closeable="true" :show="showApproveModal" @close="(showApproveModal = !showApproveModal)">
       <div class="p-5">
         <div class="flex justify-end my-3 text-xl font-bold text-gray-900">
-          <svg
-            class="w-6 h-6 cursor-pointer"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            @click="(showApproveModal = !showApproveModal)"
-          >
-            <path
-              d="M6 18L18 6M6 6l12 12"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-            />
+          <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" @click="(showApproveModal = !showApproveModal)">
+            <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
           </svg>
         </div>
-        <div
-          class="flex flex-col items-center my-10 text-xl font-bold text-gray-900 "
-        >
-          <span
-            >{{
-              this.info.first_name +
-              " " +
-              this.info.middle_name +
-              " " +
-              this.info.last_name
-            }}'s Reimbursement to be Approve.</span
-          >
+        <div class="flex flex-col items-center my-10 text-xl font-bold text-gray-900 ">
+          <span>{{
+            this.info.first_name +
+            " " +
+            this.info.middle_name +
+            " " +
+            this.info.last_name
+          }}'s Reimbursement to be Approve.</span>
         </div>
 
         <div class="flex justify-center">
           <div class="flex my-3 text-xl font-bold dark:text-gray-200">
             <div
               class="flex px-4 py-1 space-x-2 text-green-600 uppercase border border-green-600 rounded-full cursor-pointer text-md dark:text-green-600 dark:border-green-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-green-500"
-              @click="reimbursementApproveFunction()"
-            >
+              @click="reimbursementApproveFunction()">
               <span>Approve</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Modal>
+
+    <Modal :closeable="true" :show="showRejectModal" @close="(showRejectModal = !showRejectModal)">
+      <div class="p-5">
+        <div class="flex justify-end my-3 text-xl font-bold text-gray-900">
+          <svg class="w-6 h-6 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" @click="(showRejectModal = !showRejectModal)">
+            <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+          </svg>
+        </div>
+        <div class="flex flex-col items-center my-10 text-xl font-bold text-gray-900 ">
+          <span>{{
+            this.info.first_name +
+            " " +
+            this.info.middle_name +
+            " " +
+            this.info.last_name
+          }}'s Reimbursement to be Reject.</span>
+        </div>
+        <div>
+          <label>Reason for Rejection</label>
+          <textarea v-model="reimbursementReject.reason" class="h-20 w-full"></textarea>
+        </div>
+
+        <div class="flex justify-center">
+          <div class="flex my-3 text-xl font-bold dark:text-gray-200">
+            <div
+              class="flex px-4 py-1 space-x-2 text-red-600 uppercase border border-red-600 rounded-full cursor-pointer text-md dark:text-red-600 dark:border-red-600 dark:hover:text-gray-200 hover:text-white hover:border-none hover:bg-red-500"
+              @click="reimbursementRejectFunction()">
+
+              <span>Reject</span>
             </div>
           </div>
         </div>
@@ -349,7 +266,7 @@ import { Link } from "@inertiajs/inertia-vue3";
 import Modal from "@/Jetstream/Modal";
 
 export default {
-  setup() {},
+  setup() { },
   components: {
     AppLayout,
     Link,
@@ -362,16 +279,22 @@ export default {
   data() {
     return {
       showForReleasedModal: false,
-      showReleasedModal:false,
-      showApproveModal:false,
-      
+      showReleasedModal: false,
+      showApproveModal: false,
+      showRejectModal: false,
+
       reimbursementRelease: this.$inertia.form({
         id: Number,
         status: "",
       }),
-      reimbursementApprove:this.$inertia.form({
-        id:Number,
-        status:''
+      reimbursementApprove: this.$inertia.form({
+        id: Number,
+        status: ''
+      }),
+      reimbursementReject: this.$inertia.form({
+        id: Number,
+        status: '',
+        reason: ''
       })
     };
   },
@@ -407,7 +330,19 @@ export default {
       });
     },
 
-    navigate(link){
+    reimbursementRejectFunction() {
+      this.reimbursementReject.id = this.medical.id;
+      this.reimbursementReject.status = "Rejected";
+
+      this.reimbursementReject.post(route("reimbursementToReject"), {
+        onSuccess: () => {
+          this.showApproveModal = false;
+        },
+      });
+    },
+
+
+    navigate(link) {
       location.href = link
     }
   },

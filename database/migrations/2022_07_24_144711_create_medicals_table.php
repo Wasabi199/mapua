@@ -21,9 +21,6 @@ return new class extends Migration
             $table->date('appointment_date');
 
             $table->string('signed_document')->nullable();
-            // $table->string('medical_record2')->nullable();
-            // $table->string('medical_record3')->nullable();
-            // $table->string('medical_record4')->nullable();
 
             $table->integer('amount');
             $table->string('status')->default('Pending');
@@ -35,6 +32,8 @@ return new class extends Migration
             $table->boolean('dental')->default(false);
             $table->boolean('mental')->default(false);
             $table->boolean('in_patient')->default(false);
+            $table->longText('reason')->nullable();
+
             $table->timestamps();
         });
     }

@@ -12,10 +12,6 @@ class Medical extends Model
     protected $fillable = [
 
         'reimbursment_type',
-        // 'medical_record1',
-        // 'medical_record2',
-        // 'medical_record3',
-        // 'medical_record4',
         'signed_document',
         'amount',
         'status',
@@ -27,7 +23,8 @@ class Medical extends Model
         'eye',
         'dental',
         'mental',
-        'in_patient'
+        'in_patient',
+        'reason'
     ];
     
     public function user(){

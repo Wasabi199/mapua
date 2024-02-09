@@ -13,25 +13,14 @@ class Admin extends Model
     protected $fillable = [
 
         'first_name',
-        'middle_name',
         'last_name',
         'mobile_number',
         'birth_date',
         'birth_place',
-        'civil_status',
-
-
-        // 'region',
-        // 'province',
-        // 'municipality',
-        // 'barangay',
-        // 'current_address',
-
         'department',
         'salary',
         'membership',
         'employment',
-        // 'total_contribution'
     ];
 
     public function user()
