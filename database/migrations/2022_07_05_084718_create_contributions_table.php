@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('contributions', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('loans_id')->references('id')->on('loans')->onDelete('cascade');
             $table->integer('contribution_amount');
             $table->float('remaining_balance')->default(0);

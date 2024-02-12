@@ -264,7 +264,7 @@
             class="w-64 px-4 py-2 mb-5 text-lg font-semibold text-center text-white transition duration-150 ease-in bg-green-600 rounded-lg shadow-md hover:bg-green-700 focus:ring focus:ring-green-300"
             @click="acceptMedical(userMedical)"
           >
-            Approve
+            Transfer
           </button>
         </div>
 

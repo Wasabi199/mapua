@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('chairman');
             $table->string('committee_chairman');
-            // $table->string('benefits_chairman');
             $table->string('vice_chairman');
             $table->string('corporate_secretary');
             $table->string('treasurer');

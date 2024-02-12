@@ -109,7 +109,7 @@
           </div>
         </div>
       </div>
-      <div v-if="this.medical.status == 'Rejected'" class="w-full bg-white p-5 rounded-md shadow-lg">
+      <div v-if="this.medical.status == 'Rejected'" class="w-full p-5 bg-white rounded-md shadow-lg">
         <div class="text-xl font-bold">Reason:</div>
         <p>{{ this.medical.reason }}</p>
       </div>

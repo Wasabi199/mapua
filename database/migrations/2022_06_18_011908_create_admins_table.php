@@ -23,11 +23,9 @@ return new class extends Migration
             $table->date('birth_date')->nullable();
             $table->string('birth_place')->nullable();
             $table->string('department')->nullable();
-            $table->string('salary')->nullable();
             $table->date('membership')->nullable();
             $table->date('employment')->nullable();
             $table->string('current_loan')->nullable();
-            
             $table->timestamps();
             $table->softDeletes();
         });
