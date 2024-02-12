@@ -301,7 +301,7 @@
         >
           <span class="text-center"
             >Transfer {{ userProfile.first_name }}
-            {{ userProfile.last_name }} Medical Reimbursment?</span
+            {{ userProfile.last_name }}'s Medical Reimbursment to MITRF Accountant?</span
           >
         </div>
         <div class="flex justify-center">
