@@ -35,7 +35,6 @@ class AdminFactory extends Factory
     
 
             'department' => $this->faker->randomElement($department),
-            'salary' => $this->faker->numberBetween($min=1000,$max=10000),
             'membership'=> $this->faker->date('Y-m-d', Carbon::now()->subYears(18)),
             'employment'=>$this->faker->date('Y-m-d', Carbon::now()->subYears(18)),
             'current_loan'=>$this->faker->numberBetween($min=1000,$max=10000),
