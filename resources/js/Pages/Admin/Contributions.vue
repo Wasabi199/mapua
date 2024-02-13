@@ -1061,7 +1061,7 @@
           class="flex flex-col items-center my-3 text-xl font-bold text-gray-900 "
         >
           <span class="text-center"
-            >Release {{ info.first_name }} {{ info.last_name }} loan?</span
+            >{{ info.first_name }} {{ info.last_name }}'s' loan is now ready for release</span
           >
         </div>
         <div class="flex justify-center">
@@ -1106,7 +1106,7 @@
           class="flex flex-col items-center my-3 text-xl font-bold text-gray-900 "
         >
           <span class="text-center"
-            >Released {{ info.first_name }} {{ info.last_name }}'s loan?</span
+            >{{ info.first_name }} {{ info.last_name }}'s has been released</span
           >
         </div>
         <div class="flex justify-center">
