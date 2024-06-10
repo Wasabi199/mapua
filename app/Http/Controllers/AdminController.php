@@ -106,7 +106,6 @@ class AdminController extends Controller
     }
 
     //user registration
-
     public function userRegisterSubmit(RegiterUserRequest $request)
     {
         $validated_data = $request->validated();
@@ -134,8 +133,6 @@ class AdminController extends Controller
                 'membership' => $validated_data['membership'],
                 'mobile_number' => $validated_data['mobile_number'],
                 'department' => $validated_data['department'],
-
-
             ]);
         });
         return Redirect::route('users')->with(
@@ -162,7 +159,6 @@ class AdminController extends Controller
     }
 
     // User profile csv upload
-
     public function userUpload(Request $request)
     {
         $request->validate([
@@ -299,6 +295,7 @@ class AdminController extends Controller
     {
         $loans = loans::find($request->validated()['id']);
         $data = $request->validated();
+        $data['loan_status'] = "Ongoing";
         $loans->update($data);
         UserNotifications::create([
             'user_id' => $loans->user_id,
@@ -385,7 +382,6 @@ class AdminController extends Controller
     }
     public function loanPrint($id)
     {
-
         $loan = Loans::find($id);
         $info = Admin::where('user_id', $loan->user_id)->get()->first();
         $loan->update([

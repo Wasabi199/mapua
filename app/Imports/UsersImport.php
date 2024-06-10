@@ -55,8 +55,9 @@ class UsersImport implements   WithHeadingRow, ToCollection, WithValidation, Ski
             
                                 // 'department'    =>$row['department'],
                                 // // 'salary'        =>$row['salary'],
-                                'membership'    =>Carbon::now(),
-                                // 'employment'    =>\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['employment'])->format('Y-m-d'),
+                                // 'membership'    =>Carbon::now(),
+                                'employment'    =>\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['employment'])->format('Y-m-d'),
+                                'membership'    =>\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['membership'])->format('Y-m-d'),
                             ]);
                         });
                     
@@ -69,15 +70,14 @@ class UsersImport implements   WithHeadingRow, ToCollection, WithValidation, Ski
     {
         return[
             'email'=>'required|email|unique:users,email',
-            'member_id'=>'nullable',
+            'member_id'=>'required',
             'first_name'=>'required',
             'last_name'=>'required',
             'middle_name'=>'nullable',
             'birth_date'=>'nullable',
             'department'=>'nullable',
-            'membership'=>'nullable',
-            'employment'=>'nullable',
-
+            'membership'=>'required',
+            'employment'=>'required',
         ];
     }
     // public function map($row): array

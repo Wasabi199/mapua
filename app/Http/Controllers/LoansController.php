@@ -87,13 +87,13 @@ class LoansController extends Controller
         $validate_data = $request->validated();
 
         $user = User::find(auth()->id());
-        if (Loans::where('user_id', $user->id)->where('loan_type', 'Educational Loan')->where('loan_status', 'Ongoing')->where('approval', '!=', 'Denied')->exists()) {
+        if (Loans::where('user_id', $user->id)->where('loan_type', 'Educational Loan')->whereIn('loan_status', ['Ongoing','Awaiting Approval'])->where('approval', '!=', 'Denied')->exists()) {
             return Redirect::route('userLoanDashboard')->with(
                 'message',
-                [NotificationService::notificationItem('Success', '', 'Housing Loan connot be loaned at the same time with Educational Loan. Loan application not created.')]
+                [NotificationService::notificationItem('Success', '', 'Housing Loan cannot be loaned at the same time with Educational Loan. Loan application not created.')]
             );
         } else {
-            if (Loans::where('user_id', $user->id)->where('loan_type', 'Housing Loan')->where('loan_status', 'Ongoing')->where('approval', '!=', 'Denied')->exists()) {
+            if (Loans::where('user_id', $user->id)->where('loan_type', 'Housing Loan')->whereIn('loan_status', ['Ongoing','Awaiting Approval'])->where('approval', '!=', 'Denied')->exists()) {
                 return Redirect::route('userLoanDashboard')->with(
                     'message',
                     [NotificationService::notificationItem('Success', '', 'You already have an existing ' . $validate_data['loan_type'] . '. Loan application not created.')]
@@ -113,7 +113,7 @@ class LoansController extends Controller
                         'amortization'=>$validate_data['loan_amount'] / ($validate_data['terms'] * 2),
                         'amount' => $validate_data['amount'],
                         'interest' => $validate_data['interest'],
-                        'loan_status' => 'Ongoing',
+                        'loan_status' => 'Awaiting Approval',
                         'approval' => 'Submitted',
 
                     ]);
@@ -141,13 +141,13 @@ class LoansController extends Controller
         $validate_data = $request->validated();
 
         $user = User::find(auth()->id());
-        if (Loans::where('user_id', $user->id)->where('loan_type', 'Housing Loan')->where('loan_status', 'Ongoing')->where('approval', '!=', 'Denied')->exists()) {
+        if (Loans::where('user_id', $user->id)->where('loan_type', 'Housing Loan')->whereIn('loan_status', ['Ongoing','Awaiting Approval'])->where('approval', '!=', 'Denied')->exists()) {
             return Redirect::route('userLoanDashboard')->with(
                 'message',
                 [NotificationService::notificationItem('Success', '', 'Educational Loan cannot be loaned at the same time with Housing Loan. Loan application not created.')]
             );
         } else {
-            if (Loans::where('user_id', $user->id)->where('loan_type', 'Educational Loan')->where('loan_status', 'Ongoing')->where('approval', '!=', 'Denied')->exists()) {
+            if (Loans::where('user_id', $user->id)->where('loan_type', 'Educational Loan')->whereIn('loan_status', ['Ongoing','Awaiting Approval'])->where('approval', '!=', 'Denied')->exists()) {
                 return Redirect::route('userLoanDashboard')->with(
                     'message',
                     [NotificationService::notificationItem('Success', '', 'You already have an existing ' . $validate_data['loan_type'] . '. Loan application not created.')]
@@ -168,7 +168,7 @@ class LoansController extends Controller
                         'amortization'=>$validate_data['loan_amount'] / ($validate_data['terms'] * 2),
 
                         'interest' => $validate_data['interest'],
-                        'loan_status' => 'Ongoing',
+                        'loan_status' => 'Awaiting Approval',
                         'approval' => 'Submitted',
 
                     ]);
@@ -194,9 +194,8 @@ class LoansController extends Controller
     public function createEmergencyLoan(emergencyReqest $request)
     {
         $validate_data = $request->validated();
-        //    dd($validate_data);
         $user = User::find(auth()->id());
-        if (Loans::where('user_id', $user->id)->where('loan_type', 'Emergency Loan')->where('loan_status', 'Ongoing')->where('approval', '!=', 'Denied')->exists()) {
+        if (Loans::where('user_id', $user->id)->where('loan_type', 'Emergency Loan')->whereIn('loan_status', ['Ongoing','Awaiting Approval'])->where('approval', '!=', 'Denied')->exists()) {
             return Redirect::route('userLoanDashboard')->with(
                 'message',
                 [NotificationService::notificationItem('Success', '', 'You already have an existing ' . $validate_data['loan_type'] . '. Loan application not created.')]
@@ -215,9 +214,10 @@ class LoansController extends Controller
                     'amortization'=>$validate_data['loan_amount'] / ($validate_data['terms'] * 2),
 
                     'interest' => $validate_data['interest'],
-                    'loan_status' => 'Ongoing',
+                    'loan_status' => 'Awaiting Approval',
                     'approval' => 'Submitted',
                 ]);
+
                 $user->userNotif()->create([
                     'universal_id' => $user_loans->id,
                     'onRead' => false,
@@ -234,18 +234,20 @@ class LoansController extends Controller
             );
         }
     }
+
+
     public function createEducationalLoan(educationalRequest $request)
     {
         $validate_data = $request->validated();
 
         $user = User::find(auth()->id());
-        if (Loans::where('user_id', $user->id)->where('loan_type', 'Housing Loan')->where('loan_status', 'Ongoing')->where('approval', '!=', 'Denied')->exists()) {
+        if (Loans::where('user_id', $user->id)->where('loan_type', 'Housing Loan')->whereIn('loan_status', ['Ongoing','Awaiting Approval'])->where('approval', '!=', 'Denied')->exists()) {
             return Redirect::route('userLoanDashboard')->with(
                 'message',
                 [NotificationService::notificationItem('Success', '', 'Educational Loan cannot be loaned at the same time with Housing Loan. Loan application not created.')]
             );
         } else {
-            if (Loans::where('user_id', $user->id)->where('loan_type', 'Educational Loan')->where('loan_status', 'Ongoing')->where('approval', '!=', 'Denied')->exists()) {
+            if (Loans::where('user_id', $user->id)->where('loan_type', 'Educational Loan')->whereIn('loan_status', ['Ongoing','Awaiting Approval'])->where('approval', '!=', 'Denied')->exists()) {
 
                 return Redirect::route('userLoanDashboard')->with(
                     'message',
@@ -266,7 +268,7 @@ class LoansController extends Controller
                         'amortization'=>$validate_data['loan_amount'] / ($validate_data['terms'] * 2),
 
                         'interest' => $validate_data['interest'],
-                        'loan_status' => 'Ongoing',
+                        'loan_status' => 'Awaiting Approval',
                         'approval' => 'Submitted',
 
                     ]);
@@ -313,7 +315,6 @@ class LoansController extends Controller
 
     public function createReimburstment()
     {
-
         $userNotification = UserNotifications::filterOwner(Auth::user()->userType)->orderByRaw('created_at DESC')->get();
         $notificationCount = $userNotification->where('onRead', false)->count();
         $info = Admin::where('user_id', auth()->id())->get()->first();

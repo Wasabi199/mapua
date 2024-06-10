@@ -109,7 +109,7 @@
                   <input v-model="this.form.eye" type="checkbox" /><label>Eye Checkup</label>
                 </div>
                 <div class="space-x-2">
-                  <input v-model="this.form.in_patient" type="checkbox" /><label>In Patient</label>
+                  <input v-model="this.form.in_patient" type="checkbox" /><label>For In-Patient purposes </label>
                 </div>
               </div>
               <div>
