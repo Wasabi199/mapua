@@ -30,6 +30,7 @@ class UsersImport implements WithHeadingRow, ToCollection, WithValidation, Skips
     {
         foreach ($rows as $row) {
             # code...
+            // dd( );
             $pass = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
             $userNew = null;
             // dd($pass[(int)\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('m')-1].\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('d').\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y'));
@@ -39,17 +40,17 @@ class UsersImport implements WithHeadingRow, ToCollection, WithValidation, Skips
                     'email'     => $row['email'],
                     'userType'  => 2,
                     // 'password'=>Hash::make('mitrf_test'),
-                    'password'  => Hash::make($pass[(int)\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('m') - 1] . \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('d') . \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y')),
+                    'password'  => Hash::make($pass[\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject((int)$row['birthdate'])->format('m') - 1] . \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject((int)$row['birthdate'])->format('d') . \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject((int)$row['birthdate'])->format('Y')),
                     'member_id' => rand(10, 100)
                 ]);
                 $userNew->adminReg()->create([
                     'first_name'    => $row['first_name'],
                     'middle_name'   => $row['middle_name'] ?? '',
                     'last_name'     => $row['last_name'],
-                    'birth_date'    => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y-m-d'),
+                    'birth_date'    => Carbon::parse(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject((int)$row['birthdate']))->format('Y-m-d'),
                     // 'birth_place'   =>"",
                     // 'civil_status'  =>$row['civil_status'],
-                    'mobile_number'=>$row['mobile'],
+
                     'department'    =>$row['department'],
                     // // 'salary'        =>$row['salary'],
                     // 'membership'    =>Carbon::now(),
@@ -71,7 +72,7 @@ class UsersImport implements WithHeadingRow, ToCollection, WithValidation, Skips
             'last_name' => 'required',
             'middle_name' => 'nullable',
             'birthdate' => 'required',
-            'department' => 'required',
+            'department' => 'nullable',
             'membership' => 'required',
             'employment' => 'required',
         ];
