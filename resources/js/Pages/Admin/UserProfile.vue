@@ -71,13 +71,13 @@
                         </div>
 
                         <!-- Civil status -->
-
+<!-- 
                         <div class="flex text-lg">
                             <p class="font-semibold">Civil Status:</p>
                             <p class="ml-2 underline">
                                 {{ info.admin_reg.civil_status }}
                             </p>
-                        </div>
+                        </div> -->
 
                         <!-- birth date -->
 
@@ -89,12 +89,12 @@
                         </div>
 
                         <!-- place of birth -->
-                        <div class="flex text-lg">
+                        <!-- <div class="flex text-lg">
                             <p class="font-semibold">Place of Birth:</p>
                             <p class="ml-2 underline">
                                 {{ info.admin_reg.birth_place }}
                             </p>
-                        </div>
+                        </div> -->
                         <!-- address -->
 
                         <!-- <div class="flex text-lg">
@@ -236,7 +236,7 @@
                                     onfocus="(this.type='date')" />
                             </div>
                             <!-- Civil Status -->
-                            <div class="flex flex-col">
+                            <!-- <div class="flex flex-col">
                                 <span class="text-sm font-semibold leading-snug text-gray-900">Civil Status</span>
                                 <select v-model="form.civil_status" :placeholder="info.admin_reg.civil_status"
                                     class="block w-full mt-1 text-gray-900 border-gray-300 rounded-md shadow-sm dark focus:ring-opacity-50"
@@ -248,7 +248,7 @@
                                         {{ status }}
                                     </option>
                                 </select>
-                            </div>
+                            </div> -->
 
                             <!-- Department -->
                             <div class="flex flex-col col-span-2">
@@ -442,7 +442,7 @@ export default {
                 last_name: "",
                 mobile_number: "",
                 birth_date: "",
-                civil_status: "",
+                // civil_status: "",
                 department: "",
                 employment: "",
                 membership: "",
@@ -490,9 +490,9 @@ export default {
             this.form.birth_date == ""
                 ? (this.form.birth_date = this.info.admin_reg.birth_date)
                 : this.form.birth_date;
-            this.form.civil_status == ""
-                ? (this.form.civil_status = this.info.admin_reg.civil_status)
-                : this.form.civil_status;
+            // this.form.civil_status == ""
+            //     ? (this.form.civil_status = this.info.admin_reg.civil_status)
+            //     : this.form.civil_status;
             this.form.department == ""
                 ? (this.form.department = this.info.admin_reg.department)
                 : this.form.department;

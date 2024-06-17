@@ -28,7 +28,7 @@ class Admin extends FormRequest
             'first_name'=>'required',
             'last_name' => 'required',
             'birth_date'=>'required',
-            'birth_place'=>'required',
+            // 'birth_place'=>'required',
             'mobile_number' => 'required',
             'department' => 'required',
             'membership' => 'required',

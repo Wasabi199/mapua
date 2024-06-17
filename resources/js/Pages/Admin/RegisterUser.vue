@@ -101,7 +101,7 @@
                             />
                         </div>
                     </div>
-                    <div>
+                    <!-- <div>
                         <JetLabel for="birth_place" value="Place of Birth" />
                         <JetInput
                             id="birth_place"
@@ -111,7 +111,7 @@
                             required
                             autofocus
                         />
-                    </div>
+                    </div> -->
 
                     <div class="flex justify-between">
                         <div class="mt-4">
@@ -281,8 +281,8 @@ export default {
                 middle_name: "",
                 last_name: "",
                 birth_date: "",
-                birth_place: "",
-                civil_status: "",
+                // birth_place: "",
+                // civil_status: "",
 
                 employment: "",
                 membership: "",
