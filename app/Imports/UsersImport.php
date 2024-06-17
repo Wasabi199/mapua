@@ -19,86 +19,82 @@ use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Illuminate\Support\Facades\DB;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class UsersImport implements   WithHeadingRow, ToCollection, WithValidation, SkipsEmptyRows
+class UsersImport implements WithHeadingRow, ToCollection, WithValidation, SkipsEmptyRows
 {
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     public function collection(Collection $rows)
     {
-        // HeadingRowFormatter::default('none');
+        foreach ($rows as $row) {
+            # code...
 
-            foreach ($rows as $row) {
-                # code...
-                
-                        $pass = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-                        $userNew = null;
-                        // dd($pass[(int)\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('m')-1].\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('d').\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y'));
-                        DB::transaction(function () use ($userNew,$row, $pass) {
-                            $userNew = User::create([
-                                'name'      =>$row['first_name'].' '.$row['last_name'],
-                                'email'     =>$row['email'],
-                                'userType'  =>2,
-                                'password'=>Hash::make('mitrf_test'),
-                                // 'password'  =>Hash::make($pass[(int)\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('m')-1].\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('d').\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y')),
-                                'member_id'=>rand(10,100)
-                            ]);
-                            $userNew->adminReg()->create([
-                                'first_name'    =>$row['first_name'],
-                                'middle_name'   =>$row['middle_name']??'',
-                                'last_name'     =>$row['last_name'],
-                                // 'birth_date'    =>\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y-m-d'),
-                                // 'birth_place'   =>"",
-                                // 'civil_status'  =>$row['civil_status'],
-            
-                                // 'department'    =>$row['department'],
-                                // // 'salary'        =>$row['salary'],
-                                // 'membership'    =>Carbon::now(),
-                                'employment'    =>\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['employment'])->format('Y-m-d'),
-                                'membership'    =>\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['membership'])->format('Y-m-d'),
-                            ]);
-                        });
-                    
-                    }
-                // }
-            // }
-            //
+            $pass = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            $userNew = null;
+            // dd($pass[(int)\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('m')-1].\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('d').\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y'));
+            DB::transaction(function () use ($userNew, $row, $pass) {
+                $userNew = User::create([
+                    'name'      => $row['first_name'] . ' ' . $row['last_name'],
+                    'email'     => $row['email'],
+                    'userType'  => 2,
+                    // 'password'=>Hash::make('mitrf_test'),
+                    'password'  => Hash::make($pass[(int)\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('m') - 1] . \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('d') . \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y')),
+                    'member_id' => rand(10, 100)
+                ]);
+                $userNew->adminReg()->create([
+                    'first_name'    => $row['first_name'],
+                    'middle_name'   => $row['middle_name'] ?? '',
+                    'last_name'     => $row['last_name'],
+                    'birth_date'    => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y-m-d'),
+                    // 'birth_place'   =>"",
+                    // 'civil_status'  =>$row['civil_status'],
+                    'mobile_number'=>$row['mobile'],
+                    'department'    =>$row['department'],
+                    // // 'salary'        =>$row['salary'],
+                    // 'membership'    =>Carbon::now(),
+                    'employment'    => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['employment'])->format('Y-m-d'),
+                    'membership'    => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['membership'])->format('Y-m-d'),
+                ]);
+            });
+        }
+        // }
+        // }
+        //
     }
     public function rules(): array
     {
-        return[
-            'email'=>'required|email|unique:users,email',
-            'member_id'=>'required',
-            'first_name'=>'required',
-            'last_name'=>'required',
-            'middle_name'=>'nullable',
-            'birth_date'=>'nullable',
-            'department'=>'nullable',
-            'membership'=>'required',
-            'employment'=>'required',
+        return [
+            'email' => 'required|email|unique:users,email',
+            'member_id' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'middle_name' => 'nullable',
+            'birth_date' => 'required',
+            'department' => 'required',
+            'membership' => 'required',
+            'employment' => 'required',
         ];
     }
     // public function map($row): array
     // {
-    //     return[
+    //     return [
     //         $row['first_name'],
     //         \PhpOffice\PhpSpreadsheet\Shared\Date::stringToExcel($row['birthdate']),
     //         \PhpOffice\PhpSpreadsheet\Shared\Date::stringToExcel($row['membership']),
     //         \PhpOffice\PhpSpreadsheet\Shared\Date::stringToExcel($row['employment']),
-      
+
     //     ];
     // }
     // public function columnFormats(): array
     // {
-    //     return[
-    //         'birth_date'=> NumberFormat::FORMAT_DATE_YYYYMMDD,
-    //         'membership'=> NumberFormat::FORMAT_DATE_YYYYMMDD,
+    //     return [
+    //         'birth_date' => NumberFormat::FORMAT_DATE_YYYYMMDD,
+    //         'membership' => NumberFormat::FORMAT_DATE_YYYYMMDD,
     //         'employment' => NumberFormat::FORMAT_DATE_YYYYMMDD,
 
 
     //     ];
     // }
-
 }
