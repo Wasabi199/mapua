@@ -30,7 +30,6 @@ class UsersImport implements WithHeadingRow, ToCollection, WithValidation, Skips
     {
         foreach ($rows as $row) {
             # code...
-
             $pass = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
             $userNew = null;
             // dd($pass[(int)\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('m')-1].\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('d').\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['birthdate'])->format('Y'));
@@ -71,7 +70,7 @@ class UsersImport implements WithHeadingRow, ToCollection, WithValidation, Skips
             'first_name' => 'required',
             'last_name' => 'required',
             'middle_name' => 'nullable',
-            'birth_date' => 'required',
+            'birthdate' => 'required',
             'department' => 'required',
             'membership' => 'required',
             'employment' => 'required',
