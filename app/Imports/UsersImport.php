@@ -41,7 +41,7 @@ class UsersImport implements WithHeadingRow, ToCollection, WithValidation, Skips
                     'userType'  => 2,
                     // 'password'=>Hash::make('mitrf_test'),
                     'password'  => Hash::make($pass[\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject((int)$row['birthdate'])->format('m') - 1] . \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject((int)$row['birthdate'])->format('d') . \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject((int)$row['birthdate'])->format('Y')),
-                    'member_id' => rand(10, 100)
+                    'member_id' => $row['member_id']
                 ]);
                 $userNew->adminReg()->create([
                     'first_name'    => $row['first_name'],
@@ -54,6 +54,7 @@ class UsersImport implements WithHeadingRow, ToCollection, WithValidation, Skips
                     'department'    =>$row['department'],
                     // // 'salary'        =>$row['salary'],
                     // 'membership'    =>Carbon::now(),
+                    'mobile_number'=>$row['number'],
                     'employment'    => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['employment'])->format('Y-m-d'),
                     'membership'    => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['membership'])->format('Y-m-d'),
                 ]);
@@ -75,6 +76,7 @@ class UsersImport implements WithHeadingRow, ToCollection, WithValidation, Skips
             'department' => 'nullable',
             'membership' => 'required',
             'employment' => 'required',
+            'number'=>'required'
         ];
     }
     // public function map($row): array
